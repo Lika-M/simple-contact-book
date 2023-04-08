@@ -1,0 +1,13 @@
+footer {
+    padding-top: 1em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 14px;
+    font-weight: 200;
+    font-style: italic;
+    background-color: #6D2269;
+    color: #fff;
+    text-align: center;
+}
