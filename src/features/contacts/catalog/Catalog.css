@@ -1,0 +1,60 @@
+.book {
+    margin: 20px;
+    overflow: auto;
+    justify-content: space-around;
+    background-color: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2%
+}
+
+.book-list {
+    flex-basis: 48%;
+}
+
+.book-list>div {
+    border-bottom: 45px solid #6D2269;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    position: relative;
+}
+
+.book-details {
+    flex-basis: 48%;
+}
+
+.book-list h1,
+.book-details h2 {
+    text-align: center;
+    background-color: #6D2269;
+    margin: 0;
+    padding: 0.25em 1em 0.25em 1em;
+    color: #fff;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.footer {
+    width: 100%;
+    position: absolute;
+    bottom: -35px;
+    left: 90px;
+    color: #fff;
+}
+
+.footer>span {
+    font-size: 20px;
+    margin: 0 8px;
+}
+
+.footer>span>:nth-child(1).arrow {
+    display: inline-block;
+    transform: rotate(180deg);
+    margin-right: 5px;
+}
+
+.footer>span:nth-child(1),
+.footer>span:nth-child(2){
+    cursor: pointer;
+}
