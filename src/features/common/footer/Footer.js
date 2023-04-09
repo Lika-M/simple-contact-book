@@ -2,7 +2,7 @@ import './Footer.css';
 
 const Footer = () => {
     return (
-        <footer>React-redux-app &copy; 2023</footer>
+        <footer>React-redux-app &copy; LikaM 2023</footer>
     );
 }
 

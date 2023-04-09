@@ -1,7 +1,7 @@
 import './Header.css'
 const Header = ()=> {
     return (
-        <header>Contact Book &#x02710;</header>
+        <header>&#10047; Contact Book &#10047;</header>
     );
 }
 
