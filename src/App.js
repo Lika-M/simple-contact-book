@@ -1,4 +1,5 @@
 import React from 'react';
+import { Navigate } from 'react-router-dom';
 import { Route, Routes } from 'react-router-dom';
 
 import Header from './features/common/header/Header.js';
@@ -12,8 +13,8 @@ function App() {
     <main className="container">
       <Header />
       <Routes>
-        <Route path='/*' element={<Catalog />} />
-        <Route path='contact/*' element={<Catalog />} />
+        <Route path='/' element={<Navigate to={'/contacts'} />} />
+        <Route path='/contacts/*' element={<Catalog />} />
       </Routes>
       <Footer />
     </main>
