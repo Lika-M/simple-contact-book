@@ -1,42 +1,19 @@
+import Contact from '../contact/Contact.js';
 import './ContactList.css';
 
-const ContactList = () => {
+const ContactList = ({ contacts, selectedId, onClickContact }) => {
+
     return (
         <div>
-            <div className="contact">
-                <div className="image small">
-                    <img src="./pictures/person-4.jpg" alt="" />
-                </div>
-                <h3 className=" title">Ivan Ivanov &#10151;</h3>
-            </div>
+            {contacts.map(c => (
+                <Contact
+                    onClickContact={onClickContact}
+                    key={c.id}
+                    person={c}
+                    selected={c.id === selectedId}
+                />
+            ))}
 
-            <div className="contact">
-                <div className="image small">
-                    <img src="./pictures/person-2.jpg" alt="" />
-                </div>
-                <h3 className="title">Jordan Kirov &#10151;</h3>
-            </div>
-
-            <div className="contact">
-                <div className="image small">
-                    <img src="./pictures/person-1.jpg" alt="" />
-                </div>
-                <h3 className="title">Maria Petrova &#10151;</h3>
-            </div>
-
-            <div className="contact">
-                <div className="image small">
-                    <img src="./pictures/person-3.jpg" alt="" />
-                </div>
-                <h3 className="title">Maria Petrova &#10151;</h3>
-            </div>
-
-            <div className="contact">
-                <div className="image small">
-                    <img src="./pictures/person-3.jpg" alt="" />
-                </div>
-                <h3 className="title">Maria Petrova &#10151;</h3>
-            </div>
             <div className='footer'>
                 <span>
                     <span className="arrow">&#10148;</span>
@@ -46,7 +23,6 @@ const ContactList = () => {
                     <span>Next</span>
                     <span> &#10148;</span>
                 </span>
-
             </div>
         </div>
     );
