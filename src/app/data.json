@@ -1,0 +1,42 @@
+[
+    {
+        "id": "1",
+        "picture": "/pictures/person-4.jpg",
+        "firstName": "Ivan",
+        "lastName": "Ivanov",
+        "phone": "0888 123 555",
+        "email": "ivanov@gmail.com"
+    },
+    {
+        "id": "2",
+        "picture": "/pictures/person-2.jpg",
+        "firstName": "Jordan",
+        "lastName": "Kirov",
+        "phone": "0888 213 555",
+        "email": "j_kirov@mail.com"
+    },
+    {
+        "id": "3",
+        "picture": "/pictures/person-1.jpg",
+        "firstName": "Maria",
+        "lastName": "Petrova",
+        "phone": "0888 333 555",
+        "email": "m.petrova@abv.com"
+    },
+    {
+        "id": "4",
+        "picture": "/pictures/person-3.jpg",
+        "firstName": "Mila",
+        "lastName": "Evtimova",
+        "phone": "0888 444 555",
+        "email": "ivanov@gmail.com"
+    },
+    {
+        "id": "5",
+        "picture": "/pictures/person.jpg",
+        "firstName": "Stamen",
+        "lastName": "Stratiev",
+        "phone": "0888 222 555",
+        "email": "stratiev@gmail.com"
+    }
+]
