@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 import ContactList from '../contactList/ContactList.js';
 import Details from '../details/Details.js';
+import Form from '../../common/form/Form.js';
 import './Catalog.css';
 
 const Catalog = () => {
@@ -18,6 +19,10 @@ const Catalog = () => {
         navigate(`/contacts/${id}`)
     }
 
+    function resetId(){
+        setContactId({id: 0});
+    }
+
     return (
         <article className="book">
             <div className="book-list">
@@ -30,11 +35,12 @@ const Catalog = () => {
             </div>
             <div className="book-details">
                 {!person && <p style={{ 'textAlign': 'center' }} >Please select a contact</p>}
-                <Routes>
-                    <Route path=':id' element={<Details person={person} />} />
-                    <Route path='edit/:id' element={<p>Edit Form</p>} />
-                </Routes>
-
+                {person && (
+                    <Routes>
+                        <Route path=':id' element={<Details person={person} />} />
+                        <Route path='edit/:id' element={<Form title={'Edit Contact'} btnName={'Save changes'} person={person} />} />
+                        <Route path='add' element={<Form title={'Add Contact'} btnName={'Add contact'} resetId={resetId}/>} />
+                    </Routes>)}
             </div>
         </article>
     );
