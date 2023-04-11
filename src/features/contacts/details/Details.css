@@ -56,7 +56,7 @@
     align-items: center
 }
 
-.btn button {
+.btn a, .btn input {
     font-size: 18px;
     font-weight: 800;
     justify-content: center;
