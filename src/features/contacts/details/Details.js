@@ -1,7 +1,18 @@
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { removeContact } from '../catalog/catalogSlice.js';
 import './Details.css';
 
 const Details = ({ person }) => {
+    const dispatch = useDispatch();
+
+    function onDelete(ev){
+
+        if(window.confirm('Are you sure you want to delete?')){
+            dispatch(removeContact(person));
+        }
+    }
 
     return (
         <>
@@ -21,7 +32,7 @@ const Details = ({ person }) => {
                     <p className="info-line">&#9993; {person.email}</p>
                     <div>
                         <Link to={`/contacts/edit/${person.id}`} className="btn">&#9998;</Link>
-                        <button className="btn">&#10006;</button>
+                        <button className="btn" onClick={onDelete}>&#10006;</button>
                     </div>
                 </div>
             </div>

@@ -11,12 +11,16 @@ export const catalogSlice = createSlice({
         updateContact(state, action) {
             const index = state.findIndex(x => x.id === action.payload.id);
             state.splice(index, 1, action.payload);
+        },
+        removeContact(state, action){
+            const index = state.findIndex(x => x.id === action.payload.id);
+            state.splice(index, 1)
         }
     }
 });
 
 export default catalogSlice.reducer;
-export const { addContact, updateContact } = catalogSlice.actions;
+export const { addContact, updateContact, removeContact } = catalogSlice.actions;
 
 
 
