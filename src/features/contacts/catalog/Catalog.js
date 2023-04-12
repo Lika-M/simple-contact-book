@@ -11,7 +11,7 @@ const Catalog = () => {
     const navigate = useNavigate();
     const [contactId, setContactId] = useState({ id: 0 });
 
-    const contacts = useSelector((state) => state.contacts) || [];
+    const contacts = useSelector((state) => state.contacts);
     const person = contacts.find(c => c.id === contactId);
 
     function onClickContact(id) {
