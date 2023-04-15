@@ -1,18 +1,22 @@
+import { Link } from 'react-router-dom';
+
+
 import Contact from '../contact/Contact.js';
 import './ContactList.css';
 
 const ContactList = ({ contacts, selectedId, onClickContact }) => {
-
     return (
         <div>
             {contacts.map(c => (
-                <Contact
-                    onClickContact={onClickContact}
-                    key={c.id}
-                    person={c}
-                    selected={c.id === selectedId}
-                />
-            ))}
+                < Link to={`/contacts/${c.id}`} key={c.id}>
+                    <Contact
+                        person={c}
+                        selected={c.id === selectedId}
+                        onClickContact={onClickContact}
+                    />
+                </Link>
+            ))
+            }
 
             <div className='footer'>
                 <span>
@@ -23,8 +27,9 @@ const ContactList = ({ contacts, selectedId, onClickContact }) => {
                     <span>Next</span>
                     <span> &#10148;</span>
                 </span>
+
             </div>
-        </div>
+        </div >
     );
 }
 

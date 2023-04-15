@@ -1,17 +1,16 @@
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { removeContact } from '../catalog/catalogSlice.js';
+import { removeContact } from '../../../services/contactService.js';
 import './Details.css';
 
 const Details = ({ person }) => {
     const dispatch = useDispatch();
 
     function onDelete(ev){
-
-        if(window.confirm('Are you sure you want to delete?')){
-            dispatch(removeContact(person));
-        }
+        if(window.confirm('Are you sure you want to delete this?')){
+            dispatch(removeContact(person.id));
+        };
     }
 
     return (

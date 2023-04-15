@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-import { nanoid } from '@reduxjs/toolkit';
+// import { nanoid } from '@reduxjs/toolkit';
 
 import { useFormControl } from './useFormControl.js';
-import { addContact, updateContact } from '../../contacts/catalog/catalogSlice.js'
+import { addContact, updateContact } from '../../../services/contactService.js';
 import './Form.css';
 
 const Form = ({ title, btnName, person, resetId }) => {
@@ -36,7 +36,6 @@ const Form = ({ title, btnName, person, resetId }) => {
         }
 
         const person = {
-            id: id,
             firstName: data.firstName,
             lastName: data.lastName,
             picture: data.picture,
@@ -45,12 +44,15 @@ const Form = ({ title, btnName, person, resetId }) => {
         }
 
         if(isEdit){
-            dispatch(updateContact(person));
+            console.log(id)
+            console.log(person)
+
+            dispatch(updateContact({id:id, body:person}));
             navigate(`/contacts/${id}`);
 
         } else if(!isEdit){
-            const contactId= nanoid();
-            person.id = contactId;
+            // const contactId= nanoid();
+            // person.id = contactId;
             dispatch(addContact(person));
             resetId();
             navigate(`/contacts`);
