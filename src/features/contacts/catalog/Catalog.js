@@ -18,12 +18,10 @@ const Catalog = () => {
     const error = useSelector(getContactsError);
 
 
-
     let content;
     let hasError = false;
     if (status === 'loading') {
         hasError = true;
-        //TODO add spinner
         content = <Preloader />
     } else if (status === 'succeeded') {
         hasError = false;
@@ -62,7 +60,7 @@ const Catalog = () => {
                     {!person && !hasError && <p style={{ 'textAlign': 'center' }} >Please select a contact</p>}
                     {person && (
                         <Routes>
-                            <Route path=':id' element={<Details person={person} hasError={hasError} content={content} />} />
+                            <Route path=':id' element={<Details person={person} hasError={hasError} resetId={resetId}/>} />
                             <Route path='edit/:id' element={<Form title={'Edit Contact'} btnName={'Save changes'} person={person} />} />
                             <Route path='add' element={<Form title={'Add Contact'} btnName={'Add contact'} resetId={resetId} />} />
                         </Routes>)}

@@ -15,8 +15,7 @@ const ContactList = ({ contacts, selectedId, onClickContact }) => {
                         onClickContact={onClickContact}
                     />
                 </Link>
-            ))
-            }
+            ))}
 
             <div className='footer'>
                 <span>
