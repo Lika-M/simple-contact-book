@@ -65,7 +65,8 @@ export const catalogSlice = createSlice({
             })
             .addCase(removeContact.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                return state.list.filter(x => x.id !== action.payload);
+                state.list = [...state.list.filter(x => x.id !== action.payload)]
+               
             })
             .addCase(removeContact.rejected, (state, action) => {
                 state.status = 'failed';
