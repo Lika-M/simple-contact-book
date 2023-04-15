@@ -1,11 +1,12 @@
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import { selectAllContacts, getContactsStatus, getContactsError } from './catalogSlice.js';
 import ContactList from '../contactList/ContactList.js';
 import Details from '../details/Details.js';
 import Form from '../../common/form/Form.js';
+import Preloader from '../../common/preloader/Preloader.js';
 import './Catalog.css';
 
 const Catalog = () => {
@@ -23,7 +24,7 @@ const Catalog = () => {
     if (status === 'loading') {
         hasError = true;
         //TODO add spinner
-        content = <p style={{ textAlign: 'center' }}>Loading...</p>
+        content = <Preloader />
     } else if (status === 'succeeded') {
         hasError = false;
     } else if (status === 'failed') {
