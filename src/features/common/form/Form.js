@@ -44,9 +44,6 @@ const Form = ({ title, btnName, person, resetId }) => {
         }
 
         if(isEdit){
-            console.log(id)
-            console.log(person)
-
             dispatch(updateContact({id:id, body:person}));
             navigate(`/contacts/${id}`);
 

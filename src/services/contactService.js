@@ -77,14 +77,19 @@ export const updateContact = createAsyncThunk('contacts/updateContact', async (d
 });
 
 export const removeContact = createAsyncThunk('contacts/removeContact', async (contactId) => {
-   await fetch(`${baseUrl}/${contactId}`, {
-        method: 'DELETE',
-        headers: {
-            'X-Parse-Application-Id': 'eIuHZ0NpWBbftCz4Wuld9RygonY0uCELwhgG2cJf',
-            'X-Parse-REST-API-Key': 'kxclWGzoda8nuX8R05SfFOrICqv5poL5aXJUkrqk'
-        }
-    });
-    
-    return contactId;
+    try {
+
+        await fetch(`${baseUrl}/${contactId}`, {
+             method: 'DELETE',
+             headers: {
+                 'X-Parse-Application-Id': 'eIuHZ0NpWBbftCz4Wuld9RygonY0uCELwhgG2cJf',
+                 'X-Parse-REST-API-Key': 'kxclWGzoda8nuX8R05SfFOrICqv5poL5aXJUkrqk'
+             }
+         });
+         
+         return contactId;
+    }catch(error){
+        return error.message;
+    }
 })
 
