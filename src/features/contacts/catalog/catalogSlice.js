@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 // import data from '../../../app/data.json';
-import { getAllContacts, addContact, updateContact,removeContact } from '../../../services/contactService.js'
+import { getAllContacts, addContact, updateContact, removeContact } from '../../../services/contactService.js'
 
 const initialState = {
     list: [],
@@ -30,28 +30,48 @@ export const catalogSlice = createSlice({
                 state.status = 'loading';
             })
             .addCase(getAllContacts.fulfilled, (state, action) => {
+                if (action.payload.code && action.payload.code !== '200') {
+                    state.status = 'failed';
+                    state.error = action.payload;
+                    return;
+                }
                 state.status = 'succeeded';
                 state.list.push(...action.payload);
             })
-            .addCase(getAllContacts.rejected, (state, action) => {
-                state.status = 'failed';
-                state.error = action.error.message;
-            })
+        .addCase(getAllContacts.rejected, (state, action) => {
+            state.status = 'failed';
+            state.error = action.error.message;
+        });
+        builder
             .addCase(addContact.pending, (state) => {
                 state.status = 'loading';
             })
             .addCase(addContact.fulfilled, (state, action) => {
+                if (action.payload.code && action.payload.code !== '200') {
+                    state.status = 'failed';
+                    state.error = action.payload;
+                    state.error.message = 'This contact isn\'t added. Try again later!';
+                    return;
+                }
                 state.status = 'succeeded';
                 state.list.push(action.payload);
             })
-            .addCase(addContact.rejected, (state, action) => {
-                state.status = 'failed';
-                state.error = action.error.message;
-            })
+        .addCase(addContact.rejected, (state, action) => {
+            state.status = 'failed';
+            state.error = action.error.message;
+        });
+        builder
             .addCase(updateContact.pending, (state) => {
                 state.status = 'loading';
             })
             .addCase(updateContact.fulfilled, (state, action) => {
+                if (action.payload.code && action.payload.code !== '200') {
+                    console.log(action.payload)
+                    state.status = 'failed';
+                    state.error = action.payload;
+                    state.error.message += 'This contact isn\'t updated. Try again later!';
+                    return;
+                }
                 state.status = 'succeeded';
                 const index = state.list.findIndex(x => x.id === action.payload.id);
                 state.list.splice(index, 1, action.payload);
@@ -60,13 +80,20 @@ export const catalogSlice = createSlice({
                 state.status = 'failed';
                 state.error = action.error.message;
             })
+        builder
             .addCase(removeContact.pending, (state) => {
                 state.status = 'loading';
             })
             .addCase(removeContact.fulfilled, (state, action) => {
+                if (action.payload.code && action.payload.code !== '200') {
+                    console.log(action.payload)
+                    state.status = 'failed';
+                    state.error = action.payload;
+                    state.error.message += 'This contact isn\'t removed. Try again later!';
+                    return;
+                }
                 state.status = 'succeeded';
                 state.list = [...state.list.filter(x => x.id !== action.payload)]
-               
             })
             .addCase(removeContact.rejected, (state, action) => {
                 state.status = 'failed';

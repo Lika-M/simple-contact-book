@@ -7,6 +7,7 @@ import ContactList from '../contactList/ContactList.js';
 import Details from '../details/Details.js';
 import Form from '../../common/form/Form.js';
 import Preloader from '../../common/preloader/Preloader.js';
+import PageNotFound from '../../common/pageNotFound/PageNotFound.js';
 import './Catalog.css';
 
 const Catalog = () => {
@@ -26,11 +27,14 @@ const Catalog = () => {
     } else if (status === 'succeeded') {
         hasError = false;
     } else if (status === 'failed') {
-        content = <p>Error: {error}</p>
+        content = <PageNotFound error={error} />
         hasError = true;
     }
 
-    const orderedContacts = contacts?.slice().sort((a, b) => a.firstName.localeCompare(b.firstName));
+    if (!contacts) {
+        return;
+    }
+    const orderedContacts = contacts.slice().sort((a, b) => a.firstName.localeCompare(b.firstName));
     const person = contacts.find(c => c.id === contactId);
 
     function onClickContact(id) {
@@ -45,27 +49,28 @@ const Catalog = () => {
     return (
         <>
             {hasError && content}
-            <article className="book">
-                <div className="book-list">
-                    {!hasError && <>
-                        <h1>Friend list</h1>
-                        <ContactList
-                            contacts={orderedContacts}
-                            selectedId={contactId}
-                            onClickContact={onClickContact}
-                        />
-                    </>}
-                </div>
-                <div className="book-details">
-                    {!person && !hasError && <p style={{ 'textAlign': 'center' }} >Please select a contact</p>}
-                    {person && (
-                        <Routes>
-                            <Route path=':id' element={<Details person={person} hasError={hasError} resetId={resetId}/>} />
-                            <Route path='edit/:id' element={<Form title={'Edit Contact'} btnName={'Save changes'} person={person} />} />
-                            <Route path='add' element={<Form title={'Add Contact'} btnName={'Add contact'} resetId={resetId} />} />
-                        </Routes>)}
-                </div>
-            </article>
+            {!hasError &&
+                <article className="book">
+                    <div className="book-list">
+                        {!hasError && <>
+                            <h1>Friend list</h1>
+                            <ContactList
+                                contacts={orderedContacts}
+                                selectedId={contactId}
+                                onClickContact={onClickContact}
+                            />
+                        </>}
+                    </div>
+                    <div className="book-details">
+                        {!person && !hasError && <p style={{ 'textAlign': 'center' }} >Please select a contact</p>}
+                        {person && (
+                            <Routes>
+                                <Route path=':id' element={<Details contactId={contactId} hasError={hasError} resetId={resetId} />} />
+                                <Route path='edit/:id' element={<Form title={'Edit Contact'} btnName={'Save changes'} />} />
+                                <Route path='add' element={<Form title={'Add Contact'} btnName={'Add contact'} resetId={resetId} />} />
+                            </Routes>)}
+                    </div>
+                </article>}
         </>
     );
 }
