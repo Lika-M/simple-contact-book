@@ -1,20 +1,24 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import {useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 // import { nanoid } from '@reduxjs/toolkit';
 
 import { useFormControl } from './useFormControl.js';
 import { addContact, updateContact } from '../../../services/contactService.js';
+import{selectContactById} from '../../contacts/catalog/catalogSlice.js';
 import './Form.css';
 
-const Form = ({ title, btnName, person, resetId }) => {
+const Form = ({ title, btnName, resetId }) => {
 
     const isEdit = title === 'Edit Contact';
-    const [values, setValues] = useFormControl(person, isEdit);
     const [error, setError] = useState('');
+    
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
     const { id } = useParams();
+    const person = useSelector((state) => selectContactById(state, id));
+    const [values, setValues] = useFormControl(person, isEdit);
 
     const onChange = (ev) => {
         setValues((state) => ({
@@ -44,13 +48,13 @@ const Form = ({ title, btnName, person, resetId }) => {
         }
 
         if(isEdit){
-            dispatch(updateContact({id:id, body:person}));
+            dispatch(updateContact({id:id, body:person})).unwrap()
             navigate(`/contacts/${id}`);
 
         } else if(!isEdit){
             // const contactId= nanoid();
             // person.id = contactId;
-            dispatch(addContact(person));
+            dispatch(addContact(person)).unwrap();
             resetId();
             navigate(`/contacts`);
         }

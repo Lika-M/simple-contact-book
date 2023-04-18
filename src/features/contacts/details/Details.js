@@ -1,10 +1,13 @@
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { selectContactById } from '../catalog/catalogSlice.js';
 import { removeContact } from '../../../services/contactService.js';
 import './Details.css';
 
-const Details = ({ person, hasError, resetId }) => {
+const Details = ({ hasError, resetId }) => {
+    const { id } = useParams()
+    const person = useSelector((state) => selectContactById(state, id));
     const dispatch = useDispatch();
 
     function onDelete(ev) {
