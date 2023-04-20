@@ -61,8 +61,7 @@ export const addContact = createAsyncThunk('contacts/addContact', async (contact
 });
 
 export const updateContact = createAsyncThunk('contacts/updateContact', async (data) => {
-    try {
-    const response = await fetch(`${baseUrl}/${data.id}`, {
+    await fetch(`${baseUrl}/${data.id}`, {
         method: 'PUT',
         headers: {
             'X-Parse-Application-Id': 'eIuHZ0NpWBbftCz4Wuld9RygonY0uCELwhgG2cJf',
@@ -72,10 +71,6 @@ export const updateContact = createAsyncThunk('contacts/updateContact', async (d
         body: JSON.stringify(data.body)
     });
 
-    if (response.status !== 200) {
-        return { code: `${response.status}`, message: `${response.statusText}` }
-    }
-
     const res = await fetch(`${baseUrl}/${data.id}`, {
         method: 'GET',
         headers: {
@@ -83,18 +78,10 @@ export const updateContact = createAsyncThunk('contacts/updateContact', async (d
             'X-Parse-REST-API-Key': 'kxclWGzoda8nuX8R05SfFOrICqv5poL5aXJUkrqk'
         }
     });
-
-    if (res.status !== 200) {
-        return { code: `${res.status}`, message: `${res.statusText}` }
-    }
     const person = await res.json();
-    if (!person) { return }
-    person.id = person.objectId;
-    return await person;
+    person.id = person.objectId
 
-    } catch (error) {
-        return error.message;
-    }
+    return person;
 });
 
 export const removeContact = createAsyncThunk('contacts/removeContact', async (contactId) => {

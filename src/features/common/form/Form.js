@@ -52,7 +52,7 @@ const Form = ({ title, btnName, resetId }) => {
         try {
             if (isEdit) {
                 setReqStatus('pending');
-                dispatch(updateContact({ id, body: person }));
+                dispatch(updateContact({ id, body: person })).unwrap();
                 navigate(`/contacts/${id}`);
             } else if (!isEdit) {
                 setReqStatus('pending');

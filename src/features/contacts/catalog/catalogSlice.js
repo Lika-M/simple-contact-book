@@ -25,6 +25,7 @@ export const catalogSlice = createSlice({
     //     },
     // },
     extraReducers(builder) {
+        // Two ways to maintain the response status - global or local.
         builder
             .addCase(getAllContacts.pending, (state) => {
                 state.status = 'loading';
@@ -39,7 +40,7 @@ export const catalogSlice = createSlice({
             });
         builder
             .addCase(addContact.fulfilled, (state, action) => {
-                if (action.payload.code && action.payload.code !== '200') {
+                if (!action.payload.id) {
                     state.status = 'failed';
                     state.error = action.payload;
                     state.error.message = 'This contact isn\'t added. Try again later!';
@@ -51,11 +52,11 @@ export const catalogSlice = createSlice({
 
         builder
             .addCase(updateContact.fulfilled, (state, action) => {
-                if (action.payload.code && action.payload.code !== '200') {
+                if (!action.payload.id) {
                     console.log(action.payload)
                     state.status = 'failed';
                     state.error = action.payload;
-                    state.error.message += 'This contact isn\'t updated. Try again later!';
+                    state.error.message = 'This contact isn\'t updated. Try again later!';
                     return;
                 }
                 state.status = 'succeeded';
@@ -71,7 +72,7 @@ export const catalogSlice = createSlice({
                     console.log(action.payload)
                     state.status = 'failed';
                     state.error = action.payload;
-                    state.error.message += 'This contact isn\'t removed. Try again later!';
+                    state.error.message = 'This contact isn\'t removed. Try again later!';
                     return;
                 }
                 state.status = 'succeeded';
