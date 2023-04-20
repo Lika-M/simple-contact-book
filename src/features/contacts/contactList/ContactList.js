@@ -7,9 +7,9 @@ const ContactList = ({ contacts, selectedId, onClickContact }) => {
             {contacts.map(c => (
 
                 <Contact
-                    key={c.id}
+                    key={c.objectId}
                     person={c}
-                    selected={c.id === selectedId}
+                    selected={c.objectId === selectedId}
                     onClickContact={onClickContact}
                 />
 

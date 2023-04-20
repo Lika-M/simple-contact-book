@@ -16,8 +16,7 @@ export const getAllContacts = createAsyncThunk('contacts/getAllContacts', async 
             return { code: `${response.status}`, message: `${response.statusText}` }
         }
         const data = await response.json();
-        return data.results.map(p => ({ ...p, id: p.objectId }));
-
+        return data.results;
 
     } catch (error) {
         console.log(error)
@@ -40,9 +39,9 @@ export const addContact = createAsyncThunk('contacts/addContact', async (contact
         if (response.status !== 201) {
             return { code: `${response.status}`, message: `${response.statusText}` }
         }
-        const id = await response.json().objectId;
-       
-        const result = await fetch(`${baseUrl}/${id}`, {
+        const person = await response.json();
+
+        const result = await fetch(`${baseUrl}/${person.objectId}`, {
             method: 'GET',
             headers: {
                 'X-Parse-Application-Id': 'eIuHZ0NpWBbftCz4Wuld9RygonY0uCELwhgG2cJf',
@@ -53,7 +52,7 @@ export const addContact = createAsyncThunk('contacts/addContact', async (contact
         if (result.status !== 200) {
             return { code: `${result.status}`, message: `${result.statusText}` }
         }
-        return result.json();
+        return await result.json();
 
     } catch (error) {
         return error.message;
@@ -78,15 +77,12 @@ export const updateContact = createAsyncThunk('contacts/updateContact', async (d
             'X-Parse-REST-API-Key': 'kxclWGzoda8nuX8R05SfFOrICqv5poL5aXJUkrqk'
         }
     });
-    const person = await res.json();
-    person.id = person.objectId
+    return res.json();
 
-    return person;
 });
 
-export const removeContact = createAsyncThunk('contacts/removeContact', async (contactId) => {
-    try {
-    const response = await fetch(`${baseUrl}/${contactId}`, {
+export const removeContact = createAsyncThunk('contacts/removeContact', async (objectId) => {
+    await fetch(`${baseUrl}/${objectId}`, {
         method: 'DELETE',
         headers: {
             'X-Parse-Application-Id': 'eIuHZ0NpWBbftCz4Wuld9RygonY0uCELwhgG2cJf',
@@ -94,14 +90,6 @@ export const removeContact = createAsyncThunk('contacts/removeContact', async (c
         }
     });
 
-    if (response.status !== 200) {
-        return { code: `${response.status}`, message: `${response.statusText}` }
-    }
-
-    return contactId;
-
-    } catch (error) {
-        return error.message;
-    }
+    return { objectId };
 });
 

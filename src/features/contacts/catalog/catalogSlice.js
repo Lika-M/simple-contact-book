@@ -40,7 +40,7 @@ export const catalogSlice = createSlice({
             });
         builder
             .addCase(addContact.fulfilled, (state, action) => {
-                if (!action.payload.id) {
+                if (!action.payload.objectId) {
                     state.status = 'failed';
                     state.error = action.payload;
                     state.error.message = 'This contact isn\'t added. Try again later!';
@@ -52,15 +52,14 @@ export const catalogSlice = createSlice({
 
         builder
             .addCase(updateContact.fulfilled, (state, action) => {
-                if (!action.payload.id) {
-                    console.log(action.payload)
+                if (!action.payload.objectId) {
                     state.status = 'failed';
                     state.error = action.payload;
                     state.error.message = 'This contact isn\'t updated. Try again later!';
                     return;
                 }
                 state.status = 'succeeded';
-                const index = state.list.findIndex(x => x.id === action.payload.id);
+                const index = state.list.findIndex(x => x.objectId === action.payload.objectId);
                 if (index === -1) {
                     return state;
                 }
@@ -68,15 +67,14 @@ export const catalogSlice = createSlice({
             })
         builder
             .addCase(removeContact.fulfilled, (state, action) => {
-                if (action.payload.code && action.payload.code !== '200') {
-                    console.log(action.payload)
+                if (!action.payload.objectId) {
                     state.status = 'failed';
                     state.error = action.payload;
                     state.error.message = 'This contact isn\'t removed. Try again later!';
                     return;
                 }
                 state.status = 'succeeded';
-                state.list = [...state.list.filter(x => x.id !== action.payload)]
+                state.list = [...state.list.filter(x => x.objectId !== action.payload.objectId)]
             })
     }
 
@@ -86,9 +84,9 @@ export const selectAllContacts = (state) => state.contacts.list;
 export const getContactsStatus = (state) => state.contacts.status;
 export const getContactsError = (state) => state.contacts.error;
 
-export const selectContactById = (state, contactIdd) => state.contacts.list.find(x => x.id === contactIdd)
-export const getContactByIdStatus = (state, contactIdd) => state.contacts.status.find(x => x.id === contactIdd)
-export const getContactByIdError = (state, contactIdd) => state.contacts.error.find(x => x.id === contactIdd)
+export const selectContactById = (state, contactId) => state.contacts.list.find(x => x.objectId === contactId)
+export const getContactByIdStatus = (state, contactIdd) => state.contacts.status.find(x => x.payload.objectId === contactIdd)
+export const getContactByIdError = (state, contactIdd) => state.contacts.error.find(x => x.payload.objectId === contactIdd)
 
 export default catalogSlice.reducer;
 

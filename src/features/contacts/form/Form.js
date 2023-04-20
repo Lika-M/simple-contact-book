@@ -56,6 +56,7 @@ const Form = ({ title, btnName, resetId }) => {
                 navigate(`/contacts/${id}`);
             } else if (!isEdit) {
                 setReqStatus('pending');
+                //catching errors without unwrap()
                 dispatch(addContact(person));
                 resetId();
                 navigate('/contacts');

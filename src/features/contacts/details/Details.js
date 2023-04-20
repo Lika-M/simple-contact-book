@@ -1,6 +1,5 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Routes} from 'react-router-dom';
 
 import { selectContactById } from '../catalog/catalogSlice.js';
 import { removeContact } from '../../../services/contactService.js';
@@ -10,11 +9,14 @@ const Details = ({ isLoading, resetId }) => {
     const { id } = useParams()
     const person = useSelector((state) => selectContactById(state, id));
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    
 
     function onDelete(ev) {
         if (window.confirm('Are you sure you want to delete this?')) {
-            dispatch(removeContact(person.id));
+            dispatch(removeContact(person.objectId)).unwrap();
             resetId();
+            navigate('/contacts');
         };
     }
 
@@ -37,7 +39,7 @@ const Details = ({ isLoading, resetId }) => {
                             <p className="info-line">&#9742; {person.phone}</p>
                             <p className="info-line">&#9993; {person.email}</p>
                             <div>
-                                <Link to={`/contacts/edit/${person.id}`} className="btn">&#9998;</Link>
+                                <Link to={`/contacts/edit/${person.objectId}`} className="btn">&#9998;</Link>
                                 <button className="btn" onClick={onDelete}>&#10006;</button>
                             </div>
                         </div>
