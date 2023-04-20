@@ -5,7 +5,7 @@ import { selectContactById } from '../catalog/catalogSlice.js';
 import { removeContact } from '../../../services/contactService.js';
 import './Details.css';
 
-const Details = ({ hasError, resetId }) => {
+const Details = ({ isLoading, resetId }) => {
     const { id } = useParams()
     const person = useSelector((state) => selectContactById(state, id));
     const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const Details = ({ hasError, resetId }) => {
 
     return (
         <div>
-            {!hasError && <>
+            {!isLoading && <>
                 <h2>Person details</h2>
                 <div className="content">
                     <div className="info">

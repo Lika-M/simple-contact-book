@@ -30,22 +30,14 @@ export const catalogSlice = createSlice({
                 state.status = 'loading';
             })
             .addCase(getAllContacts.fulfilled, (state, action) => {
-                if (action.payload.code && action.payload.code !== '200') {
-                    state.status = 'failed';
-                    state.error = action.payload;
-                    return;
-                }
                 state.status = 'succeeded';
                 state.list.push(...action.payload);
             })
-        .addCase(getAllContacts.rejected, (state, action) => {
-            state.status = 'failed';
-            state.error = action.error.message;
-        });
+            .addCase(getAllContacts.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message;
+            });
         builder
-            .addCase(addContact.pending, (state) => {
-                state.status = 'loading';
-            })
             .addCase(addContact.fulfilled, (state, action) => {
                 if (action.payload.code && action.payload.code !== '200') {
                     state.status = 'failed';
@@ -56,14 +48,8 @@ export const catalogSlice = createSlice({
                 state.status = 'succeeded';
                 state.list.push(action.payload);
             })
-        .addCase(addContact.rejected, (state, action) => {
-            state.status = 'failed';
-            state.error = action.error.message;
-        });
+
         builder
-            .addCase(updateContact.pending, (state) => {
-                state.status = 'loading';
-            })
             .addCase(updateContact.fulfilled, (state, action) => {
                 if (action.payload.code && action.payload.code !== '200') {
                     console.log(action.payload)
@@ -74,16 +60,12 @@ export const catalogSlice = createSlice({
                 }
                 state.status = 'succeeded';
                 const index = state.list.findIndex(x => x.id === action.payload.id);
+                if (index === -1) {
+                    return state;
+                }
                 state.list.splice(index, 1, action.payload);
             })
-            .addCase(updateContact.rejected, (state, action) => {
-                state.status = 'failed';
-                state.error = action.error.message;
-            })
         builder
-            .addCase(removeContact.pending, (state) => {
-                state.status = 'loading';
-            })
             .addCase(removeContact.fulfilled, (state, action) => {
                 if (action.payload.code && action.payload.code !== '200') {
                     console.log(action.payload)
@@ -95,12 +77,7 @@ export const catalogSlice = createSlice({
                 state.status = 'succeeded';
                 state.list = [...state.list.filter(x => x.id !== action.payload)]
             })
-            .addCase(removeContact.rejected, (state, action) => {
-                state.status = 'failed';
-                state.error = action.error.message;
-            })
     }
-
 
 });
 

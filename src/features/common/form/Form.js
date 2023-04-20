@@ -1,24 +1,25 @@
 import { useState } from 'react';
-import {useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 // import { nanoid } from '@reduxjs/toolkit';
 
 import { useFormControl } from './useFormControl.js';
 import { addContact, updateContact } from '../../../services/contactService.js';
-import{selectContactById} from '../../contacts/catalog/catalogSlice.js';
+import { selectContactById } from '../../contacts/catalog/catalogSlice.js';
 import './Form.css';
 
 const Form = ({ title, btnName, resetId }) => {
-
     const isEdit = title === 'Edit Contact';
-    const [error, setError] = useState('');
-    
+    const [error, setError] = useState({ message: '' });
+    const [reqStatus, setReqStatus] = useState('idle')
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const { id } = useParams();
     const person = useSelector((state) => selectContactById(state, id));
+
     const [values, setValues] = useFormControl(person, isEdit);
+
 
     const onChange = (ev) => {
         setValues((state) => ({
@@ -27,16 +28,17 @@ const Form = ({ title, btnName, resetId }) => {
         }));
     };
 
-    //TODO validation
-
     const onContactSubmit = (ev) => {
         ev.preventDefault();
 
         const formData = new FormData(ev.target);
         const data = Object.fromEntries(formData);
 
-        if (Object.values(data).some(x => x === '')) {
-            return setError('All fields are required!');
+        const canSave = Object.values(data).every(Boolean) && reqStatus === 'idle';
+
+        if (!canSave) {
+            //TODO validation
+            return setError({ message: 'All fields are required!' });
         }
 
         const person = {
@@ -47,16 +49,21 @@ const Form = ({ title, btnName, resetId }) => {
             email: data.email
         }
 
-        if(isEdit){
-            dispatch(updateContact({id:id, body:person})).unwrap()
-            navigate(`/contacts/${id}`);
-
-        } else if(!isEdit){
-            // const contactId= nanoid();
-            // person.id = contactId;
-            dispatch(addContact(person)).unwrap();
-            resetId();
-            navigate(`/contacts`);
+        try {
+            if (isEdit) {
+                setReqStatus('pending');
+                dispatch(updateContact({ id, body: person }));
+                navigate(`/contacts/${id}`);
+            } else if (!isEdit) {
+                setReqStatus('pending');
+                dispatch(addContact(person));
+                resetId();
+                navigate('/contacts');
+            }
+        } catch (err) {
+            console.log(err)
+        } finally {
+            setReqStatus('idle');
         }
     }
 
@@ -106,8 +113,6 @@ const Form = ({ title, btnName, resetId }) => {
                 </form>
             </div>
         </div>
-        // </div>
-        // </div>
     )
 }
 
