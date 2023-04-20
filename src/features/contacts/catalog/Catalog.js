@@ -5,9 +5,9 @@ import { useSelector } from 'react-redux';
 import { selectAllContacts, getContactsStatus, getContactsError } from './catalogSlice.js';
 import ContactList from '../contactList/ContactList.js';
 import Details from '../details/Details.js';
-import Form from '../../common/form/Form.js';
-import Preloader from '../../common/preloader/Preloader.js';
-import PageNotFound from '../../common/pageNotFound/PageNotFound.js';
+import Form from '../form/Form.js';
+import Preloader from '../../../components/preloader/Preloader.js';
+import PageNotFound from '../../../components/pageNotFound/PageNotFound.js';
 import './Catalog.css';
 
 const Catalog = () => {

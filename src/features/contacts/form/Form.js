@@ -5,7 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 import { useFormControl } from './useFormControl.js';
 import { addContact, updateContact } from '../../../services/contactService.js';
-import { selectContactById } from '../../contacts/catalog/catalogSlice.js';
+import { selectContactById } from '../catalog/catalogSlice.js';
 import './Form.css';
 
 const Form = ({ title, btnName, resetId }) => {
