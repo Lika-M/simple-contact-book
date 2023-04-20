@@ -24,6 +24,10 @@
     flex-basis: 48%;
 }
 
+.book-details >p{
+    margin-bottom: 275px;
+}
+
 .book-list h1,
 .book-details h2 {
     text-align: center;

@@ -10,14 +10,16 @@ import './App.css';
 
 function App() {
   return (
-    <main className="container">
+    <div className="container">
       <Header />
+      <main>
       <Routes>
         <Route path='/' element={<Navigate to={'/contacts'} />} />
         <Route path='/contacts/*' element={<Catalog />} />
       </Routes>
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 }
 
