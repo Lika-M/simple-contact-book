@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate, Link } from 'react-router-dom';
+import { Route, Routes, useNavigate, Link, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -11,8 +11,9 @@ import PageNotFound from '../../../components/pageNotFound/PageNotFound.js';
 import './Catalog.css';
 
 const Catalog = () => {
+    const { id } = useParams()
     const navigate = useNavigate();
-    const [contactId, setContactId] = useState({ id: 0 });
+    const [contactId, setContactId] = useState(id);
 
     const contacts = useSelector(selectAllContacts);
     const status = useSelector(getContactsStatus);
@@ -32,7 +33,6 @@ const Catalog = () => {
     }
 
     const orderedContacts = contacts.slice().sort((a, b) => a.firstName.localeCompare(b.firstName));
-    const person = contacts.find(c => c.id === contactId);
 
     function onClickContact(id) {
         setContactId(id);
@@ -40,8 +40,17 @@ const Catalog = () => {
     }
 
     function resetId() {
-        setContactId({ id: 0 });
+        setContactId(id);
     }
+
+    const noSelectedContact = (
+        <>
+            <p style={{ 'textAlign': 'center' }} >Please select a contact to display</p>
+            <div className="btn">
+                <Link to={'/contacts/add'}>Add new contact</Link>
+            </div>
+        </>
+    )
 
     return (
         <>
@@ -57,15 +66,12 @@ const Catalog = () => {
                         />
                     </article>
                     <article className="book-details">
-                        {!person && <p style={{ 'textAlign': 'center' }} >Please select a contact to display</p>}
                         <Routes>
+                            <Route path='' element={noSelectedContact} />
                             <Route path=':id' element={<Details contactId={contactId} isLoading={isLoading} resetId={resetId} />} />
                             <Route path='edit/:id' element={<Form title={'Edit Contact'} btnName={'Save changes'} />} />
-                            <Route path='add' element={<Form title={'Add Contact'} btnName={'Add contact'} resetId={resetId} />} />
+                            <Route path='add' element={<Form title={'Add Contact'} btnName={'Save contact'} resetId={resetId} />} />
                         </Routes>
-                        <div className="btn">
-                        <Link to={'/contacts/add'}>Add new contact</Link>
-                    </div>
                     </article>
                 </section>}
 
