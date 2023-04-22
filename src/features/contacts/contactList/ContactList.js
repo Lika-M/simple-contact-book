@@ -3,6 +3,7 @@ import './ContactList.css';
 
 const ContactList = ({ contacts, selectedId, onClickContact }) => {
     return (
+        <>
         <div>
             {contacts.map(c => (
 
@@ -27,6 +28,7 @@ const ContactList = ({ contacts, selectedId, onClickContact }) => {
 
             </div>
         </div >
+        </>
     );
 }
 

@@ -46,7 +46,7 @@ const Catalog = () => {
     const noSelectedContact = (
         <>
             <p style={{ 'textAlign': 'center' }} >Please select a contact to display</p>
-            <div className="btn">
+            <div className="btn add">
                 <Link to={'/contacts/add'}>Add new contact</Link>
             </div>
         </>
@@ -58,7 +58,7 @@ const Catalog = () => {
             {!isLoading &&
                 <section className="book">
                     <article className="book-list">
-                        <h1>Friend list</h1>
+                        <h2>Friend list</h2>
                         <ContactList
                             contacts={orderedContacts}
                             selectedId={contactId}

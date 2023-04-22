@@ -69,8 +69,8 @@ const Form = ({ title, btnName, resetId }) => {
     }
 
     return (
-        <div className="book-list">
-            <h1>{title} </h1>
+        <>
+            <h2>{title} </h2>
             <div className="content info">
                 <form className="profile" onSubmit={onContactSubmit}>
                     <div>
@@ -113,7 +113,7 @@ const Form = ({ title, btnName, resetId }) => {
                     </div>
                 </form>
             </div>
-        </div>
+        </>
     )
 }
 
