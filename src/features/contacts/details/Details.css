@@ -5,7 +5,7 @@
     background-color: #FCFAEF;
     border-right: 5px solid #6D2269;
     border-left: 5px solid #6D2269;
-    border-bottom: 35px solid #6D2269;
+    border-bottom: 44px solid #6D2269;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
 }
@@ -20,7 +20,7 @@
 }
 
 .info-details {
-    margin: 10px auto;
+    margin: 36px auto;
 }
 
 .info-details a {
@@ -29,19 +29,23 @@
 
 .info-details>div {
     min-width: 250px;
-    margin: 20px 0 10px 0;
+    margin-top: 30px;
     display: flex;
     gap: 5%;
     justify-content: center;
 }
 
 .info-details .btn{
-    width: 50px;
-    font-size: 25px;
+    width: 44px;
+    font-size: 14px;
     border: none;
     background-color: #6D2269;
     color: #fff;
     cursor: pointer;
+}
+
+.info-details .btn>svg{
+    padding: 5px;
 }
 
 .info-details a.btn{
@@ -53,7 +57,7 @@
 .btn {
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
 }
 
 .btn a, .btn input {
@@ -68,3 +72,25 @@
     margin-top: 12px;
     border-radius: 8px;
 }
+
+.book-details .btn.add {
+   position: absolute;
+   left: 60px;
+   bottom: 0;
+}
+
+.book-details>h2{
+    position: relative;
+}
+
+.book-details>h2>a{
+    display: inline-block;
+    width: 24px;
+    font-size: 14px;
+    color: #fff;
+    position: absolute;
+    top: 3px;
+    right: 12px;
+}
+
+
