@@ -19,8 +19,7 @@ export const getAllContacts = createAsyncThunk('contacts/getAllContacts', async 
         return data.results;
 
     } catch (error) {
-        console.log(error)
-        return error.message;
+        throw new Error( error.message);
     }
 });
 
@@ -55,7 +54,7 @@ export const addContact = createAsyncThunk('contacts/addContact', async (contact
         return await result.json();
 
     } catch (error) {
-        return error.message;
+        throw new Error (error.message);
     }
 });
 

@@ -5,7 +5,7 @@ import { getAllContacts, addContact, updateContact, removeContact } from '../../
 const initialState = {
     list: [],
     status: 'idle', // loading, succeeded, failed
-    error: null
+    error: {}
 }
 
 export const catalogSlice = createSlice({
@@ -36,13 +36,13 @@ export const catalogSlice = createSlice({
             })
             .addCase(getAllContacts.rejected, (state, action) => {
                 state.status = 'failed';
-                state.error = action.error.message;
+                state.error.message = action.error.message;
             });
         builder
             .addCase(addContact.fulfilled, (state, action) => {
                 if (!action.payload.objectId) {
                     state.status = 'failed';
-                    state.error = action.payload;
+                    state.error.type = action.payload;
                     state.error.message = 'This contact isn\'t added. Try again later!';
                     return;
                 }
