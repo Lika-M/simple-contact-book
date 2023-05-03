@@ -7,17 +7,20 @@ import Footer from './components/footer/Footer.js';
 import Catalog from './features/contacts/catalog/Catalog.js';
 
 import './App.css';
+import ErrorBoundary from './app/ErrorBoundary.js';
 
 function App() {
   return (
     <div className="container">
       <Header />
-      <main>
-      <Routes>
-        <Route path='/' element={<Navigate to={'/contacts'} />} />
-        <Route path='/contacts/*' element={<Catalog />} />
-      </Routes>
-      </main>
+      <ErrorBoundary>
+        <main>
+          <Routes>
+            <Route path='/' element={<Navigate to={'/contacts'} />} />
+            <Route path='/contacts/*' element={<Catalog />} />
+          </Routes>
+        </main>
+      </ErrorBoundary>
       <Footer />
     </div>
   );
