@@ -2,6 +2,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const baseUrl = 'https://parseapi.back4app.com/classes/List';
 
+//Two approaches to organize the store
+//Option 1:  without using unwrap()
+
 export const getAllContacts = createAsyncThunk('contacts/getAllContacts', async () => {
     try {
         const response = await fetch(baseUrl, {
@@ -58,8 +61,10 @@ export const addContact = createAsyncThunk('contacts/addContact', async (contact
     }
 });
 
+//Option 2: using unwrap()
+
 export const updateContact = createAsyncThunk('contacts/updateContact', async (data) => {
-    await fetch(`${baseUrl}/${data.id}`, {
+   const response = await fetch(`${baseUrl}/${data.id}`, {
         method: 'PUT',
         headers: {
             'X-Parse-Application-Id': 'eIuHZ0NpWBbftCz4Wuld9RygonY0uCELwhgG2cJf',
@@ -69,6 +74,8 @@ export const updateContact = createAsyncThunk('contacts/updateContact', async (d
         body: JSON.stringify(data.body)
     });
 
+    console.log(response)
+
     const res = await fetch(`${baseUrl}/${data.id}`, {
         method: 'GET',
         headers: {
@@ -76,7 +83,8 @@ export const updateContact = createAsyncThunk('contacts/updateContact', async (d
             'X-Parse-REST-API-Key': 'kxclWGzoda8nuX8R05SfFOrICqv5poL5aXJUkrqk'
         }
     });
-    return res.json();
+    console.log(await res.json())
+    return await res.json();
 
 });
 

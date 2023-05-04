@@ -26,6 +26,7 @@ export const catalogSlice = createSlice({
     // },
     extraReducers(builder) {
         // Two ways to maintain the response status - global or local.
+        //Option 1:  without using unwrap()
         builder
             .addCase(getAllContacts.pending, (state) => {
                 state.status = 'loading';
@@ -50,9 +51,11 @@ export const catalogSlice = createSlice({
                 state.list.push(action.payload);
             })
 
+            //Option 2: using unwrap()
         builder
             .addCase(updateContact.fulfilled, (state, action) => {
                 if (!action.payload.objectId) {
+                    console.log(action.payload)
                     state.status = 'failed';
                     state.error = action.payload;
                     state.error.message = 'This contact isn\'t updated. Try again later!';
