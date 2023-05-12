@@ -41,26 +41,3 @@
     border-top-right-radius: 12px;
 }
 
-.footer {
-    width: 100%;
-    position: absolute;
-    bottom: -35px;
-    left: 90px;
-    color: #fff;
-}
-
-.footer>span {
-    font-size: 20px;
-    margin: 0 8px;
-}
-
-.footer>span>:nth-child(1).arrow {
-    display: inline-block;
-    transform: rotate(180deg);
-    margin-right: 5px;
-}
-
-.footer>span:nth-child(1),
-.footer>span:nth-child(2){
-    cursor: pointer;
-}
