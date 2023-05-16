@@ -5,25 +5,32 @@ import { getAllContacts, addContact, updateContact, removeContact } from '../../
 const initialState = {
     list: [],
     status: 'idle', // loading, succeeded, failed
-    error: {}
+    error: {},
+    currentPage: 1
 }
 
 export const catalogSlice = createSlice({
     name: 'contacts',
     initialState,
-    // reducers: {
-    //     addContact(state, action) {
-    //         state.list.push(action.payload);
-    //     },
-    //     updateContact(state, action) {
-    //         const index = state.list.findIndex(x => x.id === action.payload.id);
-    //         state.list.splice(index, 1, action.payload);
-    //     },
-    //     removeContact(state, action) {
-    //         const index = state.list.findIndex(x => x.id === action.payload.id);
-    //         state.list.splice(index, 1)
-    //     },
-    // },
+    reducers: {
+        //     addContact(state, action) {
+        //         state.list.push(action.payload);
+        //     },
+        //     updateContact(state, action) {
+        //         const index = state.list.findIndex(x => x.id === action.payload.id);
+        //         state.list.splice(index, 1, action.payload);
+        //     },
+        //     removeContact(state, action) {
+        //         const index = state.list.findIndex(x => x.id === action.payload.id);
+        //         state.list.splice(index, 1)
+        //     },
+        getNextPage(state) {
+            state.currentPage +=1;
+        },
+        getPreviousPage(state) {
+            state.currentPage -=1;
+        }
+    },
     extraReducers(builder) {
         // Two ways to maintain the response status - global or local.
         //Option 1:  without using unwrap()
@@ -51,7 +58,7 @@ export const catalogSlice = createSlice({
                 state.list.push(action.payload);
             })
 
-            //Option 2: using unwrap()
+        //Option 2: using unwrap()
         builder
             .addCase(updateContact.fulfilled, (state, action) => {
                 if (!action.payload.objectId) {
@@ -87,9 +94,12 @@ export const selectAllContacts = (state) => state.contacts.list;
 export const getContactsStatus = (state) => state.contacts.status;
 export const getContactsError = (state) => state.contacts.error;
 
-export const selectContactById = (state, contactId) => state.contacts.list.find(x => x.objectId === contactId)
-export const getContactByIdStatus = (state, contactIdd) => state.contacts.status.find(x => x.payload.objectId === contactIdd)
-export const getContactByIdError = (state, contactIdd) => state.contacts.error.find(x => x.payload.objectId === contactIdd)
+export const selectContactById = (state, contactId) => state.contacts.list.find(x => x.objectId === contactId);
+export const getContactByIdStatus = (state, contactIdd) => state.contacts.status.find(x => x.payload.objectId === contactIdd);
+export const getContactByIdError = (state, contactIdd) => state.contacts.error.find(x => x.payload.objectId === contactIdd);
+
+export const selectCurrentPage = (state) => state.contacts.currentPage;
+export const {getNextPage, getPreviousPage} = catalogSlice.actions;
 
 export default catalogSlice.reducer;
 
