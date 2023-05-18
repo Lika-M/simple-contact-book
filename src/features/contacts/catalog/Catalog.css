@@ -4,7 +4,6 @@
     justify-content: space-around;
     background-color: #ffffff;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     gap: 2%
 }
@@ -26,7 +25,7 @@
     position: relative;
 }
 
-.book-details >p{
+.book-details>p {
     margin-bottom: 25px;
 }
 
@@ -41,3 +40,17 @@
     border-top-right-radius: 12px;
 }
 
+@media (max-width: 800px) {
+    .container {
+        width: 500px;
+    }
+
+    .book {
+        flex-direction: column;
+    }
+
+    .book-list,
+    .book-details {
+        margin: 25px;
+    }
+}

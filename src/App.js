@@ -14,12 +14,10 @@ function App() {
     <div className="container">
       <Header />
       <ErrorBoundary>
-        <main>
-          <Routes>
-            <Route path='/' element={<Navigate to={'/contacts'} />} />
-            <Route path='/contacts/*' element={<Catalog />} />
-          </Routes>
-        </main>
+        <Routes>
+          <Route path='/' element={<Navigate to={'/contacts'} />} />
+          <Route path='/contacts/*' element={<Catalog />} />
+        </Routes>
       </ErrorBoundary>
       <Footer />
     </div>
