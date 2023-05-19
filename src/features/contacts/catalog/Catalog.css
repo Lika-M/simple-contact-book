@@ -53,4 +53,7 @@
     .book-details {
         margin: 25px;
     }
+    .book-details .btn.add{
+        position: unset;
+    }
 }
