@@ -1,4 +1,5 @@
 .book {
+    min-height: 67vh;
     margin: 20px;
     overflow: auto;
     justify-content: space-around;
@@ -53,7 +54,8 @@
     .book-details {
         margin: 25px;
     }
-    .book-details .btn.add{
+
+    .book-details .btn.add {
         position: unset;
     }
 }

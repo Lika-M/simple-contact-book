@@ -8,6 +8,7 @@ import Details from '../details/Details.js';
 import Form from '../form/Form.js';
 import Preloader from '../../../components/preloader/Preloader.js';
 import PageNotFound from '../../../components/pageNotFound/PageNotFound.js';
+import Search from '../search/Search.js';
 import './Catalog.css';
 
 const Catalog = () => {
@@ -46,6 +47,7 @@ const Catalog = () => {
     const noSelectedContact = (
         <>
             <p style={{ 'textAlign': 'center' }} >Please select a contact to display</p>
+            <Search onClickContact={onClickContact}/>
             <div className="btn add">
                 <Link to={'/contacts/add'}>Add new contact</Link>
             </div>
