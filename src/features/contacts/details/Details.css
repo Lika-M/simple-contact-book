@@ -9,8 +9,16 @@
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
 }
+
 .info-line {
     margin: 5px;
+    display: flex;
+  align-items: center;
+}
+
+.info-line>svg{
+    width: 15px;
+    margin-right: 5px;
 }
 
 .info {
@@ -35,23 +43,41 @@
     justify-content: center;
 }
 
-.info-details .btn{
+.info-details .btn {
     width: 44px;
     font-size: 14px;
     border: none;
     background-color: #6D2269;
     color: #fff;
     cursor: pointer;
+    position: relative
 }
 
-.info-details .btn>svg{
+/* .info-details .btn>svg{
+    width: 40px;
+} */
+
+.info-details .btn.close>svg {
+    width: 40px;
+}
+
+.info-details .btn.edit>svg {
     padding: 5px;
+    width: 40px;
 }
 
-.info-details a.btn{
+.info-close-btn>svg {
+    width: 35px;
+    font-weight: bold;
+    position: inherit;
+    right: 0;
+    top: 5px;
+}
+
+.info-details a.btn {
     background-color: #fff;
     color: #6D2269;
-    border: 3px solid  #6D2269;
+    border: 3px solid #6D2269;
 }
 
 .btn {
@@ -60,7 +86,8 @@
     align-items: center;
 }
 
-.btn a, .btn input {
+.btn a,
+.btn input {
     font-size: 18px;
     font-weight: 800;
     justify-content: center;
@@ -74,16 +101,16 @@
 }
 
 .book-details .btn.add {
-   position: absolute;
-   left: 60px;
-   bottom: 0;
+    position: absolute;
+    left: 60px;
+    bottom: 0;
 }
 
-.book-details>h2{
+.book-details>h2 {
     position: relative;
 }
 
-.book-details>h2>a{
+.book-details>h2>a {
     display: inline-block;
     width: 24px;
     font-size: 14px;
@@ -92,5 +119,3 @@
     top: 3px;
     right: 12px;
 }
-
-
