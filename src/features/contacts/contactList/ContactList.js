@@ -8,14 +8,17 @@ const ContactList = ({ selectedId, onClickContact }) => {
     const dispatch = useDispatch();
 
     const contacts = useSelector(selectAllContacts);
+    const orderedContacts =[...contacts].sort((a, b) => a.firstName.localeCompare(b.firstName));
+
     const currentPage = useSelector(selectCurrentPage);
 
     const pageSize = 5;
     const totalPages = Math.ceil(contacts.length / pageSize);
     const lastIndex = currentPage * pageSize;
     const firstIndex = lastIndex - pageSize;
+   
 
-    const visibleContacts = contacts.slice(firstIndex, lastIndex).sort((a, b) => a.firstName.localeCompare(b.firstName))
+    const visibleContacts = orderedContacts.slice(firstIndex, lastIndex);
 
     const onNavigatePrev = () => {
         if (currentPage === 1) {
