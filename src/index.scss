@@ -1,12 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,800;0,900;1,400;1,600;1,700;1,900&display=swap');
 
 $color-primary: #6D2269;
-$color-secondary: #6D2269;
+$color-secondary: #d8c0ba;;
 $color-bgr:  #FCFAEF;
-$color-light: #FFF; 
+$color-white: #FFF; 
+$color-mid-blue:  #4d75b0;
+$color-light-blue:  #779fda;
 
 $font-poppins: 'Poppins', sans-serif;
 
+@mixin flexLayout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 * {
     box-sizing: border-box;

@@ -1,8 +1,10 @@
+@import '../../index.scss';
+
 header {
     font-size: 2em;
     font-weight: 900;
     padding-bottom: 0.5em;
-    background-color: #6D2269;
-    color: #fff;
+    background-color: $color-primary;
+    color:$color-white;
     text-align: center;
 }
