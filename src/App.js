@@ -5,9 +5,9 @@ import { Route, Routes } from 'react-router-dom';
 import Header from './components/header/Header.js';
 import Footer from './components/footer/Footer.js';
 import Catalog from './features/contacts/catalog/Catalog.js';
-
-import './App.css';
 import ErrorBoundary from './app/ErrorBoundary.js';
+
+import './App.scss';
 
 function App() {
   return (

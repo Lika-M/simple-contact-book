@@ -7,7 +7,7 @@ import { store } from './app/store';
 import { getAllContacts } from './services/contactService.js';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import './index.css';
+import './index.scss';
 
 const container = document.getElementById('root');
 const root = createRoot(container);

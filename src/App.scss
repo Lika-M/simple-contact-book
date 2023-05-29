@@ -1,0 +1,13 @@
+@import './index.scss';
+
+.container {
+    border: 15px solid $color-primary;
+    overflow: hidden;
+    border-radius: 12px;
+    margin: 20px auto;
+    max-width: 900px;
+    min-height: 92vh;
+    background-color: $color-light;
+    position: relative;
+    padding-bottom: 2em;
+}
