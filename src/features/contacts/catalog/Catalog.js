@@ -9,7 +9,7 @@ import Form from '../form/Form.js';
 import Preloader from '../../../components/preloader/Preloader.js';
 import PageNotFound from '../../../components/pageNotFound/PageNotFound.js';
 import Search from '../search/Search.js';
-import './Catalog.css';
+import './Catalog.scss';
 
 const Catalog = () => {
     const { id } = useParams()

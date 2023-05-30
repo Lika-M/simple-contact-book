@@ -9,6 +9,15 @@ $color-light-blue:  #779fda;
 
 $font-poppins: 'Poppins', sans-serif;
 
+%headingSecondary {
+    text-align: center;
+    background-color:$color-primary;
+    margin: 0;
+    padding: 0.25em 1em 0.25em 1em;
+    color:$color-white;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
 @mixin flexLayout{
     display: flex;
     justify-content: center;

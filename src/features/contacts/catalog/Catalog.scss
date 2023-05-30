@@ -1,0 +1,56 @@
+@import '../../../index.scss';
+
+.book {
+    min-height: 67vh;
+    margin: 20px;
+    overflow: auto;
+    justify-content: space-around;
+    background-color: $color-white;
+    display: flex;
+    justify-content: space-between;
+    gap: 2%;
+
+    &-list {
+        flex-basis: 48%;
+
+        h2 {
+            @extend %headingSecondary;
+        }
+    }
+
+    &-list>div {
+        border-bottom: 45px solid #6D2269;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        position: relative;
+        bottom: 0;
+    }
+
+    &-details {
+        flex-basis: 48%;
+        position: relative;
+
+        h2 {
+            @extend %headingSecondary;
+        }
+
+        p {
+            margin-bottom: 25px;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .book {
+        flex-direction: column;
+
+        &-list,
+        &-details {
+            margin: 25px;
+        }
+
+        &-details .btn.add {
+            position: unset;
+        }
+    }
+}
