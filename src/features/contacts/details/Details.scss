@@ -1,119 +1,106 @@
 @import '../../../index.scss';
 
+.book-details {
+    .btn.add {
+        position: absolute;
+        left: 60px;
+        bottom: 65px;
+    }
+
+    h2 {
+        position: relative;
+
+        a {
+            display: inline-block;
+            width: 24px;
+            font-size: 14px;
+            color: $color-white;
+            position: absolute;
+            top: 3px;
+            right: 12px;
+        }
+    }
+}
+
+.info-close-btn {
+    svg {
+        width: 35px;
+        font-weight: bold;
+        position: inherit;
+        right: 0;
+        top: 5px;
+    }
+}
+
 .content {
     display: flex;
     flex-direction: column;
     padding-top: 21px;
-    background-color: #FCFAEF;
-    border-right: 5px solid #6D2269;
-    border-left: 5px solid #6D2269;
-    border-bottom: 44px solid #6D2269;
+    background-color: $color-bgr;
+    border-right: 5px solid $color-primary;
+    border-left: 5px solid $color-primary;
+    border-bottom: 44px solid $color-primary;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
+
+    &-info {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 5px;
+    }
+
+    h3 {
+        font-size: $font-size-big;
+        font-weight: bold;
+        margin: 5px;
+    }
 }
 
-.info-line {
-    margin: 5px;
-    display: flex;
-    align-items: center;
-}
-
-.info-line > svg {
-    width: 15px;
-    margin-right: 5px;
-}
-
-.info {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 5px;
-}
-
-.info-details {
+.content-details {
     margin: 30px auto;
+
+    p {
+        margin: 5px;
+        display: flex;
+        align-items: center;
+    }
+
+    svg {
+        width: 15px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    div {
+        min-width: 250px;
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        gap: 5%;
+    }
+
+    .btn {
+        width: 44px;
+        font-size: 14px;
+        border: none;
+        background-color: $color-primary;
+        color: $color-white;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .btn svg {
+        width: 40px;
+    }
+
+    .btn.edit svg {
+        padding: 5px;
+    }
 }
 
-.info-details a {
-    text-decoration: none;
-}
-
-.info-details > div {
-    min-width: 250px;
-    margin-top: 30px;
-    display: flex;
-    gap: 5%;
-    justify-content: center;
-}
-
-.info-details .btn {
-    width: 44px;
-    font-size: 14px;
-    border: none;
-    background-color: #6D2269;
-    color: #fff;
-    cursor: pointer;
-    position: relative;
-}
-
-.info-details .btn.close > svg {
-    width: 40px;
-}
-
-.info-details .btn.edit > svg {
-    padding: 5px;
-    width: 40px;
-}
-
-.info-close-btn > svg {
-    width: 35px;
-    font-weight: bold;
-    position: inherit;
-    right: 0;
-    top: 5px;
-}
-
-.info-details a.btn {
-    background-color: #fff;
-    color: #6D2269;
-    border: 3px solid #6D2269;
-}
-
-.btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.btn a,
-.btn input {
-    font-size: 18px;
-    font-weight: 800;
-    justify-content: center;
+.btn a {
+    @include stylesBtn;
     padding: 10px 50px;
-    color: #6D2269;
-    background-color: #F1E9E7;
-    border: 3px solid #6D2269;
-    cursor: pointer;
-    margin-top: 12px;
-    border-radius: 8px;
-}
-
-.book-details .btn.add {
-    position: absolute;
-    left: 60px;
-    bottom: 0;
-}
-
-.book-details > h2 {
-    position: relative;
-}
-
-.book-details > h2 > a {
-    display: inline-block;
-    width: 24px;
-    font-size: 14px;
-    color: #fff;
-    position: absolute;
-    top: 3px;
-    right: 12px;
 }

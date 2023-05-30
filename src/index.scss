@@ -28,6 +28,19 @@ $font-size-footer: 1em;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
 }
+
+@mixin stylesBtn {
+    margin: 0 auto;
+    font-size: 18px;
+    font-weight: 800;
+    color: $color-primary;
+    background-color:$color-card;
+    border: 3px solid $color-primary;
+    cursor: pointer;
+    margin-top: 12px;
+    border-radius: 8px;
+    @include flexLayout
+}
 @mixin flexLayout{
     display: flex;
     justify-content: center;
