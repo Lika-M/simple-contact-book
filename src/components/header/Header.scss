@@ -1,7 +1,7 @@
 @import '../../index.scss';
 
 header {
-    font-size: 2em;
+    font-size: $font-size-big;
     font-weight: 900;
     padding-bottom: 0.5em;
     background-color: $color-primary;

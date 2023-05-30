@@ -2,7 +2,7 @@ import Contact from '../contact/Contact.js';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { selectAllContacts, selectCurrentPage, getNextPage, getPreviousPage } from '../catalog/catalogSlice.js';
-import './ContactList.css';
+import './ContactList.scss';
 
 const ContactList = ({ selectedId, onClickContact }) => {
     const dispatch = useDispatch();

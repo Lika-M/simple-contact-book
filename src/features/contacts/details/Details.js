@@ -1,11 +1,10 @@
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { TrashIcon, XMarkIcon, PencilIcon, PhoneIcon, EnvelopeIcon} from '@heroicons/react/24/solid'
-import { MailIcon } from '@heroicons/react/outline';
 
 import { selectContactById } from '../catalog/catalogSlice.js';
 import { removeContact } from '../../../services/contactService.js';
-import './Details.css';
+import './Details.scss';
 
 const Details = ({ isLoading, resetId }) => {
     const { id } = useParams()

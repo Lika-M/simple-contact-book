@@ -14,13 +14,13 @@
 }
 
 .not-found-page h1 {
-    font-size: 3em;
+    font-size: $font-size-heading;
     font-weight: 600;
     margin: 20px;
 }
 
 .not-found-page h2 {
-    font-size: 2em;
+    font-size: $font-size-big;
     font-weight: 900;
     text-align: center;
     margin: 8px 0;
@@ -29,7 +29,7 @@
 .not-found-page p {
     color: $color-secondary;
     margin: 10px 40px;
-    font-size: 20px;
+    font-size: $font-size-middle;
 }
 
 .not-found-page p a {

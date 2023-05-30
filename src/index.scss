@@ -1,13 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,800;0,900;1,400;1,600;1,700;1,900&display=swap');
 
 $color-primary: #6D2269;
-$color-secondary: #d8c0ba;;
+$color-secondary: #d8c0ba;
 $color-bgr:  #FCFAEF;
 $color-white: #FFF; 
+$color-grey: #838383; 
 $color-mid-blue:  #4d75b0;
 $color-light-blue:  #779fda;
+$color-card: #F1E9E7;
 
 $font-poppins: 'Poppins', sans-serif;
+
+$font-size-heading:3em;
+$font-size-subtitle:2.5em;
+$font-size-big: 2em;
+$font-size-middle: 20px;
+$font-size-small: 14px;
+$font-size-img: 5em;
+$font-size-footer: 1em;
 
 %headingSecondary {
     text-align: center;
