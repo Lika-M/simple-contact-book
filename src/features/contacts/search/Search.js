@@ -2,7 +2,7 @@ import { MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/solid'
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectAllContacts } from '../catalog/catalogSlice.js';
-import './Search.css';
+import './Search.scss';
 
 const Search = ({ onClickContact }) => {
     const contacts = useSelector(selectAllContacts);
@@ -25,8 +25,8 @@ const Search = ({ onClickContact }) => {
     }
 
     return (
-        <div className="wrapper">
-            <div className="search">
+        <div className="search">
+            <div>
                 <input type="text" placeholder="Enter friend name"
                     value={input}
                     onChange={onChange}
