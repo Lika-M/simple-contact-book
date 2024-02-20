@@ -22,6 +22,8 @@ const Form = ({ title, btnName, resetId }) => {
     const [values, setValues] = useFormControl(person, isEdit);
 
 
+    let canSave = Object.values(values).every(value => value.trim() !== '');
+
     const onChange = (ev) => {
         setValues((state) => ({
             ...state,
@@ -35,7 +37,7 @@ const Form = ({ title, btnName, resetId }) => {
         const formData = new FormData(ev.target);
         const data = Object.fromEntries(formData);
 
-        const canSave = Object.values(data).every(Boolean) && reqStatus === 'idle';
+        canSave = Object.values(data).every(Boolean) && reqStatus === 'idle';
 
         if (!canSave) {
             //TODO validation
@@ -91,34 +93,34 @@ const Form = ({ title, btnName, resetId }) => {
                         />
                     </div>
                     <div>
-                        <label>Last name:</label>
-                        <input name="lastName" type="text"
+                        <label htmlFor="lastName">Last name:</label>
+                        <input id="lastName" name="lastName" type="text"
                             onChange={onChange}
                             value={values.lastName || ''}
                         />
                     </div>
                     <div>
                         <label htmlFor="picture">Image:</label>
-                        <input id="firstName" name="picture" type="text"
+                        <input id="picture" name="picture" type="text"
                             onChange={onChange}
                             value={values.picture || ''}
                         />
                     </div>
                     <div>
-                        <label>Phone:</label>
-                        <input name="phone" type="text"
+                        <label htmlFor="phone">Phone:</label>
+                        <input id="phone" name="phone" type="text"
                             onChange={onChange}
                             value={values.phone || ''}
                         />
                     </div>
                     <div>
-                        <label>E-mail:</label>
-                        <input name="email" type="text"
+                        <label htmlFor="email">E-mail:</label>
+                        <input id="email" name="email" type="text"
                             onChange={onChange}
                             value={values.email || ''}
                         />
                     </div>
-                    <div className="btn">
+                    <div className="btn"  disabled={!canSave}>
                         <input type="submit" value={btnName} />
                     </div>
                 </form>
