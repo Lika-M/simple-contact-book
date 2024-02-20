@@ -5,15 +5,15 @@
     text-align: center;
     margin: auto;
 
-   div {
-       @include flexLayout;
+    div {
+        @include flexLayout;
     }
 
-    input{
+    input {
         flex-grow: 1;
         padding: 8px;
     }
-    
+
     button {
         background-color: lighten($color-light-blue, 20%);
         cursor: pointer;
@@ -29,18 +29,80 @@
 }
 
 .result {
-    ul{
+    ul {
+        max-height: 194px;
         padding: 0;
         margin: 5px 0;
         list-style: none;
         width: 100%;
-        height: 100%;
-        border: 1px solid$color-primary;
+        overflow-y: auto;
+        overflow-x: hidden;
+        border: 1px solid $color-card;
+        animation: slow 1.5s linear forwards;
+
+        @for $i from 1 through 6 {
+            li {
+                &:nth-child(#{$i}) {
+                    animation-name: unfold;
+                    // animation-duration: 200ms;
+                    animation-duration: 0.2s * $i;
+                    animation-delay: (150ms * 3 *$i) - 150;
+                    animation-timing-function: linear;
+                    animation-fill-mode: forwards;
+                }
+            }
+        }
     }
 
     li {
-        cursor: pointer;
+        color: $color-primary;
         border-bottom: 0.5px solid $color-card;
         padding: 3px;
+        cursor: pointer;
+        transform: scale(1);
     }
-} 
+}
+
+@keyframes slow {
+    0% {
+        border-color: white;
+        border-width: 0px;
+    }
+    90% {
+        border-color: $color-card;
+        border-width: 0.1px;
+    }
+
+    100% {
+        border-color: $color-secondary;
+        border-width: 2px;
+    }
+}
+
+@keyframes unfold {
+    0% {
+        transform: rotateX(-90deg);
+        color: white;
+        background-color: $color-bgr;
+        opacity: 0;
+        transform: scale(0.2);
+    }
+
+    60% {
+        transform: rotateX(50deg);
+        color: red;
+        background-color: $color-bgr;
+        transform: scale(1);
+    }
+    80% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: rotateX(0);
+        color: $color-primary;
+        background-color: white;
+        opacity: 1;
+        transform: scale(1);
+    }
+}
