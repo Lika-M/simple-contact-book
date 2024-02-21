@@ -35,74 +35,70 @@
         margin: 5px 0;
         list-style: none;
         width: 100%;
-        overflow-y: auto;
-        overflow-x: hidden;
         border: 1px solid $color-card;
-        animation: slow 1.5s linear forwards;
+        overflow: hidden;
 
-        @for $i from 1 through 6 {
+        &.scrollable {
+            overflow-y: scroll;
+
+            &::-webkit-scrollbar-thumb {
+                background-color: $color-secondary;
+                border-radius: 2px;
+                cursor: pointer;
+            }
+
+            &::-webkit-scrollbar {
+                display: block;
+                width: 8px;
+            }
+        }
+
+        @for $i from 1 through 20 {
             li {
                 &:nth-child(#{$i}) {
                     animation-name: unfold;
-                    // animation-duration: 200ms;
-                    animation-duration: 0.2s * $i;
-                    animation-delay: (150ms * 3 *$i) - 150;
-                    animation-timing-function: linear;
+                    animation-duration: 300ms;
+                    animation-delay: (200ms * $i);
+                    animation-timing-function: ease-in-out;
                     animation-fill-mode: forwards;
                 }
             }
         }
     }
-
-    li {
-        color: $color-primary;
-        border-bottom: 0.5px solid $color-card;
-        padding: 3px;
-        cursor: pointer;
-        transform: scale(1);
-    }
 }
 
-@keyframes slow {
-    0% {
-        border-color: white;
-        border-width: 0px;
-    }
-    90% {
-        border-color: $color-card;
-        border-width: 0.1px;
-    }
 
-    100% {
-        border-color: $color-secondary;
-        border-width: 2px;
-    }
+li {
+    color: $color-primary;
+    border-bottom: 0.5px solid $color-card;
+    padding: 3px;
+    cursor: pointer;
+    transform: scale(.01);
+    opacity: 0;
 }
+
 
 @keyframes unfold {
     0% {
-        transform: rotateX(-90deg);
-        color: white;
         background-color: $color-bgr;
+        transform: scale(0.1);
         opacity: 0;
-        transform: scale(0.2);
     }
 
     60% {
-        transform: rotateX(50deg);
         color: red;
-        background-color: $color-bgr;
-        transform: scale(1);
+        transform: scale(1.2);
     }
-    80% {
+
+    90% {
         transform: scale(1);
+        background-color: $color-bgr;
     }
 
     100% {
-        transform: rotateX(0);
         color: $color-primary;
-        background-color: white;
-        opacity: 1;
+        background-color:$color-bgr;
         transform: scale(1);
+        opacity: 1;
     }
 }

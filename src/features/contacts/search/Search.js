@@ -9,6 +9,7 @@ const Search = ({ onClickContact }) => {
     const [input, setInput] = useState('');
 
     let selectedContacts = [];
+    let hasScrollbar = false;
 
     const onChange = (e) => {
         setInput(e.target.value);
@@ -22,6 +23,9 @@ const Search = ({ onClickContact }) => {
 
     if (selectedContacts.length) {
         style.visibility = 'visible';
+        if (selectedContacts.length > 6){
+            hasScrollbar = true;
+        }
     }
 
     return (
@@ -41,7 +45,7 @@ const Search = ({ onClickContact }) => {
             </div>
             {input.length > 0 &&
                 <div className="result">
-                    <ul style={style}>
+                    <ul className={hasScrollbar ? 'scrollable' : ''} style={style}>
                         {selectedContacts.map(c => (
                             <li
                                 key={c.objectId}
