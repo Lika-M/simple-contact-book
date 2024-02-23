@@ -3,7 +3,7 @@
 .book {
     min-height: 67vh;
     margin: 20px;
-    overflow: auto;
+    overflow: hidden;
     justify-content: space-around;
     background-color: $color-white;
     display: flex;

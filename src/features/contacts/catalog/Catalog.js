@@ -15,11 +15,11 @@ const Catalog = () => {
     const { id } = useParams()
     const navigate = useNavigate();
     const [contactId, setContactId] = useState(id);
+    const [classAttribute, setClassAttribute] = useState('');
 
     const contacts = useSelector(selectAllContacts);
     const status = useSelector(getContactsStatus);
     const error = useSelector(getContactsError);
-
 
     let content;
     let isLoading = false;
@@ -36,18 +36,23 @@ const Catalog = () => {
     const orderedContacts = contacts.slice().sort((a, b) => a.firstName.localeCompare(b.firstName));
 
     function onClickContact(id) {
+        setClassAttribute('');
         setContactId(id);
-        navigate(`/contacts/${id}`)
+        navigate(`/contacts/${id}`);
     }
 
     function resetId() {
         setContactId(id);
     }
 
+    function addClassAttribute(currentId) {
+        setClassAttribute('loaded');
+    }
+
     const noSelectedContact = (
         <>
             <p style={{ 'textAlign': 'center' }} >Please select a contact to display</p>
-            <Search onClickContact={onClickContact}/>
+            <Search onClickContact={onClickContact} />
             <div className="btn add">
                 <Link to={'/contacts/add'}>Add new contact</Link>
             </div>
@@ -70,13 +75,13 @@ const Catalog = () => {
                     <article className="book-details">
                         <Routes>
                             <Route path='' element={noSelectedContact} />
-                            <Route path=':id' element={<Details contactId={contactId} isLoading={isLoading} resetId={resetId} />} />
+                            <Route path=':id'
+                                element={<Details contactId={contactId} isLoading={isLoading} resetId={resetId} classAttribute={classAttribute} addClassAttribute={addClassAttribute} />} />
                             <Route path='edit/:id' element={<Form title={'Edit Contact'} btnName={'Save changes'} />} />
                             <Route path='add' element={<Form title={'Add Contact'} btnName={'Save contact'} resetId={resetId} />} />
                         </Routes>
                     </article>
                 </section>}
-
         </>
     );
 }

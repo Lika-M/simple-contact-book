@@ -1,17 +1,23 @@
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { TrashIcon, XMarkIcon, PencilIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/solid'
-
+import { useEffect } from 'react';
 import { selectContactById } from '../catalog/catalogSlice.js';
 import { removeContact } from '../../../services/contactService.js';
 import './Details.scss';
 
-const Details = ({ isLoading, resetId }) => {
-    const { id } = useParams()
+const Details = ({ isLoading, resetId, classAttribute, addClassAttribute }) => {
+    const { id } = useParams();
     const person = useSelector((state) => selectContactById(state, id));
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    // const location = useLocation();
 
+    // const pathnameId = location.pathname.split('/')[2];
+
+    useEffect(() => {
+        addClassAttribute(id);
+    }, [id, addClassAttribute]);
 
     function onDelete(ev) {
         if (window.confirm('Are you sure you want to delete this?')) {
@@ -22,7 +28,7 @@ const Details = ({ isLoading, resetId }) => {
     }
 
     return (
-        <>
+        <div className={classAttribute}>
             {!isLoading && <>
                 <h2>Person details
                     <Link className="info-close-btn" to={'/contacts'}>
@@ -53,7 +59,7 @@ const Details = ({ isLoading, resetId }) => {
                     </div>
                 </div>
             </>}
-        </>
+        </div>
 
     );
 }

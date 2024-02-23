@@ -66,3 +66,30 @@ body {
 a {
     text-decoration: none;
 }
+
+
+
+@keyframes cardAnimate {
+
+    0% {
+        opacity: 0;
+        transform: scale(0.1) rotateY(40deg) rotateX(40deg) translate(-200px);
+    }
+
+    50% {
+        transform: rotateY(-20deg) rotateX(-30deg);
+        opacity: 1;
+    }
+    70% {
+        transform: scale(1.1);
+    }
+
+    90% {
+        transform: rotate(3deg);
+    }
+
+    100% {
+        transform: scale(1) translate(0);
+        opacity: 1;
+    }
+}
