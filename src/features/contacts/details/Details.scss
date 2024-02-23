@@ -19,8 +19,13 @@
             top: 3px;
             right: 12px;
         }
+
+        svg {
+            @include svg-x-button;
+        }
     }
-    .loaded { 
+
+    .loaded {
         transform-origin: center bottom;
         transform: scale(0.01);
         animation: cardAnimate 1s ease-in-out 1 forwards;
@@ -30,13 +35,7 @@
 }
 
 .info-close-btn {
-    svg {
-        width: 35px;
-        font-weight: bold;
-        position: inherit;
-        right: 0;
-        top: 5px;
-    }
+    @include svg-x-button;
 }
 
 .content {

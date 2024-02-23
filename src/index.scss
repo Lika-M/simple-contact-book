@@ -48,6 +48,14 @@ $font-size-footer: 1em;
     align-items: center;
 }
 
+@mixin svg-x-button {
+    width: 35px;
+    font-weight: bold;
+    position: inherit;
+    right: 0;
+    top: 5px;
+}
+
 * {
     box-sizing: border-box;
 }
