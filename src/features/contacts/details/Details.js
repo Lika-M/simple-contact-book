@@ -1,6 +1,6 @@
-import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { TrashIcon, XMarkIcon, PencilIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/solid'
+import { TrashIcon, XMarkIcon, PencilIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/solid';
 import { useEffect } from 'react';
 import { selectContactById } from '../catalog/catalogSlice.js';
 import { removeContact } from '../../../services/contactService.js';
@@ -11,9 +11,6 @@ const Details = ({ isLoading, resetId, classAttribute, addClassAttribute }) => {
     const person = useSelector((state) => selectContactById(state, id));
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    // const location = useLocation();
-
-    // const pathnameId = location.pathname.split('/')[2];
 
     useEffect(() => {
         addClassAttribute(id);
