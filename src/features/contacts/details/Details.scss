@@ -30,6 +30,7 @@
         transform: scale(0.01);
         animation: cardAnimate 1s ease-in-out 1 forwards;
         opacity: 0;
+        visibility: none;
         transform: scale(0.1);
     }
 }
