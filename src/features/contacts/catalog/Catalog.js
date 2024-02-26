@@ -48,7 +48,9 @@ const Catalog = () => {
     function addClassAttribute(currentId) {
         if(currentId){
             setClassAttribute('loaded');
-        } 
+        } else {
+            setClassAttribute('');
+        }
     }
 
     const noSelectedContact = (
@@ -76,7 +78,7 @@ const Catalog = () => {
                     </article>
                     <article className="book-details">
                         <Routes>
-                            <Route path='' element={!classAttribute && noSelectedContact} />
+                            <Route path='' element={!classAttribute!=='' && noSelectedContact} />
                             <Route path=':id'
                                 element={<Details
                                     contactId={contactId}
