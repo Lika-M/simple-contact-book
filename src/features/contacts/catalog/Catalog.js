@@ -46,7 +46,9 @@ const Catalog = () => {
     }
 
     function addClassAttribute(currentId) {
-        setClassAttribute('loaded');
+        if(currentId){
+            setClassAttribute('loaded');
+        } 
     }
 
     const noSelectedContact = (
@@ -74,9 +76,16 @@ const Catalog = () => {
                     </article>
                     <article className="book-details">
                         <Routes>
-                            <Route path='' element={noSelectedContact} />
+                            <Route path='' element={!classAttribute && noSelectedContact} />
                             <Route path=':id'
-                                element={<Details contactId={contactId} isLoading={isLoading} resetId={resetId} classAttribute={classAttribute} addClassAttribute={addClassAttribute} />} />
+                                element={<Details
+                                    contactId={contactId}
+                                    isLoading={isLoading}
+                                    resetId={resetId}
+                                    classAttribute={classAttribute}
+                                    addClassAttribute={addClassAttribute}
+                                    setClassAttribute={setClassAttribute} />}
+                            />
                             <Route path='edit/:id' element={<Form title={'Edit Contact'} btnName={'Save changes'} />} />
                             <Route path='add' element={<Form title={'Add Contact'} btnName={'Save contact'} resetId={resetId} />} />
                         </Routes>

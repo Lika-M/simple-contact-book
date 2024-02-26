@@ -28,7 +28,7 @@
     .loaded {
         transform-origin: center bottom;
         transform: scale(0.01);
-        animation: cardAnimate 1s ease-in-out 1 forwards;
+        animation: cardAnimate .8s ease-in-out 0.3s forwards;
         opacity: 0;
         visibility: none;
         transform: scale(0.1);
@@ -110,4 +110,11 @@
 .btn a {
     @include stylesBtn;
     padding: 10px 50px;
+}
+
+@media (max-width: 800px) {
+    .btn a {
+        width: 270px;
+        margin-top:  35px;
+    }
 }
