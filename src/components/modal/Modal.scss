@@ -1,0 +1,65 @@
+@import '../../index.scss';
+
+.modal {
+    width: 99%;
+    position: fixed;
+    top: 82px;
+    bottom: 8px;
+    right: 0;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    background: $color-grey, 0.8;
+    border-inline: 3px solid $color-primary;
+    text-align: center;
+    z-index: 1;
+
+    &-content {
+        width: 300px;
+        height: 150px;
+        top: 30px;
+        background-color: $color-bgr;
+        border-radius: 8px;
+        position: relative;
+        z-index: 2;
+        margin: 125px auto 20px auto;
+    }
+    
+    &-txt {
+        padding: 10px;
+        color: $color-primary;
+        font-weight: 300;
+        margin-inline: 5%;
+    }
+
+    .btn {
+        font-size: 20px;
+        width: 80px;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        margin: 0 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+    }
+
+    &-accept.btn {
+        background-color: $color-primary;
+    }
+
+    &-deny.btn {
+        background-color: $color-secondary;
+        color: $color-primary;
+    }
+
+    &-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(102, 64, 99, 0.9));
+        z-index: 0;
+        backdrop-filter: blur(2px);
+    }
+}
