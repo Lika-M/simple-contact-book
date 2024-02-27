@@ -25,14 +25,15 @@
         }
     }
 
-    .loaded {
+    .loaded, .reloaded {
         transform-origin: center bottom;
         transform: scale(0.01);
-        animation: cardAnimate .8s ease-in-out 0.3s forwards;
+        animation: appears .8s ease-in-out 0.3s forwards;
         opacity: 0;
         visibility: none;
-        transform: scale(0.1);
+        // transform: scale(0.1);
     }
+
 }
 
 .info-close-btn {

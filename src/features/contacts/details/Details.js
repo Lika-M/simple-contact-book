@@ -8,22 +8,28 @@ import { removeContact } from '../../../services/contactService.js';
 import Modal from '../../../components/modal/Modal.js';
 import './Details.scss';
 
-const Details = ({ isLoading, resetId, classAttribute, addClassAttribute }) => {
+const Details = ({ isLoading, resetId, classAttribute, setClassAttribute, onClose }) => {
     const { id } = useParams();
-    const person = useSelector((state) => selectContactById(state, id));
+    const [confirm, setConfirm] = useState({ apply: false });
+    const [prevId, setPrevId] = useState(id);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [confirm, setConfirm] = useState({apply: false});
+    const person = useSelector((state) => selectContactById(state, id));
+
+    if (prevId !== id) {
+        setClassAttribute('');
+    } 
 
     useEffect(() => {
-        addClassAttribute(id);
-    }, [id, addClassAttribute]);
+        setPrevId(id);
+        setClassAttribute('loaded');
+    }, [id, prevId, setPrevId, setClassAttribute]);
 
     function onDelete() {
-        setConfirm({apply: true});
+        setConfirm({ apply: true });
     }
-    
-    function acceptDelete(){
+
+    function acceptDelete() {
         if (confirm.apply) {
             dispatch(removeContact(person.objectId)).unwrap();
             resetId();
@@ -31,8 +37,8 @@ const Details = ({ isLoading, resetId, classAttribute, addClassAttribute }) => {
         }
     }
 
-    function declineDelete(){
-        setConfirm({apply: false});
+    function declineDelete() {
+        setConfirm({ apply: false });
     }
 
     return (
@@ -40,9 +46,9 @@ const Details = ({ isLoading, resetId, classAttribute, addClassAttribute }) => {
             <div className={classAttribute}>
                 {!isLoading && <>
                     <h2>Person details
-                        <Link className="info-close-btn" to={'/contacts'}>
+                        <span className="info-close-btn" onClick={onClose}>
                             <XMarkIcon />
-                        </Link>
+                        </span>
                     </h2>
                     <div className="content">
                         <div className="content-info">

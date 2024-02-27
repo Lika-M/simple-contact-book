@@ -12,9 +12,9 @@ import Search from '../search/Search.js';
 import './Catalog.scss';
 
 const Catalog = () => {
-    const { id } = useParams()
+    const { id } = useParams();
     const navigate = useNavigate();
-    const [contactId, setContactId] = useState(id);
+    const [contactId, setContactId] = useState('');
     const [classAttribute, setClassAttribute] = useState('');
 
     const contacts = useSelector(selectAllContacts);
@@ -36,7 +36,7 @@ const Catalog = () => {
     const orderedContacts = contacts.slice().sort((a, b) => a.firstName.localeCompare(b.firstName));
 
     function onClickContact(id) {
-        setClassAttribute('');
+        setClassAttribute('loaded');
         setContactId(id);
         navigate(`/contacts/${id}`);
     }
@@ -45,12 +45,10 @@ const Catalog = () => {
         setContactId(id);
     }
 
-    function addClassAttribute(currentId) {
-        if(currentId){
-            setClassAttribute('loaded');
-        } else {
-            setClassAttribute('');
-        }
+    function onClose() {
+        setContactId('');
+        setClassAttribute('');
+        navigate(`/contacts`);
     }
 
     const noSelectedContact = (
@@ -78,16 +76,17 @@ const Catalog = () => {
                     </article>
                     <article className="book-details">
                         <Routes>
-                            <Route path='' element={!classAttribute!=='' && noSelectedContact} />
-                            <Route path=':id'
+
+                            {!contactId && <Route path='' element={noSelectedContact} />}
+                            {contactId && <Route path=':id'
                                 element={<Details
                                     contactId={contactId}
                                     isLoading={isLoading}
                                     resetId={resetId}
                                     classAttribute={classAttribute}
-                                    addClassAttribute={addClassAttribute}
-                                    setClassAttribute={setClassAttribute} />}
-                            />
+                                    setClassAttribute={setClassAttribute}
+                                    onClose={onClose} />}
+                            />}
                             <Route path='edit/:id' element={<Form title={'Edit Contact'} btnName={'Save changes'} />} />
                             <Route path='add' element={<Form title={'Add Contact'} btnName={'Save contact'} resetId={resetId} />} />
                         </Routes>

@@ -4,15 +4,15 @@ $font-poppins: 'Poppins', sans-serif;
 
 $color-primary: #6D2269;
 $color-secondary: #d8c0ba;
-$color-bgr:  #FCFAEF;
-$color-white: #FFF; 
-$color-grey: #838383; 
-$color-mid-blue:  #4d75b0;
-$color-light-blue:  #779fda;
+$color-bgr: #FCFAEF;
+$color-white: #FFF;
+$color-grey: #838383;
+$color-mid-blue: #4d75b0;
+$color-light-blue: #779fda;
 $color-card: #F1E9E7;
 
-$font-size-heading:3em;
-$font-size-subtitle:2.5em;
+$font-size-heading: 3em;
+$font-size-subtitle: 2.5em;
 $font-size-big: 2em;
 $font-size-middle: 20px;
 $font-size-small: 14px;
@@ -21,10 +21,10 @@ $font-size-footer: 1em;
 
 %headingSecondary {
     text-align: center;
-    background-color:$color-primary;
+    background-color: $color-primary;
     margin: 0;
     padding: 0.25em 1em 0.25em 1em;
-    color:$color-white;
+    color: $color-white;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
 }
@@ -34,7 +34,7 @@ $font-size-footer: 1em;
     font-size: 18px;
     font-weight: 800;
     color: $color-primary;
-    background-color:$color-card;
+    background-color: $color-card;
     border: 3px solid $color-primary;
     cursor: pointer;
     margin-top: 12px;
@@ -42,7 +42,7 @@ $font-size-footer: 1em;
     @include flexLayout
 }
 
-@mixin flexLayout{
+@mixin flexLayout {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,14 +60,16 @@ $font-size-footer: 1em;
     box-sizing: border-box;
 }
 
-h1, h2, h3{
+h1,
+h2,
+h3 {
     color: $color-primary;
 }
 
 body {
     margin: 0;
     padding: 0;
-    background-color:$color-bgr;
+    background-color: $color-bgr;
     font-family: $font-poppins;
 }
 
@@ -77,10 +79,10 @@ a {
 
 
 
-@keyframes cardAnimate {
+@keyframes appears {
 
     0% {
-        visibility:visible;
+        visibility: visible;
         opacity: 0;
         transform: scale(0.1) rotateY(40deg) rotateX(40deg) translate(-200px);
     }
@@ -89,6 +91,7 @@ a {
         transform: rotateY(-20deg) rotateX(-30deg);
         // opacity: 0;
     }
+
     70% {
         opacity: 1;
 
@@ -104,3 +107,4 @@ a {
         opacity: 1;
     }
 }
+
