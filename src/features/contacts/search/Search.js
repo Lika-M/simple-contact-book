@@ -11,12 +11,14 @@ const Search = ({ onClickContact }) => {
     let selectedContacts = [];
     let hasScrollbar = false;
 
+    const orderedContacts = contacts.slice().sort((a, b) => a.firstName.localeCompare(b.firstName));
+
     const onChange = (e) => {
         setInput(e.target.value);
     };
 
     if (input.length > 0) {
-        selectedContacts = contacts.filter(x => x.firstName.toLowerCase().startsWith(input.toLowerCase()))
+        selectedContacts = orderedContacts.filter(x => x.firstName.toLowerCase().startsWith(input.toLowerCase()))
     }
 
     const style = { visibility: 'hidden' };
