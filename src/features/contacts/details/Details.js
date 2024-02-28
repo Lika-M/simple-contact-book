@@ -31,9 +31,13 @@ const Details = ({ isLoading, resetId, classAttribute, setClassAttribute, onClos
 
     function acceptDelete() {
         if (confirm.apply) {
-            dispatch(removeContact(person.objectId)).unwrap();
-            resetId();
-            navigate('/contacts');
+            try {
+                dispatch(removeContact(person.objectId)).unwrap();
+                resetId();
+                navigate('/contacts');
+            } catch (err) {
+                throw new Error(err.message);
+            }
         }
     }
 

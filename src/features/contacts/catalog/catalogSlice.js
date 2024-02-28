@@ -62,11 +62,10 @@ export const catalogSlice = createSlice({
         builder
             .addCase(updateContact.fulfilled, (state, action) => {
                 if (!action.payload.objectId) {
-                    console.log(action.payload)
                     state.status = 'failed';
-                    state.error = action.payload;
+                    state.error.type = action.payload;
                     state.error.message = 'This contact isn\'t updated. Try again later!';
-                    return;
+                    return state;
                 }
                 state.status = 'succeeded';
                 const index = state.list.findIndex(x => x.objectId === action.payload.objectId);

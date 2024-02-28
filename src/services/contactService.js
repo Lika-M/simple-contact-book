@@ -57,7 +57,7 @@ export const addContact = createAsyncThunk('contacts/addContact', async (contact
         return await result.json();
 
     } catch (error) {
-        throw new Error (error.message);
+        throw new Error(error.message);
     }
 });
 
@@ -74,7 +74,7 @@ export const updateContact = createAsyncThunk('contacts/updateContact', async (d
         body: JSON.stringify(data.body)
     });
 
-    console.log(response)
+    await response.json();
 
     const res = await fetch(`${baseUrl}/${data.id}`, {
         method: 'GET',
@@ -83,8 +83,7 @@ export const updateContact = createAsyncThunk('contacts/updateContact', async (d
             'X-Parse-REST-API-Key': 'kxclWGzoda8nuX8R05SfFOrICqv5poL5aXJUkrqk'
         }
     });
-    console.log(await res.json())
-    return await res.json();
+    return res.json();
 
 });
 

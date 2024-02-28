@@ -11,7 +11,7 @@ import './Form.scss';
 const Form = ({ title, btnName, resetId }) => {
     const isEdit = title === 'Edit Contact';
     const [error, setError] = useState({ message: '' });
-    const [reqStatus, setReqStatus] = useState('idle')
+    const [reqStatus, setReqStatus] = useState('idle');
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -64,7 +64,7 @@ const Form = ({ title, btnName, resetId }) => {
                 navigate('/contacts');
             }
         } catch (err) {
-            console.log(err)
+            setError({ message: err.message })
         } finally {
             setReqStatus('idle');
         }
@@ -72,6 +72,8 @@ const Form = ({ title, btnName, resetId }) => {
 
     return (
         <>
+            {error.message &&
+                <p style={{ 'textAlign': 'center' }} >Error: {error.message}</p>}
             <h2>{title}
                 <Link to={'/contacts'}>
                     <XMarkIcon />
