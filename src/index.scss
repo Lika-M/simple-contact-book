@@ -1,15 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,800;0,900;1,400;1,600;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 $font-poppins: 'Poppins', sans-serif;
+$font-urbanist: 'Urbanist', sans-serif;
+$font-headings: 'Prompt', sans-serif;
 
 $color-primary: #6D2269;
 $color-secondary: #d8c0ba;
 $color-bgr: #FCFAEF;
 $color-white: #FFF;
-$color-grey: #838383;
+$color-grey: #EEE;
 $color-mid-blue: #4d75b0;
 $color-light-blue: #779fda;
-$color-card: #F1E9E7;
+$color-card: #fffdfd;
 
 $font-size-heading: 3em;
 $font-size-subtitle: 2.5em;
@@ -19,27 +23,8 @@ $font-size-small: 14px;
 $font-size-img: 5em;
 $font-size-footer: 1em;
 
-%headingSecondary {
-    text-align: center;
-    background-color: $color-primary;
-    margin: 0;
-    padding: 0.25em 1em 0.25em 1em;
-    color: $color-white;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-}
-
-@mixin stylesBtn {
-    margin: 0 auto;
-    font-size: 18px;
-    font-weight: 800;
-    color: $color-primary;
-    background-color: $color-card;
-    border: 3px solid $color-primary;
-    cursor: pointer;
-    margin-top: 12px;
-    border-radius: 8px;
-    @include flexLayout
+@mixin card-border($px: 1px, $color: $color-grey) {
+    box-shadow: inset 0 0 0 $px $color;
 }
 
 @mixin flexLayout {
@@ -48,36 +33,131 @@ $font-size-footer: 1em;
     align-items: center;
 }
 
-@mixin svg-x-button {
-    width: 35px;
-    font-weight: bold;
-    position: inherit;
-    right: 0;
-    top: 5px;
+@mixin stylesBtn ($bgr-color: $color-card, $color: $color-primary) {
+    margin: 0 auto;
+    font-size: 18px;
+    font-weight: 800;
+    color: $color;
+    background-color: $bgr-color;
+    border: 3px solid $color;
+    cursor: pointer;
+    margin-top: 12px;
+    border-radius: 8px;
+    @include flexLayout
 }
 
+@mixin svg-x-button($color: $color-grey) {
+    color: $color;
+    width: 35px;
+    font-weight: bold;
+    position: absolute;
+    top: 3px;
+    right: 5px;
+}
+
+@mixin side-borders ($border-color: $color-grey) {
+    border-right: 1px solid $border-color;
+    border-left: 1px solid $border-color;
+}
+
+@mixin footer-borders ($border-color: $color-grey) {
+    border: 1px solid $border-color;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+@mixin card-footer($bgr-color: $color-white, $color: $color-grey, $border-color: $color-grey) {
+    height: 44px;
+    // background-color: $bgr-color;
+    color: $color;
+    @include footer-borders($border-color);
+}
+
+@mixin heading ($color: $color-secondary) {
+    color: $color;
+    letter-spacing: .1rem;
+    font-family: $font-headings;
+    text-align: center;
+    margin: 0;
+    padding: 0.25em 1em 0.25em 1em;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    @include card-border();
+}
+
+@mixin styled-footer($bgr-color: $color-white, $color: $color-secondary) {
+    padding: .6em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: $font-size-small;
+    font-weight: 200;
+    background-color: $bgr-color;
+    color: $color;
+    @include flexLayout();
+    @include footer-borders();
+}
+
+@mixin pagination-btn ($color: $color-primary) {
+    font-size: $font-size-footer;
+    // background-color: unset;
+    height: 20px;
+    color: $color;
+    font-weight: bold;
+    margin-inline: 12px;
+    border: none;
+    border-radius: 4px;
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        width: 35px;
+
+        svg {
+            color: $color;
+            width: 60%;
+        }
+    }
+}
+
+// reset css
 * {
     box-sizing: border-box;
 }
 
 h1,
-h2,
-h3 {
+h2 {
+    @include heading($color: $color-primary);
+}
+
+h3,
+label,
+p,
+a {
+    font-size: 16px;
+    font-weight: 400;
     color: $color-primary;
+    font-family: $font-poppins;
 }
 
 body {
     margin: 0;
     padding: 0;
-    background-color: $color-bgr;
-    font-family: $font-poppins;
+    // background-color: $color-bgr;
 }
 
-a {
+a,
+span,
+button {
     text-decoration: none;
+    background-color: unset;
+    border: none;
+    margin: 0;
+    padding: 0;
 }
-
-
 
 @keyframes appears {
 
@@ -89,7 +169,6 @@ a {
 
     50% {
         transform: rotateY(-20deg) rotateX(-30deg);
-        // opacity: 0;
     }
 
     70% {
@@ -107,4 +186,3 @@ a {
         opacity: 1;
     }
 }
-

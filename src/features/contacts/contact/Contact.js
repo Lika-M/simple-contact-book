@@ -5,7 +5,7 @@ const Contact = ({ person, selected, onClickContact }) => {
     const style = {};
 
     if (selected) {
-        style.border = '3px solid #6D2269';
+        style.boxShadow = 'inset 0 0 0 2px #6D2269';
     }
 
     return (
@@ -14,7 +14,10 @@ const Contact = ({ person, selected, onClickContact }) => {
                 <div className="image small">
                     <img src={person.picture} alt={'Person'} />
                 </div>
-                <h3>{person.firstName} {person.lastName} &#10151;</h3>
+                <h3>
+                    {person.firstName}  {person.lastName}
+                    <span> &#10151;</span>
+                </h3>
             </div>
         </Link>
     );

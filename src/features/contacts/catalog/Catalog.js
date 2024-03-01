@@ -67,18 +67,19 @@ const Catalog = () => {
             {!isLoading &&
                 <section className="book">
                     <article className="book-list">
-                        <h2>Friend list</h2>
-                        <ContactList
-                            contacts={orderedContacts}
-                            selectedId={contactId}
-                            onClickContact={onClickContact}
-                        />
+                        <div className="book-list-content">
+                            <h2>Contact list</h2>
+                            <ContactList
+                                contacts={orderedContacts}
+                                selectedId={contactId}
+                                onClickContact={onClickContact}
+                            />
+                        </div>
                     </article>
                     <article className="book-details">
                         <Routes>
-
-                            {!contactId && <Route path='' element={noSelectedContact} />}
-                            {contactId && <Route path=':id'
+                            <Route path='' element={noSelectedContact} />
+                            <Route path=':id'
                                 element={<Details
                                     contactId={contactId}
                                     isLoading={isLoading}
@@ -86,7 +87,7 @@ const Catalog = () => {
                                     classAttribute={classAttribute}
                                     setClassAttribute={setClassAttribute}
                                     onClose={onClose} />}
-                            />}
+                            />
                             <Route path='edit/:id' element={<Form title={'Edit Contact'} btnName={'Save changes'} />} />
                             <Route path='add' element={<Form title={'Add Contact'} btnName={'Save contact'} resetId={resetId} />} />
                         </Routes>

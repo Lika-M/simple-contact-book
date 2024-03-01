@@ -1,41 +1,54 @@
 @import '../../../index.scss';
 
 .contact {
-    display: flex;
+    @include flexLayout();
     justify-content: flex-start;
-    align-items: center;
     background-color: $color-card;
-    border: 3px solid $color-card;
-    margin: 5px 0;
     vertical-align: middle;
+    @include card-border();
     cursor: pointer;
+    position: relative;
+    transition: box-shadow 0.4s ease;
 
     &:hover {
-        border: 3px solid$color-primary;
+        @include card-border(2px, $color-primary);
     }
 
-    h3  {
+    h3 {
         display: inline-block;
         margin-block: 15px;
-        font-weight: bold;
+
+        span {
+            margin-left: 5px;
+            font-size: 30px;
+            position: absolute;
+            top: 8px;
+            right: 30px;
+            transition: transform 0.3s ease-in-out font-size 0.3s ease-in-out top 0.3s ease-in-out;
+        }
+    }
+
+    &:hover span {
+        transform: translateX(15px);
+        font-size: 35px;
+        top: 3px;
     }
 
     .small {
         width: 50px;
         height: 50px;
-        margin: 0 20px;
+        margin: 4px 20px;
         border-radius: 50%;
-        font-size: $font-size-subtitle;
     }
 }
 
 .image {
-    background:$color-grey;
+    background: $color-grey;
     color: $color-white;
     width: 100px;
     height: 120px;
     overflow: hidden;
-    font-size:$font-size-img;
+    font-size: $font-size-img;
     line-height: 96px;
     display: flex;
     justify-content: center;
@@ -46,37 +59,15 @@
     }
 }
 
-.footer {
-    color: $color-white;
+.pagination {
     width: 100%;
-    position: absolute;
-    bottom: -35px;
     display: flex;
     justify-content: center;
+    position: absolute;
+    bottom: 10px;
 
-    button {
-        font-size: $font-size-footer;
-        background-color: $color-primary;
-        color:$color-white;
-        font-weight: bold;
-        margin: 0 8px;
-        border: none;
-        display: flex;
-        align-items: center;
-    }
-
-    span {
-        padding: auto;
-        display: inline-block;
-        margin-right:8px;
-    }
-
-    button:nth-child(1) .arrow {
-        transform: rotate(180deg);
-    }
-    
-    button:nth-child(1),
-    button:nth-child(2) {
+    &-btn {
+        @include pagination-btn();
         cursor: pointer;
     }
 }

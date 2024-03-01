@@ -1,8 +1,10 @@
 import './Header.scss'
 
-const Header = ()=> {
+const Header = () => {
     return (
-        <header>&#10047; Contact Book &#10047;</header>
+        <header>
+            <img className="zoom-in" src="/pictures/contactBook.jpg" alt="zoom-in" />
+        </header>
     );
 }
 
