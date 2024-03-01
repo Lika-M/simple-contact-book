@@ -4,7 +4,7 @@
     padding: 15px 30px;
 
     div {
-        margin: 14px auto;
+        margin: 12px auto;
 
         &:last-child {
             margin: 20px auto 2px auto
@@ -12,16 +12,16 @@
     }
 
     label {
+        font-family: $font-poppins;
         color: $color-primary;
         display: inline-block;
         width: 110px;
-        font-size: 18px;
-        font-weight: 800;
         margin-right: 10px;
     }
 
     input {
         padding: 8px;
+        border: 1px solid $color-grey;
     }
 
     .btn[disabled] {

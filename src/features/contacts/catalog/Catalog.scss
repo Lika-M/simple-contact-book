@@ -1,7 +1,7 @@
 @import '../../../index.scss';
 
 .book {
-    min-height: 67vh;
+    min-height: 65vh;
     margin: 20px;
     overflow: hidden;
     justify-content: space-around;
@@ -13,26 +13,27 @@
     &-list {
         flex-basis: 48%;
 
-        h2 {
-            @extend %headingSecondary;
+        &-content {
+            height: 100%;
+            position: relative;
+            bottom: 0;
         }
-    }
-
-    &-list>div {
-        border-bottom: 45px solid $color-primary;
-        border-bottom-left-radius: 12px;
-        border-bottom-right-radius: 12px;
-        position: relative;
-        bottom: 0;
+        &-wrapper{
+            padding: 6px;
+            background-color:$color-bgr;
+           display: flex;
+           flex-direction: column;
+           gap: 6px;
+           @include side-borders();
+        }
     }
 
     &-details {
         flex-basis: 48%;
         position: relative;
 
-        h2 {
-            @extend %headingSecondary;
-        }
+        // h2 {
+        // }
 
         p {
             margin-bottom: 25px;

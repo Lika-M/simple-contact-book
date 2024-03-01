@@ -1,15 +1,5 @@
 @import '../../index.scss';
 
 footer {
-    padding-top: 1em;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    font-size: $font-size-small;
-    font-weight: 200;
-    font-style: italic;
-    background-color: $color-primary;
-    color: $color-white;
-    text-align: center;
+  @include styled-footer($color-bgr, $color-primary);
 }

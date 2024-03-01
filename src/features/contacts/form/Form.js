@@ -39,7 +39,6 @@ const Form = ({ title, btnName, resetId }) => {
         canSave = Object.values(data).every(Boolean) && reqStatus === 'idle';
 
         if (!canSave) {
-            //TODO validation
             return setError({ message: 'All fields are required!' });
         }
 
@@ -75,7 +74,7 @@ const Form = ({ title, btnName, resetId }) => {
             {error.message &&
                 <p style={{ 'textAlign': 'center' }} >Error: {error.message}</p>}
             <h2>{title}
-                <Link to={'/contacts'}>
+                <Link className="info-close-btn" to={'/contacts'}>
                     <XMarkIcon />
 
                 </Link>
@@ -122,6 +121,7 @@ const Form = ({ title, btnName, resetId }) => {
                     </div>
                 </form>
             </div>
+            <div className="content-footer"></div>
         </>
     )
 }

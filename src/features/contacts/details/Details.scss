@@ -8,17 +8,7 @@
     }
 
     h2 {
-        position: relative;
-
-        a {
-            display: inline-block;
-            width: 24px;
-            font-size: 14px;
-            color: $color-white;
-            position: absolute;
-            top: 3px;
-            right: 12px;
-        }
+        // @include heading;
 
         svg {
             @include svg-x-button;
@@ -26,14 +16,13 @@
     }
 
     .loaded, .reloaded {
+        height: 100%;
         transform-origin: center bottom;
         transform: scale(0.01);
         animation: appears .8s ease-in-out 0.3s forwards;
         opacity: 0;
         visibility: none;
-        // transform: scale(0.1);
     }
-
 }
 
 .info-close-btn {
@@ -43,13 +32,9 @@
 .content {
     display: flex;
     flex-direction: column;
-    padding-top: 10px;
+    // padding: 3px;
     background-color: $color-bgr;
-    border-right: 5px solid $color-primary;
-    border-left: 5px solid $color-primary;
-    border-bottom: 44px solid $color-primary;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+    @include side-borders;
 
     &-info {
         display: flex;
@@ -65,7 +50,7 @@
 }
 
 .content-details {
-    margin: 30px auto;
+    margin: 20px auto;
 
     p {
         margin: 5px;
@@ -111,6 +96,10 @@
 .btn a {
     @include stylesBtn;
     padding: 10px 50px;
+}
+
+.content-footer{
+  @include card-footer;
 }
 
 @media (max-width: 800px) {

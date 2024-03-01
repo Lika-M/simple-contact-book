@@ -15,12 +15,17 @@
         padding: 8px;
     }
 
-    button {
+    .close-btn,
+    .search-icon {
         background-color: lighten($color-light-blue, 20%);
         cursor: pointer;
-        padding: 8px;
+        padding: 7px;
         margin-left: 2px;
         border: none;
+    }
+
+    .search-icon {
+        pointer-events: none;
     }
 
     svg {
@@ -98,7 +103,7 @@ li {
 
     100% {
         color: $color-primary;
-        background-color:$color-bgr;
+        background-color: $color-bgr;
         transform: scale(1);
         opacity: 1;
     }

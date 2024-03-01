@@ -25,7 +25,7 @@ const Search = ({ onClickContact }) => {
 
     if (selectedContacts.length) {
         style.visibility = 'visible';
-        if (selectedContacts.length > 6){
+        if (selectedContacts.length > 6) {
             hasScrollbar = true;
         }
     }
@@ -37,12 +37,11 @@ const Search = ({ onClickContact }) => {
                     value={input}
                     onChange={onChange}
                 />
-
-                <button className="close-btn">
-                    <XMarkIcon />
-                </button>
-                <button className="search-btn" type="submit">
+                <button className="search-icon">
                     <MagnifyingGlassIcon />
+                </button>
+                <button className="close-btn" onClick={() => setInput('')}>
+                    <XMarkIcon />
                 </button>
             </div>
             {input.length > 0 &&

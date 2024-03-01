@@ -1,3 +1,4 @@
+import { ArrowRightCircleIcon, ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from '@heroicons/react/24/solid';
 import Contact from '../contact/Contact.js';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -8,7 +9,7 @@ const ContactList = ({ selectedId, onClickContact }) => {
     const dispatch = useDispatch();
 
     const contacts = useSelector(selectAllContacts);
-    const orderedContacts =[...contacts].sort((a, b) => a.firstName.localeCompare(b.firstName));
+    const orderedContacts = [...contacts].sort((a, b) => a.firstName.localeCompare(b.firstName));
 
     const currentPage = useSelector(selectCurrentPage);
 
@@ -16,7 +17,7 @@ const ContactList = ({ selectedId, onClickContact }) => {
     const totalPages = Math.ceil(contacts.length / pageSize);
     const lastIndex = currentPage * pageSize;
     const firstIndex = lastIndex - pageSize;
-   
+
 
     const visibleContacts = orderedContacts.slice(firstIndex, lastIndex);
 
@@ -36,7 +37,7 @@ const ContactList = ({ selectedId, onClickContact }) => {
 
     return (
         <>
-            <div>
+            <div className="book-list-wrapper">
                 {visibleContacts.map(c => (
                     <Contact
                         key={c.objectId}
@@ -45,17 +46,21 @@ const ContactList = ({ selectedId, onClickContact }) => {
                         onClickContact={onClickContact}
                     />
                 ))}
-                <div className='footer'>
-                    {currentPage > 1 && <button onClick={onNavigatePrev}>
-                        <span className="arrow">&#10148;</span>
-                        <span>Previous</span>
-                    </button>}
-                    {currentPage < totalPages && <button onClick={onNavigateNext}>
-                        <span>Next</span>
-                        <span> &#10148;</span>
-                    </button>}
-                </div>
             </div >
+            <div className="content-footer">
+            </div>
+            <div className="pagination">
+                {currentPage > 1 &&
+                    <button className="pagination-btn" onClick={onNavigatePrev}>
+                        <span><ChevronDoubleLeftIcon /></span>
+                        <span >Prev</span>
+                    </button>}
+                {currentPage < totalPages &&
+                    <button className="pagination-btn" onClick={onNavigateNext}>
+                        <span>Next</span>
+                        <span> <ChevronDoubleRightIcon /></span>
+                    </button>}
+            </div>
         </>
     );
 }

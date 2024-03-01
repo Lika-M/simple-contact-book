@@ -18,7 +18,7 @@ const Details = ({ isLoading, resetId, classAttribute, setClassAttribute, onClos
 
     if (prevId !== id) {
         setClassAttribute('');
-    } 
+    }
 
     useEffect(() => {
         setPrevId(id);
@@ -77,6 +77,7 @@ const Details = ({ isLoading, resetId, classAttribute, setClassAttribute, onClos
                             </div>
                         </div>
                     </div>
+                    <div className="content-footer"></div>
                 </>}
                 {confirm.apply && <Modal acceptDelete={acceptDelete} declineDelete={declineDelete} />}
             </div>
