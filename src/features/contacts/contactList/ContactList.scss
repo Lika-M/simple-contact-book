@@ -16,7 +16,6 @@
     justify-content: flex-start;
     background-color: $color-card;
     vertical-align: middle;
-    @include card-border();
     cursor: pointer;
     position: relative;
     transition: box-shadow .4s ease, transform .4s ease-in-out;
