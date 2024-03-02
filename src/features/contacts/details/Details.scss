@@ -20,9 +20,16 @@
         height: 100%;
         transform-origin: center bottom;
         transform: scale(0.01);
-        animation: appears .8s ease-in-out 0.3s forwards;
         opacity: 0;
-        visibility: none;
+        animation: appears .8s ease-in-out 0.3s forwards;
+    }
+
+    .closed {
+        height: 100%;
+        transform-origin: center bottom;
+        transform: scale(1);
+        opacity: 1;
+        animation: disappears .8s ease-in-out 0.3s forwards;
     }
 }
 

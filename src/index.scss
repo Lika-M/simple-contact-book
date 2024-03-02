@@ -49,13 +49,14 @@ $font-size-footer: 1em;
     position: absolute;
     top: 3px;
     right: 5px;
+    cursor: pointer;
 }
 
 @mixin card-border($color: $color-primary, $px: 2px) {
     box-shadow: inset 0 0 0 $px $color;
 }
 
-@mixin card-box-shadow ($color: $color-primary, $dept: 2px, $position:outset) {
+@mixin card-box-shadow ($color: $color-primary, $dept: 2px, $position: outset) {
     box-shadow: $position 0px 1px $dept $color;
 }
 
@@ -177,9 +178,8 @@ button {
 @keyframes appears {
 
     0% {
-        visibility: visible;
-        opacity: 0;
         transform: scale(0.1) rotateY(40deg) rotateX(40deg) translate(-200px);
+        opacity: 0;
     }
 
     50% {
@@ -187,9 +187,8 @@ button {
     }
 
     70% {
-        opacity: 1;
-
         transform: scale(1.1);
+        opacity: 1;
     }
 
     90% {
@@ -199,5 +198,30 @@ button {
     100% {
         transform: scale(1) translate(0);
         opacity: 1;
+    }
+}
+
+@keyframes disappears {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    30% {
+        transform: scale(1.1) rotateY(-60deg) rotateX(-30deg);
+    }
+
+    70% {
+        transform: translate(-30px, -40px) scale(1.1);
+    }
+
+    90% {
+        transform: rotate(3deg) translate(50px, 10px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.4) rotateY(40deg) rotateX(40deg) translate(200px, 200px);
+        opacity: 0;
     }
 }

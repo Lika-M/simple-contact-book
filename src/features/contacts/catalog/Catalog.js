@@ -46,9 +46,12 @@ const Catalog = () => {
     }
 
     function onClose() {
-        setContactId('');
-        setClassAttribute('');
-        navigate(`/contacts`);
+        setClassAttribute('closed');
+        navigate(`/contacts/${contactId}`);
+        setTimeout(() => {
+            setContactId('');
+            navigate('/contacts');
+        }, 1100)
     }
 
     const noSelectedContact = (

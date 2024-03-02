@@ -1,4 +1,4 @@
-import { ArrowRightCircleIcon, ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from '@heroicons/react/24/solid';
+import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from '@heroicons/react/24/solid';
 import Contact from '../contact/Contact.js';
 import { useSelector, useDispatch } from 'react-redux';
 
