@@ -9,7 +9,7 @@ const Contact = ({ person, selected, onClickContact }) => {
     }
 
     return (
-        < Link to={`/contacts/${person.objectId}`} >
+        < Link className="contact-link" to={`/contacts/${person.objectId}`} >
             <div className="contact" style={style} onClick={() => onClickContact(person.objectId)}>
                 <div className="image small">
                     <img src={person.picture} alt={'Person'} />

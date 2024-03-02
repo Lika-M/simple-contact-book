@@ -55,18 +55,22 @@ const Details = ({ isLoading, resetId, classAttribute, setClassAttribute, onClos
                         </span>
                     </h2>
                     <div className="content">
-                        <div className="content-info">
-                            <div className="image">
-                                <img src={person.picture} alt="Person img" />
-                            </div>
-                            <div>
-                                <h3>{person.firstName}</h3>
-                                <h3>{person.lastName}</h3>
+                        <div className="content-wrapper">
+                            <div className="person">
+                                <div className="image">
+                                    <img src={person.picture} alt="Person img" />
+                                </div>
+                                <div className="name">
+                                    <h3>{person.firstName}</h3>
+                                    <h3>{person.lastName}</h3>
+                                <div className="info">
+                                    <p><span><PhoneIcon /></span> <span>{person.phone}</span></p>
+                                    <p><span><EnvelopeIcon /></span><span>{person.email}</span></p>
+                                </div>
+                                </div>
                             </div>
                         </div>
                         <div className="content-details">
-                            <p><PhoneIcon /> {person.phone}</p>
-                            <p> <EnvelopeIcon /> {person.email}</p>
                             <div>
                                 <Link to={`/contacts/edit/${person.objectId}`} className="btn edit">
                                     <PencilIcon />

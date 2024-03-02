@@ -1,13 +1,13 @@
 @import '../../../index.scss';
 
 .profile {
-    padding: 15px 30px;
+    padding: 17px 30px;
 
     div {
         margin: 12px auto;
 
         &:last-child {
-            margin: 20px auto 2px auto
+            margin: 20px auto 0 auto
         }
     }
 
@@ -19,20 +19,25 @@
         margin-right: 10px;
     }
 
-    input {
-        padding: 8px;
-        border: 1px solid $color-grey;
+    input[type="text"] {
+        //TODO add colors
+        @include styled-input(8px, $color-primary);
     }
 
     .btn[disabled] {
         opacity: 0.5;
     }
+
     .btn[disabled] input {
         cursor: auto;
     }
 }
 
-.btn input {
-    padding: 8px 30px;
-    @include stylesBtn;
+.btn input[type="submit"] {
+    @include stylesBtn();
+    border: none;
+
+    &:hover {
+        @include stylesBtn($color-primary, $color-card);
+    }
 }

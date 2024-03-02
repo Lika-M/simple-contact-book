@@ -18,13 +18,15 @@
             position: relative;
             bottom: 0;
         }
-        &-wrapper{
+
+        &-wrapper {
             padding: 6px;
-            background-color:$color-bgr;
-           display: flex;
-           flex-direction: column;
-           gap: 6px;
-           @include side-borders();
+            background-color: $color-bgr;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            @include card-box-shadow ($dept: 4px, $position: inset);
+            @include side-borders();
         }
     }
 

@@ -11,16 +11,17 @@
     }
 
     input {
-        flex-grow: 1;
-        padding: 8px;
+        // TODO add colors
+       @include styled-input(10px, $color-primary);
     }
 
     .close-btn,
     .search-icon {
         background-color: lighten($color-light-blue, 20%);
+        box-shadow: 0px 1px 2px grey;
         cursor: pointer;
         padding: 7px;
-        margin-left: 2px;
+        margin-left: 3px;
         border: none;
     }
 

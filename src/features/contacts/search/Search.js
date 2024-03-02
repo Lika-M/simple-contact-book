@@ -33,7 +33,7 @@ const Search = ({ onClickContact }) => {
     return (
         <div className="search">
             <div>
-                <input type="text" placeholder="Enter friend name"
+                <input type="text" placeholder="Enter contact name"
                     value={input}
                     onChange={onChange}
                 />
