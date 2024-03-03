@@ -9,7 +9,6 @@
     left: 50%;
     transform: translate(-50%, -10%);
     background: $color-grey, 0.8;
-    border-inline: 3px solid $color-primary;
     text-align: center;
     z-index: 1;
 
@@ -25,30 +24,26 @@
     }
     
     &-txt {
-        padding: 10px;
+        padding: 20px 0 6px 0;
         color: $color-primary;
         font-weight: 300;
-        margin-inline: 5%;
+        margin: 3%;
     }
 
     .btn {
-        font-size: 20px;
-        width: 80px;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        margin: 0 10px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        cursor: pointer;
+        @include button-styles($color-primary, $color-card, 16px);
+        display: inline-block;
+        width: 65px;
+        padding: 8px 0;
+        margin-inline: 10px;
     }
-
+    
     &-accept.btn {
         background-color: $color-primary;
     }
 
     &-deny.btn {
-        background-color: $color-secondary;
+        background-color: $color-white;
         color: $color-primary;
     }
 
