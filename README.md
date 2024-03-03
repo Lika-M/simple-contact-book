@@ -1,3 +1,5 @@
+ ### This project is currently in development.
+ 
  A simple web app using React-Redux for data storage and processing, including async logic and data fetching. The project has been migrated to SCSS for styling.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
