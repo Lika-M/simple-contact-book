@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate, Link, useParams } from 'react-router-dom';
+import { Route, Routes, useNavigate, Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -12,7 +12,7 @@ import Search from '../search/Search.js';
 import './Catalog.scss';
 
 const Catalog = () => {
-    const { id } = useParams();
+    const location = useLocation();
     const navigate = useNavigate();
     const [contactId, setContactId] = useState('');
     const [classAttribute, setClassAttribute] = useState('');
@@ -41,13 +41,13 @@ const Catalog = () => {
         navigate(`/contacts/${id}`);
     }
 
-    function resetId() {
+    function resetId(id) {
         setContactId(id);
     }
 
     function onClose() {
         setClassAttribute('closed');
-        navigate(`/contacts/${contactId}`);
+        navigate(`${location.pathname}`);
         setTimeout(() => {
             setContactId('');
             navigate('/contacts');
@@ -91,8 +91,21 @@ const Catalog = () => {
                                     setClassAttribute={setClassAttribute}
                                     onClose={onClose} />}
                             />
-                            <Route path='edit/:id' element={<Form title={'Edit Contact'} btnName={'Save changes'} />} />
-                            <Route path='add' element={<Form title={'Add Contact'} btnName={'Save contact'} resetId={resetId} />} />
+                            <Route path='edit/:id'
+                                element={<Form title={'Edit Contact'}
+                                    btnName={'Save changes'}
+                                    classAttribute={classAttribute}
+                                    setClassAttribute={setClassAttribute}
+                                    resetId={resetId}
+                                    onClose={onClose} />}
+                            />
+                            <Route path='add'
+                                element={<Form title={'Add Contact'}
+                                    btnName={'Save contact'}
+                                    classAttribute={classAttribute}
+                                    setClassAttribute={setClassAttribute}
+                                    onClose={onClose} />}
+                            />
                         </Routes>
                     </article>
                 </section>}

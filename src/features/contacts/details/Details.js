@@ -33,7 +33,7 @@ const Details = ({ isLoading, resetId, classAttribute, setClassAttribute, onClos
         if (confirm.apply) {
             try {
                 dispatch(removeContact(person.objectId)).unwrap();
-                resetId();
+                resetId(id);
                 navigate('/contacts');
             } catch (err) {
                 throw new Error(err.message);
@@ -46,7 +46,6 @@ const Details = ({ isLoading, resetId, classAttribute, setClassAttribute, onClos
     }
 
     return (
-        <>
             <div className={classAttribute}>
                 {!isLoading && <>
                     <h2>Person details
@@ -85,8 +84,6 @@ const Details = ({ isLoading, resetId, classAttribute, setClassAttribute, onClos
                 </>}
                 {confirm.apply && <Modal acceptDelete={acceptDelete} declineDelete={declineDelete} />}
             </div>
-        </>
-
     );
 }
 

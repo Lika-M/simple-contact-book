@@ -1,14 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate} from 'react-router-dom';
 
 import { useFormControl } from './useFormControl.js';
 import { addContact, updateContact } from '../../../services/contactService.js';
 import { selectContactById } from '../catalog/catalogSlice.js';
 import './Form.scss';
 
-const Form = ({ title, btnName, resetId }) => {
+const Form = ({ title, btnName, resetId, onClose, classAttribute, setClassAttribute }) => {
     const isEdit = title === 'Edit Contact';
     const [error, setError] = useState({ message: '' });
     const [reqStatus, setReqStatus] = useState('idle');
@@ -20,6 +20,9 @@ const Form = ({ title, btnName, resetId }) => {
 
     const [values, setValues] = useFormControl(person, isEdit);
 
+    useEffect(() => {
+        setClassAttribute('loaded');
+    }, [setClassAttribute])
 
     let canSave = Object.values(values).every(value => value.trim() !== '');
 
@@ -69,14 +72,13 @@ const Form = ({ title, btnName, resetId }) => {
     }
 
     return (
-        <>
+         <div className={classAttribute}>
             {error.message &&
                 <p style={{ 'textAlign': 'center' }} >Error: {error.message}</p>}
             <h2>{title}
-                <Link className="info-close-btn" to={'/contacts'}>
+                <span className="info-close-btn" onClick={onClose}>
                     <XMarkIcon />
-
-                </Link>
+                </span>
             </h2>
             <div className="content info">
                 <form className="profile" onSubmit={onContactSubmit}>
@@ -121,7 +123,7 @@ const Form = ({ title, btnName, resetId }) => {
                 </form>
             </div>
             <div className="content-footer"></div>
-        </>
+            </div>
     )
 }
 
