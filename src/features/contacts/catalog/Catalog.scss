@@ -21,11 +21,10 @@
 
         &-wrapper {
             padding: 6px;
-            background-color: $color-bgr;
+            background-color: $color-secondary;
             display: flex;
             flex-direction: column;
-            gap: 6px;
-            @include card-box-shadow ($dept: 4px, $position: inset);
+            gap: 8px;
             @include side-borders();
         }
     }

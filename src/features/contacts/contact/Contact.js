@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import './Contact.scss';
 
 const Contact = ({ person, selected, onClickContact }) => {
 
@@ -6,10 +7,11 @@ const Contact = ({ person, selected, onClickContact }) => {
 
     if (selected) {
         style.boxShadow = 'inset 0 0 0 2px #6D2269';
+        style.borderRadius = '6px';
     }
 
     return (
-        < Link className="contact-link" to={`/contacts/${person.objectId}`} >
+        < Link to={`/contacts/${person.objectId}`} >
             <div className="contact" style={style} onClick={() => onClickContact(person.objectId)}>
                 <div className="image small">
                     <img src={person.picture} alt={'Person'} />

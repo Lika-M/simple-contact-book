@@ -11,7 +11,7 @@
         // @include heading;
 
         svg {
-            @include svg-x-button;
+            @include button-svg-x;
         }
     }
 
@@ -34,7 +34,7 @@
 }
 
 .info-close-btn {
-    @include svg-x-button;
+    @include button-svg-x;
 }
 
 .content {
@@ -42,7 +42,6 @@
     flex-direction: column;
     background-color: $color-white;
     @include side-borders;
-    @include card-box-shadow($dept: 4px, $position: inset);
 
     &-wrapper {
         background-color: $color-bgr;
@@ -51,8 +50,9 @@
         margin: 10px;
         padding: 24px 15px;
         border-radius: 10px;
-        box-shadow: 0px 1px 4px grey;
+        box-shadow: 0px 1px 4px darkgrey;
         position: relative;
+        cursor: pointer;
 
         .person {
             display: flex;
@@ -139,20 +139,22 @@
     }
 
     .btn {
+        background-color: $color-bgr;
+            color: $color-primary;
         width: 40px;
         height: 40px;
         font-size: 14px;
         border: none;
-        background-color: $color-primary;
-        color: $color-white;
-        cursor: pointer;
         position: relative;
-        box-shadow: 0px 1px 4px grey;
+        box-shadow: 0px 1px 4px darkgrey;
         border-radius: 3px;
+        cursor: pointer;
 
         &:hover {
-            background-color: $color-bgr;
-            color: $color-primary;
+            background-color: $color-primary;
+            color: $color-white;
+
+            
         }
     }
 
@@ -167,10 +169,10 @@
 }
 
 .btn a {
-    @include stylesBtn ();
+    @include button-styles ();
 
     &:hover {
-        @include stylesBtn($color-primary, $color-card);
+        @include button-styles($color-primary, $color-card);
     }
 }
 

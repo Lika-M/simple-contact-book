@@ -1,80 +1,25 @@
 @import '../../../index.scss';
-.contact-link {
-    box-shadow: 0px 1px 4px grey;
-  
-    &:hover span {
-        transform: translateX(15px);
-        font-size: 35px;
-        top: 0;
-    }
-}
-
-.contact {
-    @include flexLayout();
-    border: 1px solid $color-grey;
-    overflow: hidden;
-    justify-content: flex-start;
-    background-color: $color-card;
-    vertical-align: middle;
-    cursor: pointer;
-    position: relative;
-    transition: box-shadow .4s ease, transform .4s ease-in-out;
-
-    &:hover {
-        @include card-border();
-    }
-
-    h3 {
-        display: inline-block;
-        margin-block: 14px;
-
-        span {
-            margin-left: 5px;
-            font-size: 30px;
-            position: absolute;
-            top: 6px;
-            right: 30px;
-            transition: transform 0.4s ease-in-out, font-size 0.3s ease-in-out, top 0.3s ease-in-out;
-        }
-    }
-
-    .small {
-        width: 40px;
-        height: 41px;
-        margin: 4px 20px;
-        border-radius: 50%;
-    }
-}
-
-.image {
-    background: $color-white;
-    // color: $color-white;
-    width: 100px;
-    height: 148px;
-    overflow: hidden;
-    font-size: $font-size-img;
-    line-height: 96px;
-    display: flex;
-    justify-content: center;
-
-    img {
-        width: 100%;
-        object-fit: cover;
-        border-radius: 4px;
-    }
-}
 
 .pagination {
-    width: 100%;
+    width: 50%;
     display: flex;
     justify-content: space-evenly;
     position: absolute;
     left: 50%;
-    bottom: 15px;
+    bottom: 16px;
     transform: translateX(-50%);
 
     &-btn {
-        @include pagination-btn();
-        cursor: pointer;
+       @include button-pagination();
+
+        span {
+            width: 100%;
+            display: inline-block;
+            vertical-align: middle;
+
+            
+        }
+
+
     }
 }

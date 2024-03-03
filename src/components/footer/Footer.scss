@@ -1,5 +1,5 @@
 @import '../../index.scss';
 
 footer {
-  @include styled-footer($color-bgr, $color-primary);
+  @include footer-styles($color-bgr, $color-primary);
 }

@@ -21,7 +21,7 @@
 
     input[type="text"] {
         //TODO add colors
-        @include styled-input(8px, $color-primary);
+        @include styled-input(5px, $color-primary, 14px);
     }
 
     .btn[disabled] {
@@ -34,10 +34,10 @@
 }
 
 .btn input[type="submit"] {
-    @include stylesBtn();
+    @include button-styles($color-card, $color-primary, 16px);
     border: none;
 
     &:hover {
-        @include stylesBtn($color-primary, $color-card);
+        @include button-styles($color-primary, $color-card, 16px);
     }
 }

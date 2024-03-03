@@ -1,4 +1,4 @@
-import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from '@heroicons/react/24/solid';
+import { ArrowLongLeftIcon, ArrowLongRightIcon } from '@heroicons/react/24/solid';
 import Contact from '../contact/Contact.js';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -52,13 +52,13 @@ const ContactList = ({ selectedId, onClickContact }) => {
             <div className="pagination">
                 {currentPage > 1 &&
                     <button className="pagination-btn" onClick={onNavigatePrev}>
-                        <span><ChevronDoubleLeftIcon /></span>
-                        <span >Prev</span>
+                        <span><ArrowLongLeftIcon /></span>
+                        {/* <span >Prev</span> */}
                     </button>}
                 {currentPage < totalPages &&
                     <button className="pagination-btn" onClick={onNavigateNext}>
-                        <span>Next</span>
-                        <span> <ChevronDoubleRightIcon /></span>
+                        {/* <span>Next</span> */}
+                        <span> <ArrowLongRightIcon /></span>
                     </button>}
             </div>
         </>

@@ -1,0 +1,55 @@
+@import '../../../index.scss';
+
+.contact {
+    // Add bgr color
+    @include card-styles();
+    transition: box-shadow .4s ease, transform .4s ease-in-out;
+
+    &:hover {
+        @include card-border();
+    }
+
+    &:hover span {
+        transform: translateX(15px);
+        font-size: 35px;
+        top: 0;
+    }
+
+    h3 {
+        display: inline-block;
+        margin-block: 14px;
+
+        span {
+            margin-left: 5px;
+            font-size: 30px;
+            position: absolute;
+            top: 6px;
+            right: 30px;
+            transition: transform 0.4s ease-in-out, font-size 0.3s ease-in-out, top 0.3s ease-in-out;
+        }
+    }
+
+    .small {
+        width: 40px;
+        height: 41px;
+        margin: 4px 20px;
+        border-radius: 50%;
+    }
+}
+
+.image {
+    background: $color-white;
+    width: 100px;
+    height: 148px;
+    overflow: hidden;
+    font-size: $font-size-img;
+    line-height: 96px;
+    display: flex;
+    justify-content: center;
+
+    img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+}

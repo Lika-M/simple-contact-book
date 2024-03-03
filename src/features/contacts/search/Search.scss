@@ -7,12 +7,12 @@
     padding: 3px;
 
     div {
-        @include flexLayout;
+        @include flex-layout();
     }
 
     input {
         // TODO add colors
-       @include styled-input(10px, $color-primary);
+       @include styled-input(8px, $color-primary, 14px);
     }
 
     .close-btn,
@@ -37,7 +37,7 @@
 
 .result {
     ul {
-        max-height: 194px;
+        max-height: 175px;
         padding: 0;
         margin: 5px 0;
         list-style: none;
@@ -77,8 +77,8 @@
 
 li {
     color: $color-primary;
-    border-bottom: 0.5px solid $color-card;
-    padding: 3px;
+    border-bottom: 1px solid $color-white;
+    padding: 5px;
     cursor: pointer;
     transform: scale(.01);
     opacity: 0;
