@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/contact-book/static/css/main.5aa65130.css",
-    "main.js": "/contact-book/static/js/main.457f06d6.js",
-    "static/js/787.585224ee.chunk.js": "/contact-book/static/js/787.585224ee.chunk.js",
-    "index.html": "/contact-book/index.html",
-    "main.5aa65130.css.map": "/contact-book/static/css/main.5aa65130.css.map",
-    "main.457f06d6.js.map": "/contact-book/static/js/main.457f06d6.js.map",
-    "787.585224ee.chunk.js.map": "/contact-book/static/js/787.585224ee.chunk.js.map"
+    "main.css": "/Lika-M.github.io/simple-contact-book/static/css/main.5aa65130.css",
+    "main.js": "/Lika-M.github.io/simple-contact-book/static/js/main.730aafac.js",
+    "static/js/787.585224ee.chunk.js": "/Lika-M.github.io/simple-contact-book/static/js/787.585224ee.chunk.js",
+    "index.html": "/Lika-M.github.io/simple-contact-book/index.html",
+    "main.5aa65130.css.map": "/Lika-M.github.io/simple-contact-book/static/css/main.5aa65130.css.map",
+    "main.730aafac.js.map": "/Lika-M.github.io/simple-contact-book/static/js/main.730aafac.js.map",
+    "787.585224ee.chunk.js.map": "/Lika-M.github.io/simple-contact-book/static/js/787.585224ee.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5aa65130.css",
-    "static/js/main.457f06d6.js"
+    "static/js/main.730aafac.js"
   ]
 }
