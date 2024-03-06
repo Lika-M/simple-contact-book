@@ -1,5 +1,42 @@
 @import './index.scss';
 
+// reset css
+* {
+    box-sizing: border-box;
+}
+
+h1,
+h2 {
+    @include heading($color: $color-primary);
+}
+
+h3,
+label,
+li,
+p,
+a {
+    font-size: 16px;
+    font-weight: 400;
+    color: $color-primary;
+    font-family: $font-poppins;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    // background-color: $color-bgr;
+}
+
+a,
+span,
+button {
+    text-decoration: none;
+    // background-color: unset;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
 .container {
     border-radius: 12px;
     overflow: hidden;
@@ -17,7 +54,7 @@
         width: 500px;
     }
 }
-@media (max-width: 5500px) {
+@media (max-width: 500px) {
     .container {
         margin: 0 auto;
     }

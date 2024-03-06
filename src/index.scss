@@ -23,6 +23,8 @@ $font-size-small: 14px;
 $font-size-img: 5em;
 $font-size-footer: 1em;
 
+
+
 @mixin flex-layout {
     display: flex;
     justify-content: center;
@@ -142,9 +144,9 @@ $font-size-footer: 1em;
 }
 
 @mixin styled-input ($hight: 3px, $color: $color-primary, $fn-sz: $font-size-small) {
+    width: 210px;
     font-family: $font-poppins;
-    font-size: $fn-sz;
-    flex-grow: 1;
+    font-size: $fn-sz;    
     padding: $hight;
     border-color: #EEE;
     border-width: 1px;
@@ -152,42 +154,6 @@ $font-size-footer: 1em;
     box-shadow: inset 0px 1px 3px $color;
 }
 
-// reset css
-* {
-    box-sizing: border-box;
-}
-
-h1,
-h2 {
-    @include heading($color: $color-primary);
-}
-
-h3,
-label,
-li,
-p,
-a {
-    font-size: 16px;
-    font-weight: 400;
-    color: $color-primary;
-    font-family: $font-poppins;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    // background-color: $color-bgr;
-}
-
-a,
-span,
-button {
-    text-decoration: none;
-    // background-color: unset;
-    border: none;
-    margin: 0;
-    padding: 0;
-}
 
 @keyframes appears {
 
