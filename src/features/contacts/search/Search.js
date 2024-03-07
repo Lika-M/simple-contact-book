@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { selectAllContacts } from '../catalog/catalogSlice.js';
 import './Search.scss';
 
-const Search = ({ onClickContact }) => {
+const Search = ({ onClickContact, handleFocus, handleBlur }) => {
     const contacts = useSelector(selectAllContacts);
     const [input, setInput] = useState('');
 
@@ -36,6 +36,8 @@ const Search = ({ onClickContact }) => {
                 <input type="text" placeholder="Enter contact name"
                     value={input}
                     onChange={onChange}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
                 />
                 <button className="search-icon">
                     <MagnifyingGlassIcon />

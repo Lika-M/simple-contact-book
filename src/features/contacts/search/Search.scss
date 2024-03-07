@@ -1,7 +1,7 @@
 @import '../../../index.scss';
 
 .search {
-    width: 70%;
+    width: 75%;
     text-align: center;
     margin: auto;
     padding: 3px;
@@ -12,7 +12,7 @@
 
     input {
         // TODO add colors
-       @include styled-input(8px, $color-primary, 14px);
+        @include styled-input(8px, rgba(121, 116, 121, 0.9), 14px, 95%);
     }
 
     .close-btn,
@@ -42,8 +42,10 @@
         margin: 5px 0;
         list-style: none;
         width: 100%;
-        border: 1px solid $color-card;
         overflow: hidden;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+
 
         &.scrollable {
             overflow-y: scroll;
@@ -77,11 +79,15 @@
 
 li {
     color: $color-primary;
-    border-bottom: 1px solid $color-white;
     padding: 5px;
     cursor: pointer;
     transform: scale(.01);
+    border-bottom: 2px solid $color-white;
     opacity: 0;
+
+    &:last-of-type {
+        border-bottom: none;
+    }
 }
 
 

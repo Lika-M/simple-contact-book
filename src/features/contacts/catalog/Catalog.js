@@ -16,6 +16,7 @@ const Catalog = () => {
     const navigate = useNavigate();
     const [contactId, setContactId] = useState('');
     const [classAttribute, setClassAttribute] = useState('');
+    const [hidden, setHidden] = useState(true);
 
     const contacts = useSelector(selectAllContacts);
     const status = useSelector(getContactsStatus);
@@ -54,16 +55,28 @@ const Catalog = () => {
         }, 1100)
     }
 
+    const handleFocus = () => {
+        setHidden(false);
+    };
+
+    const handleBlur = () => {
+        setHidden(true);
+    };
+
+
     const noSelectedContact = (
         <>
             <p style={{ 'textAlign': 'center' }} >Please select a contact to display</p>
-            <Search onClickContact={onClickContact} />
+            <Search
+                handleFocus={handleFocus}
+                handleBlur={handleBlur}
+                onClickContact={onClickContact} />
             <div className="btn add">
                 <Link to={'/contacts/add'}>Add new contact</Link>
             </div>
         </>
     )
-
+    
     return (
         <>
             {isLoading && content}
@@ -78,7 +91,7 @@ const Catalog = () => {
                                 onClickContact={onClickContact}
                             />
                         </div>
-                    </article>
+                        {!hidden && <div className="book-list-overlay" style={{ display: hidden ? 'none' : 'block' }}></div>}                    </article>
                     <article className="book-details">
                         <Routes>
                             <Route path='' element={noSelectedContact} />

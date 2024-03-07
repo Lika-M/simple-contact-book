@@ -1,10 +1,12 @@
 @import '../../../index.scss';
 
 .profile {
-    padding: 17px 30px;
+    padding: 15px 30px;
 
     div {
         margin: 12px auto;
+        display: flex;
+        justify-content: space-around;
 
         &:last-child {
             margin: 20px auto 0 auto
@@ -21,7 +23,7 @@
 
     input[type="text"] {
         //TODO add colors
-        @include styled-input(5px, $color-primary, 14px);
+        @include styled-input(4px, $color-primary, 14px);
     }
 
     .btn[disabled] {

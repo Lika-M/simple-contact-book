@@ -143,10 +143,11 @@ $font-size-footer: 1em;
     @include header-borders();
 }
 
-@mixin styled-input ($hight: 3px, $color: $color-primary, $fn-sz: $font-size-small) {
-    width: 210px;
+@mixin styled-input ($hight: 3px, $color: $color-primary,
+    $fn-sz: $font-size-small, $width: 50%) {
+    width: $width;
     font-family: $font-poppins;
-    font-size: $fn-sz;    
+    font-size: $fn-sz;
     padding: $hight;
     border-color: #EEE;
     border-width: 1px;
@@ -154,6 +155,17 @@ $font-size-footer: 1em;
     box-shadow: inset 0px 1px 3px $color;
 }
 
+@mixin overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(254, 254, 254, 0.3), rgba(121, 116, 121, 0.9));
+    z-index: 0;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
 
 @keyframes appears {
 

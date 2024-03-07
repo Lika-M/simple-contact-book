@@ -1,10 +1,8 @@
 @import '../../../index.scss';
 
 .book {
-    min-height: 65vh;
     margin: 20px;
     overflow: hidden;
-    justify-content: space-around;
     background-color: $color-white;
     display: flex;
     justify-content: space-between;
@@ -48,7 +46,8 @@
 
         &-list,
         &-details {
-            margin: 25px;
+            padding: 25px;
+            position: relative;
         }
 
         &-details .btn.add {
