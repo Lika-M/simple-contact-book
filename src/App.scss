@@ -82,7 +82,15 @@ button {
                 .scrollable {
                     max-height: unset;
                     overflow-y: auto;
+
+                    &::-webkit-scrollbar {
+                        width: 2px;
+                    }
                 }
+            }
+
+            .result ul {
+                border: none;
             }
         }
 
