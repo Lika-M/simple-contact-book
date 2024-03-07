@@ -1,5 +1,5 @@
 import { Route, Routes, useNavigate, Link, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 import { selectAllContacts, getContactsStatus, getContactsError } from './catalogSlice.js';
@@ -21,6 +21,11 @@ const Catalog = () => {
     const contacts = useSelector(selectAllContacts);
     const status = useSelector(getContactsStatus);
     const error = useSelector(getContactsError);
+
+    useEffect(() => {
+        setClassAttribute('');
+    }, [setClassAttribute]);
+    
 
     let content;
     let isLoading = false;
@@ -63,6 +68,9 @@ const Catalog = () => {
         setHidden(true);
     };
 
+    const handleClassAttribute = useMemo(() => {
+        return (className) => setClassAttribute(className);
+    }, [setClassAttribute]);
 
     const noSelectedContact = (
         <>
@@ -101,14 +109,14 @@ const Catalog = () => {
                                     isLoading={isLoading}
                                     resetId={resetId}
                                     classAttribute={classAttribute}
-                                    setClassAttribute={setClassAttribute}
+                                    handleClassAttribute={handleClassAttribute}
                                     onClose={onClose} />}
                             />
                             <Route path='edit/:id'
                                 element={<Form title={'Edit Contact'}
                                     btnName={'Save changes'}
                                     classAttribute={classAttribute}
-                                    setClassAttribute={setClassAttribute}
+                                    handleClassAttribute={handleClassAttribute}
                                     resetId={resetId}
                                     onClose={onClose} />}
                             />
@@ -116,7 +124,7 @@ const Catalog = () => {
                                 element={<Form title={'Add Contact'}
                                     btnName={'Save contact'}
                                     classAttribute={classAttribute}
-                                    setClassAttribute={setClassAttribute}
+                                    handleClassAttribute={handleClassAttribute}
                                     onClose={onClose} />}
                             />
                         </Routes>

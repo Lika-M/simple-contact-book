@@ -8,7 +8,7 @@ import { removeContact } from '../../../services/contactService.js';
 import Modal from '../../../components/modal/Modal.js';
 import './Details.scss';
 
-const Details = ({ isLoading, resetId, classAttribute, setClassAttribute, onClose }) => {
+const Details = ({ isLoading, resetId, classAttribute, handleClassAttribute, onClose }) => {
     const { id } = useParams();
     const [confirm, setConfirm] = useState({ apply: false });
     const [prevId, setPrevId] = useState(id);
@@ -17,13 +17,13 @@ const Details = ({ isLoading, resetId, classAttribute, setClassAttribute, onClos
     const person = useSelector((state) => selectContactById(state, id));
 
     if (prevId !== id) {
-        setClassAttribute('');
+        handleClassAttribute('');
     }
 
     useEffect(() => {
         setPrevId(id);
-        setClassAttribute('loaded');
-    }, [id, prevId, setPrevId, setClassAttribute]);
+        handleClassAttribute('loaded');
+    }, [id, prevId, setPrevId, handleClassAttribute]);
 
     function onDelete() {
         setConfirm({ apply: true });

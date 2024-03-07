@@ -8,7 +8,7 @@ import { addContact, updateContact } from '../../../services/contactService.js';
 import { selectContactById } from '../catalog/catalogSlice.js';
 import './Form.scss';
 
-const Form = ({ title, btnName, resetId, onClose, classAttribute, setClassAttribute }) => {
+const Form = ({ title, btnName, resetId, onClose, classAttribute, handleClassAttribute }) => {
     const isEdit = title === 'Edit Contact';
     const [error, setError] = useState({ message: '' });
     const [reqStatus, setReqStatus] = useState('idle');
@@ -21,8 +21,8 @@ const Form = ({ title, btnName, resetId, onClose, classAttribute, setClassAttrib
     const [values, setValues] = useFormControl(person, isEdit);
 
     useEffect(() => {
-        setClassAttribute('loaded');
-    }, [setClassAttribute])
+        handleClassAttribute('loaded');
+    }, [handleClassAttribute])
 
     let canSave = Object.values(values).every(value => value.trim() !== '');
 
