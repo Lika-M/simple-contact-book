@@ -8,21 +8,22 @@ import { addContact, updateContact } from '../../../services/contactService.js';
 import { selectContactById } from '../catalog/catalogSlice.js';
 import './Form.scss';
 
-const Form = ({ title, btnName, resetId, onClose, classAttribute, setClassAttribute }) => {
-    const isEdit = title === 'Edit Contact';
+const Form = ({ title, btnName, onClose, classAttribute, handleClassAttribute }) => {
     const [error, setError] = useState({ message: '' });
     const [reqStatus, setReqStatus] = useState('idle');
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
     const { id } = useParams();
+    
+    const isEdit = title === 'Edit Contact';
     const person = useSelector((state) => selectContactById(state, id));
 
     const [values, setValues] = useFormControl(person, isEdit);
 
     useEffect(() => {
-        setClassAttribute('loaded');
-    }, [setClassAttribute])
+        handleClassAttribute('loaded');
+    }, [handleClassAttribute])
 
     let canSave = Object.values(values).every(value => value.trim() !== '');
 
@@ -61,7 +62,6 @@ const Form = ({ title, btnName, resetId, onClose, classAttribute, setClassAttrib
             } else if (!isEdit) {
                 setReqStatus('pending');
                 dispatch(addContact(person));
-                resetId();
                 navigate('/contacts');
             }
         } catch (err) {
@@ -98,14 +98,14 @@ const Form = ({ title, btnName, resetId, onClose, classAttribute, setClassAttrib
                     </div>
                     <div>
                         <label htmlFor="picture">Image:</label>
-                        <input id="picture" name="picture" type="text"
+                        <input id="picture" name="picture" type="url"
                             onChange={onChange}
                             value={values.picture || ''}
                         />
                     </div>
                     <div>
                         <label htmlFor="phone">Phone:</label>
-                        <input id="phone" name="phone" type="text"
+                        <input id="phone" name="phone" type="tel"
                             onChange={onChange}
                             value={values.phone || ''}
                         />

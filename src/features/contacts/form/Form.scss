@@ -21,7 +21,9 @@
         margin-right: 10px;
     }
 
-    input[type="text"] {
+    input[type="text"],
+    input[type="tel"],
+    input[type="url"] {
         //TODO add colors
         @include styled-input(4px, $color-primary, 14px);
     }
