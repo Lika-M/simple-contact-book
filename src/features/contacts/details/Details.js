@@ -8,7 +8,7 @@ import { removeContact } from '../../../services/contactService.js';
 import Modal from '../../../components/modal/Modal.js';
 import './Details.scss';
 
-const Details = ({ isLoading, resetId, classAttribute, handleClassAttribute, onClose }) => {
+const Details = ({ isLoading, classAttribute, handleClassAttribute, onClose }) => {
     const { id } = useParams();
     const [confirm, setConfirm] = useState({ apply: false });
     const [prevId, setPrevId] = useState(id);
@@ -33,7 +33,6 @@ const Details = ({ isLoading, resetId, classAttribute, handleClassAttribute, onC
         if (confirm.apply) {
             try {
                 dispatch(removeContact(person.objectId)).unwrap();
-                resetId(id);
                 navigate('/contacts');
             } catch (err) {
                 throw new Error(err.message);

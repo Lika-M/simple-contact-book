@@ -26,7 +26,6 @@ const Catalog = () => {
         setClassAttribute('');
     }, [setClassAttribute]);
     
-
     let content;
     let isLoading = false;
     if (status === 'loading') {
@@ -45,10 +44,6 @@ const Catalog = () => {
         setClassAttribute('loaded');
         setContactId(id);
         navigate(`/contacts/${id}`);
-    }
-
-    function resetId(id) {
-        setContactId(id);
     }
 
     function onClose() {
@@ -107,7 +102,6 @@ const Catalog = () => {
                                 element={<Details
                                     contactId={contactId}
                                     isLoading={isLoading}
-                                    resetId={resetId}
                                     classAttribute={classAttribute}
                                     handleClassAttribute={handleClassAttribute}
                                     onClose={onClose} />}
@@ -117,7 +111,6 @@ const Catalog = () => {
                                     btnName={'Save changes'}
                                     classAttribute={classAttribute}
                                     handleClassAttribute={handleClassAttribute}
-                                    resetId={resetId}
                                     onClose={onClose} />}
                             />
                             <Route path='add'
