@@ -53,13 +53,17 @@ button {
         min-height: 100vh;
         max-width: 500px;
     }
+
+    .btn a {
+        width: 270px;
+        margin-top: 35px;
+    }
 }
 
 @media (max-width: 500px) {
     .container {
         margin: 0 auto;
         border-radius: unset;
-        // overflow-y: scroll;
     }
 
     .book {
@@ -98,6 +102,48 @@ button {
             &-overlay {
                 @include overlay();
             }
+        }
+
+        .content-wrapper .person {
+
+            .image {
+
+                &:hover {
+                    transform: scale(1.4) translateX(5px);
+                }
+
+                &:hover~.name {
+                    transform: scale(0.7) translateX(-20px);
+                }
+            }
+
+            .name {
+                padding-left:5%;
+                h3 {
+                    font-size: 18px;
+                    margin: 0 0 5px 0;
+                }
+
+                svg {
+                    width: 10px;
+                }
+
+                p {
+                    font-size: 11px;
+                }
+
+                &:hover {
+                    transform: scale(1.2);
+                    padding: 25px 15px;
+                    top: -5px;
+                    right: -10px;
+            
+                }
+            }
+        }
+
+        .profile {
+            padding: 15px 20px;
         }
     }
 

@@ -97,21 +97,21 @@ const Form = ({ title, btnName, onClose, classAttribute, handleClassAttribute })
                     </div>
                     <div>
                         <label htmlFor="picture">Image:</label>
-                        <input id="picture" name="picture" type="text"
+                        <input id="picture" name="picture" type="url"
                             onChange={onChange}
                             value={values.picture || ''}
                         />
                     </div>
                     <div>
                         <label htmlFor="phone">Phone:</label>
-                        <input id="phone" name="phone" type="text"
+                        <input id="phone" name="phone" type="tel"
                             onChange={onChange}
                             value={values.phone || ''}
                         />
                     </div>
                     <div>
                         <label htmlFor="email">E-mail:</label>
-                        <input id="email" name="email" type="text"
+                        <input id="email" name="email" type="email"
                             onChange={onChange}
                             value={values.email || ''}
                         />

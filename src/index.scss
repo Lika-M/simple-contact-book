@@ -17,9 +17,9 @@ $color-light-blue: #779fda;
 
 $font-size-heading: 3em;
 $font-size-subtitle: 2.5em;
-$font-size-big: 1.3em;
+$font-size-big: 1.2em;
 $font-size-middle: 20px;
-$font-size-small: 14px;
+$font-size-small: 13px;
 $font-size-img: 5em;
 $font-size-footer: 1em;
 
@@ -133,7 +133,7 @@ $font-size-footer: 1em;
     @include footer-borders();
 }
 
-@mixin heading ($color: $color-secondary) {
+@mixin heading ($color: $color-primary) {
     color: $color;
     letter-spacing: .1rem;
     font-family: $font-headings;
