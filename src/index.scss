@@ -42,7 +42,7 @@ $font-size-footer: 1em;
     padding: 8px 30px;
     border-radius: 6px;
     cursor: pointer;
-    @include flex-layout();
+    
 }
 
 @mixin button-svg-x($color: $color-grey) {
@@ -214,6 +214,31 @@ $font-size-footer: 1em;
 
     100% {
         transform: scale(0.4) rotateY(40deg) rotateX(40deg) translate(200px, 200px);
+        opacity: 0;
+    }
+}
+
+@keyframes list-disappears {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    30% {
+        transform: scale(1.1) rotateY(-60deg) rotateX(-30deg);
+    }
+
+    50% {
+        transform: rotate(3deg) scale(1.1) translate(-10px, 50px);
+        opacity: 1;
+    }
+    70% {
+        transform: translate(-100px, -10px) scale(0.7);
+    }
+
+
+    100% {
+        transform: scale(0.4)  translate(-300px, 200px);
         opacity: 0;
     }
 }

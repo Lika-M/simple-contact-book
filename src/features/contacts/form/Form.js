@@ -8,7 +8,7 @@ import { addContact, updateContact } from '../../../services/contactService.js';
 import { selectContactById } from '../catalog/catalogSlice.js';
 import './Form.scss';
 
-const Form = ({ title, btnName, onClose, classAttribute, handleClassAttribute }) => {
+const Form = ({ title, btnName, onClose, handleClassAttribute }) => {
     const isEdit = title === 'Edit Contact';
     const [error, setError] = useState({ message: '' });
     const [reqStatus, setReqStatus] = useState('idle');
@@ -71,7 +71,7 @@ const Form = ({ title, btnName, onClose, classAttribute, handleClassAttribute })
     }
 
     return (
-         <div className={classAttribute}>
+         <div>
             {error.message &&
                 <p style={{ 'textAlign': 'center' }} >Error: {error.message}</p>}
             <h2>{title}

@@ -1,10 +1,19 @@
 @import '../../../index.scss';
 
 .book-details {
+    position: relative;
+
     .btn.add {
+        width: 210px;
         position: absolute;
-        left: 90px;
-        bottom: 65px;
+        left: 50%;
+        bottom: 10%;
+        transform: translate(-50%);
+        @include button-styles($color-card, $color-primary, 16px);
+
+        &:hover {
+            @include button-styles($color-primary, $color-card, 16px);
+        }
     }
 
     h2 {
@@ -15,8 +24,8 @@
         }
     }
 
-    .loaded,
-    .reloaded {
+    &.loaded,
+    &.reloaded {
         height: 100%;
         transform-origin: center bottom;
         transform: scale(0.01);
@@ -24,7 +33,7 @@
         animation: appears .8s ease-in-out 0.3s forwards;
     }
 
-    .closed {
+    &.closed {
         height: 100%;
         transform-origin: center bottom;
         transform: scale(1);
@@ -190,13 +199,13 @@
     }
 }
 
-.btn a {
-    @include button-styles ();
+// .btn a {
+//     @include button-styles ();
 
-    &:hover {
-        @include button-styles($color-primary, $color-card);
-    }
-}
+//     &:hover {
+//         @include button-styles($color-primary, $color-card);
+//     }
+// }
 
 .content-footer {
     @include card-footer;

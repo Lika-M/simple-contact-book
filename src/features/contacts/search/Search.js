@@ -37,12 +37,15 @@ const Search = ({ onClickContact, handleFocus, handleBlur }) => {
                     value={input}
                     onChange={onChange}
                     onFocus={handleFocus}
-                    onBlur={handleBlur}
+                    onBlur={() => {
+                        handleBlur();
+                        setInput('');
+                    }}
                 />
                 <button className="search-icon">
                     <MagnifyingGlassIcon />
                 </button>
-                <button className="close-btn" onClick={() => setInput('')}>
+                <button className="close-btn">
                     <XMarkIcon />
                 </button>
             </div>

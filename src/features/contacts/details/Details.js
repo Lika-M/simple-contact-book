@@ -8,7 +8,7 @@ import { removeContact } from '../../../services/contactService.js';
 import Modal from '../../../components/modal/Modal.js';
 import './Details.scss';
 
-const Details = ({ isLoading, classAttribute, handleClassAttribute, onClose }) => {
+const Details = ({ isLoading, handleClassAttribute, onClose, editContact }) => {
     const { id } = useParams();
     const [confirm, setConfirm] = useState({ apply: false });
     const [prevId, setPrevId] = useState(id);
@@ -45,7 +45,7 @@ const Details = ({ isLoading, classAttribute, handleClassAttribute, onClose }) =
     }
 
     return (
-            <div className={classAttribute}>
+            <div >
                 {!isLoading && <>
                     <h2>Person details
                         <span className="info-close-btn" onClick={onClose}>
@@ -70,9 +70,9 @@ const Details = ({ isLoading, classAttribute, handleClassAttribute, onClose }) =
                         </div>
                         <div className="content-details">
                             <div>
-                                <Link to={`/contacts/edit/${person.objectId}`} className="btn edit">
+                                <button onClick={() => editContact(person.objectId)} className="btn edit">
                                     <PencilIcon />
-                                </Link>
+                                </button>
                                 <button className="btn" onClick={onDelete}>
                                     <TrashIcon />
                                 </button>

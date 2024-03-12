@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate, Link, useLocation } from 'react-router-dom';
+import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -23,9 +23,9 @@ const Catalog = () => {
     const error = useSelector(getContactsError);
 
     useEffect(() => {
-        setClassAttribute('');
-    }, [setClassAttribute]);
-    
+        setClassAttribute('closed');
+    }, [setClassAttribute, contactId]);
+
     let content;
     let isLoading = false;
     if (status === 'loading') {
@@ -55,6 +55,19 @@ const Catalog = () => {
         }, 1100)
     }
 
+    function addNewContact() {
+        setClassAttribute('loaded');
+        setContactId('add');
+        navigate('/contacts/add');
+    }
+
+    function editContact(id){
+        setClassAttribute('');
+        navigate(`/contacts/edit/${id}`)
+    }
+
+    console.log(classAttribute)
+
     const handleFocus = () => {
         setHidden(false);
     };
@@ -69,24 +82,22 @@ const Catalog = () => {
 
     const noSelectedContact = (
         <>
-            <p style={{ 'textAlign': 'center' }} >Please select a contact to display</p>
+            <p className="book-details-msg">Please select a contact to display</p>
             <Search
                 handleFocus={handleFocus}
                 handleBlur={handleBlur}
                 onClickContact={onClickContact} />
-            <div className="btn add">
-                <Link to={'/contacts/add'}>Add new contact</Link>
-            </div>
+            <button className="btn add" onClick={addNewContact}>Add new contact</button>
         </>
     )
-    
+
     return (
         <>
             {isLoading && content}
             {!isLoading &&
                 <section className="book">
-                    <article className="book-list">
-                        <div className="book-list-content">
+                    <article className={contactId ? `book-list ${classAttribute}` : "book-list"}>
+                        <div className="book-content">
                             <h2>Contact list</h2>
                             <ContactList
                                 contacts={orderedContacts}
@@ -95,28 +106,26 @@ const Catalog = () => {
                             />
                         </div>
                         {!hidden && <div className="book-list-overlay" style={{ display: hidden ? 'none' : 'block' }}></div>}                    </article>
-                    <article className="book-details">
+                    <article className={!contactId ? "book-details" : `book-details ${classAttribute}`}>
                         <Routes>
                             <Route path='' element={noSelectedContact} />
                             <Route path=':id'
                                 element={<Details
                                     contactId={contactId}
                                     isLoading={isLoading}
-                                    classAttribute={classAttribute}
+                                    editContact={editContact}
                                     handleClassAttribute={handleClassAttribute}
                                     onClose={onClose} />}
                             />
                             <Route path='edit/:id'
                                 element={<Form title={'Edit Contact'}
                                     btnName={'Save changes'}
-                                    classAttribute={classAttribute}
                                     handleClassAttribute={handleClassAttribute}
                                     onClose={onClose} />}
                             />
                             <Route path='add'
                                 element={<Form title={'Add Contact'}
                                     btnName={'Save contact'}
-                                    classAttribute={classAttribute}
                                     handleClassAttribute={handleClassAttribute}
                                     onClose={onClose} />}
                             />
