@@ -8,7 +8,8 @@ import { addContact, updateContact } from '../../../services/contactService.js';
 import { selectContactById } from '../catalog/catalogSlice.js';
 import './Form.scss';
 
-const Form = ({ title, btnName, onClose, classAttribute, handleClassAttribute }) => {
+const Form = ({ title, btnName, onClose, handleClassAttribute }) => {
+    const isEdit = title === 'Edit Contact';
     const [error, setError] = useState({ message: '' });
     const [reqStatus, setReqStatus] = useState('idle');
 
@@ -16,7 +17,6 @@ const Form = ({ title, btnName, onClose, classAttribute, handleClassAttribute })
     const navigate = useNavigate();
     const { id } = useParams();
     
-    const isEdit = title === 'Edit Contact';
     const person = useSelector((state) => selectContactById(state, id));
 
     const [values, setValues] = useFormControl(person, isEdit);
@@ -72,7 +72,7 @@ const Form = ({ title, btnName, onClose, classAttribute, handleClassAttribute })
     }
 
     return (
-         <div className={classAttribute}>
+         <div>
             {error.message &&
                 <p style={{ 'textAlign': 'center' }} >Error: {error.message}</p>}
             <h2>{title}
@@ -112,7 +112,7 @@ const Form = ({ title, btnName, onClose, classAttribute, handleClassAttribute })
                     </div>
                     <div>
                         <label htmlFor="email">E-mail:</label>
-                        <input id="email" name="email" type="text"
+                        <input id="email" name="email" type="email"
                             onChange={onChange}
                             value={values.email || ''}
                         />

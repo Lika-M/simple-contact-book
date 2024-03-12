@@ -2,6 +2,7 @@
 
 .book {
     margin: 20px;
+    padding: 25px;
     overflow: hidden;
     background-color: $color-white;
     display: flex;
@@ -11,10 +12,14 @@
     &-list {
         flex-basis: 48%;
 
-        &-content {
+        .book-content {
             height: 100%;
             position: relative;
             bottom: 0;
+
+            h2 {
+                @include heading();
+            }
         }
 
         &-wrapper {
@@ -31,27 +36,9 @@
         flex-basis: 48%;
         position: relative;
 
-        // h2 {
-        // }
-
-        p {
+        .book-details-msg {
+            text-align: center;
             margin-bottom: 25px;
-        }
-    }
-}
-
-@media (max-width: 800px) {
-    .book {
-        flex-direction: column;
-
-        &-list,
-        &-details {
-            padding: 25px;
-            position: relative;
-        }
-
-        &-details .btn.add {
-            position: unset;
         }
     }
 }
