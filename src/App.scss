@@ -121,6 +121,7 @@ button {
         &-details {
             .closed {
                 position: absolute;
+                top:0;
                 opacity: 1;
                 transform-origin: center left;
                 animation: list-disappears .5s ease-in-out forwards;

@@ -22,10 +22,6 @@ const Catalog = () => {
     const status = useSelector(getContactsStatus);
     const error = useSelector(getContactsError);
 
-    useEffect(() => {
-        setClassAttribute('closed');
-    }, [setClassAttribute, contactId]);
-
     let content;
     let isLoading = false;
     if (status === 'loading') {

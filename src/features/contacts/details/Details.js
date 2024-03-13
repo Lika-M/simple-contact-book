@@ -16,11 +16,11 @@ const Details = ({ isLoading, handleClassAttribute, onClose, editContact }) => {
     const navigate = useNavigate();
     const person = useSelector((state) => selectContactById(state, id));
 
-    if (prevId !== id) {
-        handleClassAttribute('');
-    }
-
+    
     useEffect(() => {
+        if (prevId !== id) {
+            handleClassAttribute('');
+        }
         setPrevId(id);
         handleClassAttribute('loaded');
     }, [id, prevId, setPrevId, handleClassAttribute]);
