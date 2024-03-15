@@ -4,9 +4,11 @@ import { useSelector } from 'react-redux';
 import { selectAllContacts } from '../catalog/catalogSlice.js';
 import './Search.scss';
 
-const Search = ({ onClickContact, handleFocus, handleBlur }) => {
+const Search = ({ onClickContact, handleFocus, handleClose }) => {
     const contacts = useSelector(selectAllContacts);
     const [input, setInput] = useState('');
+
+    
 
     let selectedContacts = [];
     let hasScrollbar = false;
@@ -37,15 +39,14 @@ const Search = ({ onClickContact, handleFocus, handleBlur }) => {
                     value={input}
                     onChange={onChange}
                     onFocus={handleFocus}
-                    onBlur={() => {
-                        handleBlur();
-                        setInput('');
-                    }}
                 />
                 <button className="search-icon">
                     <MagnifyingGlassIcon />
                 </button>
-                <button className="close-btn">
+                <button className="close-btn" onClick={() => {
+                    handleClose();
+                    setInput('');
+                }}>
                     <XMarkIcon />
                 </button>
             </div>

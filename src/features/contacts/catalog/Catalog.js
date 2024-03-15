@@ -1,5 +1,5 @@
 import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 import { selectAllContacts, getContactsStatus, getContactsError } from './catalogSlice.js';
@@ -43,6 +43,7 @@ const Catalog = () => {
     }
 
     function onClose() {
+        handleClose();
         setClassAttribute('closed');
         navigate(`${location.pathname}`);
         setTimeout(() => {
@@ -57,7 +58,7 @@ const Catalog = () => {
         navigate('/contacts/add');
     }
 
-    function editContact(id){
+    function editContact(id) {
         setClassAttribute('');
         navigate(`/contacts/edit/${id}`)
     }
@@ -68,7 +69,7 @@ const Catalog = () => {
         setHidden(false);
     };
 
-    const handleBlur = () => {
+    const handleClose = () => {
         setHidden(true);
     };
 
@@ -81,7 +82,7 @@ const Catalog = () => {
             <p className="book-details-msg">Please select a contact to display</p>
             <Search
                 handleFocus={handleFocus}
-                handleBlur={handleBlur}
+                handleClose={handleClose}
                 onClickContact={onClickContact} />
             <button className="btn add" onClick={addNewContact}>Add new contact</button>
         </>
