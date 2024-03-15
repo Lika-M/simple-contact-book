@@ -43,7 +43,7 @@ const Form = ({ title, btnName, onClose, handleClassAttribute }) => {
         canSave = Object.values(data).every(Boolean) && reqStatus === 'idle';
 
         if (!canSave) {
-            return setError({ message: 'All fields are required!' });
+            return setError({ message: error.message });
         }
 
         const person = {
@@ -71,10 +71,18 @@ const Form = ({ title, btnName, onClose, handleClassAttribute }) => {
         }
     }
 
+    const resetInputField = (e) => {
+        setValues((state) => ({
+            ...state,
+            [e.target.name]: ''
+        }));
+        setReqStatus('idle');
+    }
+
     return (
-         <div>
+        <div>
             {error.message &&
-                <p style={{ 'textAlign': 'center' }} >Error: {error.message}</p>}
+                <p className="error">Error: {error.message}</p>}
             <h2>{title}
                 <span className="info-close-btn" onClick={onClose}>
                     <XMarkIcon />
@@ -87,6 +95,7 @@ const Form = ({ title, btnName, onClose, handleClassAttribute }) => {
                         <input id="firstName" name="firstName" type="text"
                             onChange={onChange}
                             value={values.firstName || ''}
+                            onFocus={resetInputField}
                         />
                     </div>
                     <div>
@@ -94,6 +103,7 @@ const Form = ({ title, btnName, onClose, handleClassAttribute }) => {
                         <input id="lastName" name="lastName" type="text"
                             onChange={onChange}
                             value={values.lastName || ''}
+                            onFocus={resetInputField}
                         />
                     </div>
                     <div>
@@ -101,6 +111,7 @@ const Form = ({ title, btnName, onClose, handleClassAttribute }) => {
                         <input id="picture" name="picture" type="url"
                             onChange={onChange}
                             value={values.picture || ''}
+                            onFocus={resetInputField}
                         />
                     </div>
                     <div>
@@ -108,6 +119,7 @@ const Form = ({ title, btnName, onClose, handleClassAttribute }) => {
                         <input id="phone" name="phone" type="tel"
                             onChange={onChange}
                             value={values.phone || ''}
+                            onFocus={resetInputField}
                         />
                     </div>
                     <div>
@@ -115,6 +127,7 @@ const Form = ({ title, btnName, onClose, handleClassAttribute }) => {
                         <input id="email" name="email" type="email"
                             onChange={onChange}
                             value={values.email || ''}
+                            onFocus={resetInputField}
                         />
                     </div>
                     <div className="btn" disabled={!canSave}>
@@ -123,7 +136,7 @@ const Form = ({ title, btnName, onClose, handleClassAttribute }) => {
                 </form>
             </div>
             <div className="content-footer"></div>
-            </div>
+        </div>
     )
 }
 

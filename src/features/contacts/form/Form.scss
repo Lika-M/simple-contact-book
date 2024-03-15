@@ -1,4 +1,12 @@
 @import '../../../index.scss';
+.error {
+    width: 100%;
+    text-align: center;
+    color: red;
+    position: absolute;
+    top: 9%;
+    left: 0;
+}
 
 .profile {
     padding: 15px 30px;
