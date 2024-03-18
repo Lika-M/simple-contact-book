@@ -6,12 +6,12 @@ $font-poppins: 'Poppins', sans-serif;
 $font-urbanist: 'Urbanist', sans-serif;
 $font-headings: 'Prompt', sans-serif;
 
-$color-primary: #6D2269;
-$color-secondary: #fdf6f4;
-$color-bgr: #FCFAEF;
-$color-card: #f8f1f1;
+$color-primary: #802990;
+$color-secondary: #f7f7f7;
+$color-bgr: #fbfbfb;
+$color-card: #F0E9FF;
 $color-white: #FFF;
-$color-grey: #EEE;
+$color-grey: #e4dde8;
 $color-mid-blue: #4d75b0;
 $color-light-blue: #779fda;
 
@@ -22,8 +22,6 @@ $font-size-middle: 20px;
 $font-size-small: 13px;
 $font-size-img: 5em;
 $font-size-footer: 1em;
-
-
 
 @mixin flex-layout {
     display: flex;
@@ -41,8 +39,7 @@ $font-size-footer: 1em;
     margin-top: 12px;
     padding: 8px 30px;
     border-radius: 6px;
-    cursor: pointer;
-    
+    cursor: pointer;   
 }
 
 @mixin button-svg-x($color: $color-grey) {
@@ -77,22 +74,20 @@ $font-size-footer: 1em;
             color: $color-white;
         }
     }
-
 }
 
 @mixin card-styles ($bgr-color: $color-white) {
     @include flex-layout();
     background-color: $bgr-color;
     justify-content: flex-start;
-    overflow: hidden;
     border-radius: 6px;
     position: relative;
     cursor: pointer;
+    box-shadow: inset 0px 1px 2px grey;
 }
 
 @mixin card-border($color: $color-primary, $px: 2px, $border-color: $color-grey) {
     box-shadow: inset 0 0 0 $px $color;
-
     border-radius: 6px;
 }
 
@@ -126,7 +121,8 @@ $font-size-footer: 1em;
     left: 0;
     right: 0;
     font-size: $font-size-small;
-    font-weight: 200;
+    font-family: $font-urbanist;
+    font-weight: 400;
     background-color: $bgr-color;
     color: $color;
     @include flex-layout();
@@ -222,7 +218,7 @@ $font-size-footer: 1em;
     0% {
         transform: scale(1);
         opacity: 1;
-        top:30%;
+        top: 30%;
     }
 
     30% {
@@ -233,14 +229,53 @@ $font-size-footer: 1em;
         transform: rotate(3deg) scale(1.1) translate(-10px, 50px);
         opacity: 0;
     }
+
     70% {
         transform: translate(-100px, -10px) scale(0.7);
     }
 
 
     100% {
-        transform: scale(0.4)  translate(-300px, 200px);
+        transform: scale(0.4) translate(-300px, 200px);
         opacity: 0;
-        top:80%;
+        top: 80%;
+    }
+}
+
+
+@keyframes unfold {
+    0% {
+        background-color: $color-secondary;
+        transform: scale(0.1);
+        opacity: 0;
+    }
+
+    60% {
+        color: red;
+        transform: scale(1.1);
+    }
+
+    90% {
+        transform: scale(1);
+        background-color: $color-bgr;
+    }
+
+    100% {
+        color: $color-primary;
+        background-color: $color-bgr;
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes load {
+
+    0% {
+        opacity: 0;
+       
+    }
+
+    100% {
+        opacity: 1;
     }
 }

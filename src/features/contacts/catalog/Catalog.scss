@@ -24,21 +24,37 @@
 
         &-wrapper {
             padding: 6px;
-            background-color: $color-secondary;
+            background-color: $color-card;
             display: flex;
             flex-direction: column;
             gap: 8px;
             @include side-borders();
+            
+            @for $i from 1 through 6 {
+                a {
+                    opacity: 0;
+                    &:nth-child(#{$i}) {
+                        animation-name: unfold;
+                        animation-duration: 400ms;
+                        animation-delay: (200ms * $i);
+                        animation-timing-function: ease-in-out;
+                        animation-fill-mode: forwards;
+                    }
+                }
+            }
         }
     }
 
     &-details {
         flex-basis: 48%;
         position: relative;
+        opacity: 0;
+        animation: load .5s ease-out .5s forwards;
 
         .book-details-msg {
             text-align: center;
             margin-bottom: 25px;
         }
+
     }
 }

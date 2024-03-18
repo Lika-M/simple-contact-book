@@ -1,7 +1,11 @@
 @import '../../../index.scss';
 
+a {
+    border-radius: 6px;
+}
 .contact {
     // Add bgr color
+   
     @include card-styles();
     transition: box-shadow .4s ease, transform .4s ease-in-out;
 
