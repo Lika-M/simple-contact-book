@@ -8,7 +8,6 @@ $font-headings: 'Prompt', sans-serif;
 
 $color-primary: #802990;
 $color-secondary: #f7f7f7;
-$color-bgr: #fbfbfb;
 $color-card: #F0E9FF;
 $color-white: #FFF;
 $color-grey: #e4dde8;
@@ -257,12 +256,12 @@ $font-size-footer: 1em;
 
     90% {
         transform: scale(1);
-        background-color: $color-bgr;
+        background-color: $color-grey;
     }
 
     100% {
         color: $color-primary;
-        background-color: $color-bgr;
+        background-color: $color-grey;
         transform: scale(1);
         opacity: 1;
     }
