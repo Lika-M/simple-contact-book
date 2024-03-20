@@ -1,5 +1,5 @@
 @import '../../index.scss';
 
 footer {
-  @include footer-styles($color-card, $color-primary);
+  @include footer-styles($color-secondary, $color-primary);
 }

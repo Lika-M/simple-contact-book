@@ -30,7 +30,7 @@
     }
 
     .btn {
-        @include button-styles($color-primary, $color-card, 16px);
+        @include button-styles($color-primary, $color-secondary, 16px);
         display: inline-block;
         width: 65px;
         padding: 8px 0;

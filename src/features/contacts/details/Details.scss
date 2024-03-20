@@ -9,10 +9,10 @@
         left: 50%;
         bottom: 10%;
         transform: translate(-50%);
-        @include button-styles($color-card, $color-primary, 16px);
+        @include button-styles($color-secondary, $color-primary, 16px);
 
         &:hover {
-            @include button-styles($color-primary, $color-card, 16px);
+            @include button-styles($color-primary, $color-secondary, 16px);
         }
     }
 
@@ -54,7 +54,7 @@
     @include side-borders;
 
     &-wrapper {
-        background-color: $color-card;
+        background-color: $color-secondary;
         display: flex;
         flex-direction: column;
         margin: 10px;
@@ -170,7 +170,7 @@
     }
 
     .btn {
-        background-color: $color-card;
+        background-color: $color-secondary;
         color: $color-primary;
         width: 40px;
         height: 40px;
@@ -198,14 +198,6 @@
         padding: 5px;
     }
 }
-
-// .btn a {
-//     @include button-styles ();
-
-//     &:hover {
-//         @include button-styles($color-primary, $color-card);
-//     }
-// }
 
 .content-footer {
     @include card-footer;

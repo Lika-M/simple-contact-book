@@ -7,9 +7,10 @@ $font-urbanist: 'Urbanist', sans-serif;
 $font-headings: 'Prompt', sans-serif;
 
 $color-primary: #802990;
-$color-secondary: #f7f7f7;
-$color-card: #F0E9FF;
+$color-secondary: #F0E9FF;
+
 $color-white: #FFF;
+$color-light-grey: #f7f7f7;
 $color-grey: #e4dde8;
 $color-mid-blue: #4d75b0;
 $color-light-blue: #779fda;
@@ -28,7 +29,7 @@ $font-size-footer: 1em;
     align-items: center;
 }
 
-@mixin button-styles ($bgr-color: $color-card, $color: $color-primary, $fn-sz: 18px) {
+@mixin button-styles ($bgr-color: $color-secondary, $color: $color-primary, $fn-sz: 18px) {
     background-color: $bgr-color;
     color: $color;
     font-size: $fn-sz;
@@ -51,10 +52,10 @@ $font-size-footer: 1em;
     cursor: pointer;
 }
 
-@mixin button-pagination ($bgr-color: $color-secondary, $color: $color-primary) {
+@mixin button-pagination ($bgr-color: $color-light-grey, $color: $color-primary) {
     width: 60px;
     height: 25px;
-    background-color: $color-card;
+    background-color: $color-secondary;
     font-weight: bold;
     border-radius: 4px;
     vertical-align: middle;
@@ -113,7 +114,7 @@ $font-size-footer: 1em;
     border-left: $px solid $border-color;
 }
 
-@mixin footer-styles($bgr-color: $color-white, $color: $color-secondary) {
+@mixin footer-styles($bgr-color: $color-white, $color: $color-light-grey) {
     padding: .6em;
     position: absolute;
     bottom: 0;
@@ -244,7 +245,7 @@ $font-size-footer: 1em;
 
 @keyframes unfold {
     0% {
-        background-color: $color-secondary;
+        background-color: $color-light-grey;
         transform: scale(0.1);
         opacity: 0;
     }
@@ -256,12 +257,11 @@ $font-size-footer: 1em;
 
     90% {
         transform: scale(1);
-        background-color: $color-grey;
     }
 
     100% {
         color: $color-primary;
-        background-color: $color-grey;
+        background-color: $color-light-grey;
         transform: scale(1);
         opacity: 1;
     }

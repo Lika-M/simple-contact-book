@@ -49,10 +49,10 @@
 }
 
 .btn input[type="submit"] {
-    @include button-styles($color-card, $color-primary, 16px);
+    @include button-styles($color-secondary, $color-primary, 16px);
     border: none;
 
     &:hover {
-        @include button-styles($color-primary, $color-card, 16px);
+        @include button-styles($color-primary, $color-secondary, 16px);
     }
 }
