@@ -1,4 +1,4 @@
-@import '../../../index.scss';
+@import '../../../scss/index.scss';
 .error {
     width: 100%;
     text-align: center;
@@ -18,7 +18,7 @@
         justify-content:space-between;
 
         &:last-child {
-            margin: 20px auto 0 auto
+            margin: 12px auto 0 auto
         }
     }
 
@@ -49,10 +49,6 @@
 }
 
 .btn input[type="submit"] {
-    @include button-styles($color-secondary, $color-primary, 16px);
+    @include button-styles($scheme-default...);
     border: none;
-
-    &:hover {
-        @include button-styles($color-primary, $color-secondary, 16px);
-    }
 }

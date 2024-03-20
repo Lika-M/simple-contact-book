@@ -7,7 +7,7 @@ import Footer from './components/footer/Footer.js';
 import Catalog from './features/contacts/catalog/Catalog.js';
 import ErrorBoundary from './app/ErrorBoundary.js';
 
-import './App.scss';
+import './scss/App.scss';
 
 function App() {
   return (

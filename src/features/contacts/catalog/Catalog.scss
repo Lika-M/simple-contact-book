@@ -1,4 +1,4 @@
-@import '../../../index.scss';
+@import '../../../scss';
 
 .book {
     margin: 20px;
@@ -17,8 +17,9 @@
             position: relative;
             bottom: 0;
 
+            //add colors
             h2 {
-                @include heading();
+                @include heading($color-primary);
             }
         }
 
@@ -29,10 +30,11 @@
             flex-direction: column;
             gap: 8px;
             @include side-borders();
-            
+
             @for $i from 1 through 6 {
                 a {
                     opacity: 0;
+
                     &:nth-child(#{$i}) {
                         animation-name: unfold;
                         animation-duration: 400ms;
@@ -56,5 +58,8 @@
             margin-bottom: 25px;
         }
 
+        p {
+            color: $color-primary;
+        }
     }
 }

@@ -1,4 +1,4 @@
-@import '../../../index.scss';
+@import '../../../scss/index.scss';
 
 .book-details {
     position: relative;
@@ -9,15 +9,11 @@
         left: 50%;
         bottom: 10%;
         transform: translate(-50%);
-        @include button-styles($color-secondary, $color-primary, 16px);
-
-        &:hover {
-            @include button-styles($color-primary, $color-secondary, 16px);
-        }
+        @include button-styles($scheme-default...);
     }
-
+// add colors
     h2 {
-        @include heading();
+        @include heading($color-primary);
 
         svg {
             @include button-svg-x;
@@ -97,6 +93,7 @@
             right: 0;
 
             h3 {
+                color: $color-primary;
                 font-size: $font-size-big;
                 font-weight: bold;
                 margin: 0 0 5px 0;
@@ -126,6 +123,7 @@
             margin-top: 8px;
 
             p {
+                color: $color-primary;
                 width: 100%;
                 display: flex;
                 font-size: $font-size-small;
@@ -145,7 +143,7 @@
 
 
 .content-details {
-    margin: 10px auto;
+    margin: 6px auto;
 
     p {
         margin: 5px;

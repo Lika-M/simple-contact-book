@@ -1,39 +1,6 @@
 @import './index.scss';
-
-// reset css
-* {
-    box-sizing: border-box;
-}
-
-h1,
-h2 {
-    @include heading($color: $color-primary);
-}
-
-h3,
-label,
-li,
-p,
-a {
-    font-size: 16px;
-    font-weight: 400;
-    color: $color-primary;
-    font-family: $font-poppins;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-}
-
-a,
-span,
-button {
-    text-decoration: none;
-    border: none;
-    margin: 0;
-    padding: 0;
-}
+@import 'reset.scss';
+@import 'main.scss';
 
 .container {
     border-radius: 12px;

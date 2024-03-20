@@ -1,4 +1,4 @@
-@import '../../../index.scss';
+@import '../../../scss/index.scss';
 
 .search {
     width: 75%;
@@ -42,7 +42,7 @@
         margin: 5px 0;
         list-style: none;
         width: 100%;
-        border: 1px solid $color-secondary;
+        border: 1px solid $color-light-grey;
         overflow: hidden;
         border-bottom-left-radius: 6px;
         border-bottom-right-radius: 6px;

@@ -1,27 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,800;0,900;1,400;1,600;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-$font-poppins: 'Poppins', sans-serif;
-$font-urbanist: 'Urbanist', sans-serif;
-$font-headings: 'Prompt', sans-serif;
-
-$color-primary: #802990;
-$color-secondary: #F0E9FF;
-
-$color-white: #FFF;
-$color-light-grey: #f7f7f7;
-$color-grey: #e4dde8;
-$color-mid-blue: #4d75b0;
-$color-light-blue: #779fda;
-
-$font-size-heading: 3em;
-$font-size-subtitle: 2.5em;
-$font-size-big: 1.2em;
-$font-size-middle: 20px;
-$font-size-small: 13px;
-$font-size-img: 5em;
-$font-size-footer: 1em;
+@import 'main.scss';
 
 @mixin flex-layout {
     display: flex;
@@ -29,17 +6,22 @@ $font-size-footer: 1em;
     align-items: center;
 }
 
-@mixin button-styles ($bgr-color: $color-secondary, $color: $color-primary, $fn-sz: 18px) {
-    background-color: $bgr-color;
-    color: $color;
-    font-size: $fn-sz;
+@mixin button-styles ($scheme-default...) {
+    background-color: $color-secondary;
+    color: $color-primary;
+    font-size: 16px;
     margin: 0 auto;
     font-weight: 800;
     box-shadow: 0px 1px 4px darkgray;
     margin-top: 12px;
     padding: 8px 30px;
     border-radius: 6px;
-    cursor: pointer;   
+    cursor: pointer;
+
+    &:hover {
+        background-color: $color-primary;
+        color: $color-secondary;
+    }
 }
 
 @mixin button-svg-x($color: $color-grey) {
@@ -52,7 +34,7 @@ $font-size-footer: 1em;
     cursor: pointer;
 }
 
-@mixin button-pagination ($bgr-color: $color-light-grey, $color: $color-primary) {
+@mixin button-pagination ($scheme-default...) {
     width: 60px;
     height: 25px;
     background-color: $color-secondary;
@@ -63,7 +45,7 @@ $font-size-footer: 1em;
     cursor: pointer;
 
     svg {
-        color: $color;
+        color: $color-primary;
         width: 45%;
     }
 
@@ -71,7 +53,7 @@ $font-size-footer: 1em;
         background-color: $color-primary;
 
         svg {
-            color: $color-white;
+            color: $color-secondary;
         }
     }
 }
@@ -271,7 +253,7 @@ $font-size-footer: 1em;
 
     0% {
         opacity: 0;
-       
+
     }
 
     100% {
