@@ -10,16 +10,12 @@
     transform: translateX(-50%);
 
     &-btn {
-       @include button-pagination();
+        @include button-pagination($color-light-grey, $color-primary);
 
         span {
             width: 100%;
             display: inline-block;
             vertical-align: middle;
-
-            
         }
-
-
     }
 }

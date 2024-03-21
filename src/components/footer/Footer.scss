@@ -1,5 +1,5 @@
 @import '../../scss/index.scss';
 
 footer {
-  @include footer-styles($scheme-default...);
+  @include footer-styles($color-dark-grey);
 }

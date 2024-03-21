@@ -9,9 +9,9 @@
         left: 50%;
         bottom: 10%;
         transform: translate(-50%);
-        @include button-styles($scheme-default...);
+        @include button-styles($color-secondary, $color-primary);
     }
-// add colors
+
     h2 {
         @include heading($color-primary);
 
@@ -123,7 +123,6 @@
             margin-top: 8px;
 
             p {
-                color: $color-primary;
                 width: 100%;
                 display: flex;
                 font-size: $font-size-small;
@@ -138,62 +137,59 @@
         width: 20px;
         margin-right: 4px;
     }
-}
 
+    &-details {
+        margin: 6px auto;
 
-
-.content-details {
-    margin: 6px auto;
-
-    p {
-        margin: 5px;
-        display: flex;
-        align-items: center;
-    }
-
-    svg {
-        width: 15px;
-    }
-
-    a {
-        text-decoration: none;
-    }
-
-    div {
-        min-width: 250px;
-        margin-block: 14px;
-        display: flex;
-        justify-content: center;
-        gap: 5%;
-    }
-
-    .btn {
-        background-color: $color-secondary;
-        color: $color-primary;
-        width: 40px;
-        height: 40px;
-        font-size: 14px;
-        border: none;
-        position: relative;
-        box-shadow: 0px 1px 4px darkgrey;
-        border-radius: 3px;
-        cursor: pointer;
-
-        &:hover {
-            background-color: $color-primary;
-            color: $color-white;
-
-
+        p {
+            color: $color-primary;
+            margin: 5px;
+            display: flex;
+            align-items: center;
         }
-    }
 
-    .btn svg {
-        width: 40px;
-        padding: 3px;
-    }
+        svg {
+            width: 15px;
+        }
 
-    .btn.edit svg {
-        padding: 5px;
+        a {
+            text-decoration: none;
+        }
+
+        div {
+            min-width: 250px;
+            margin-block: 14px;
+            display: flex;
+            justify-content: center;
+            gap: 5%;
+        }
+
+        .btn.edit, .btn.delete {
+            background-color: $color-secondary;
+            color: $color-primary;
+            width: 40px;
+            height: 40px;
+            font-size: 14px;
+            border: none;
+            position: relative;
+            box-shadow: 0px 1px 4px darkgrey;
+            border-radius: 3px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $color-primary;
+                color: $color-white;
+            }
+        }
+
+        .btn svg {
+            width: 40px;
+            padding: 3px;
+        }
+
+        .btn.edit svg {
+            padding: 5px;
+        }
     }
 }
 

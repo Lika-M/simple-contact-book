@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useNavigate} from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import { useFormControl } from './useFormControl.js';
 import { addContact, updateContact } from '../../../services/contactService.js';
@@ -16,7 +16,7 @@ const Form = ({ title, btnName, onClose, handleClassAttribute }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { id } = useParams();
-    
+
     const person = useSelector((state) => selectContactById(state, id));
 
     const [values, setValues] = useFormControl(person, isEdit);
@@ -80,7 +80,7 @@ const Form = ({ title, btnName, onClose, handleClassAttribute }) => {
     }
 
     return (
-        <div>
+        <div className="form">
             {error.message &&
                 <p className="error">Error: {error.message}</p>}
             <h2>{title}
@@ -130,9 +130,9 @@ const Form = ({ title, btnName, onClose, handleClassAttribute }) => {
                             onFocus={resetInputField}
                         />
                     </div>
-                    <div className="btn" disabled={!canSave}>
-                        <input type="submit" value={btnName} />
-                    </div>
+                    {/* <div > */}
+                    <input type="submit" value={btnName} className="btn" disabled={!canSave} />
+                    {/* </div> */}
                 </form>
             </div>
             <div className="content-footer"></div>

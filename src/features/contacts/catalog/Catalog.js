@@ -92,7 +92,7 @@ const Catalog = () => {
         <>
             {isLoading && content}
             {!isLoading &&
-                <section className="book">
+                <section className="book orange">
                     <article className={contactId ? `book-list ${classAttribute}` : "book-list"}>
                         <div className="book-content">
                             <h2>Contact list</h2>

@@ -18,10 +18,12 @@
         background-color: $color-light-grey;
         border-radius: 8px;
         position: relative;
+        bottom: -10px;
         z-index: 2;
         margin: 125px auto 20px auto;
+        box-shadow: 0px 1px 4px darkgray;
     }
-    
+
     &-txt {
         padding: 20px 0 6px 0;
         color: $color-primary;
@@ -30,24 +32,36 @@
     }
 
     .btn {
-        @include button-styles($scheme-default...);
+        @include button-styles($color-secondary, $color-primary);
         display: inline-block;
         width: 65px;
         padding: 8px 0;
         margin-inline: 10px;
     }
-    
+
     &-accept.btn {
-        background-color: $color-primary;
-        color: $color-white
+        background-color: $color-white;
+        color: $color-primary;
+
+        &:hover {
+            background-color: $color-secondary;
+            color: $color-primary;
+        }
     }
 
     &-deny.btn {
-        background-color: $color-white;
-        color: $color-primary;
+        background-color: $color-primary;
+        color: $color-white;
+
+        &:hover {
+            &:hover {
+                background-color: $color-secondary;
+                color: $color-primary;
+            }
+        }
     }
 
     &-overlay {
-       @include overlay;
+        @include overlay($color-primary);
     }
 }

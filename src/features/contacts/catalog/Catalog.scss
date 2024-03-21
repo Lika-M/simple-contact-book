@@ -17,7 +17,6 @@
             position: relative;
             bottom: 0;
 
-            //add colors
             h2 {
                 @include heading($color-primary);
             }
@@ -28,7 +27,7 @@
             background-color: $color-secondary;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
             @include side-borders();
 
             @for $i from 1 through 6 {
@@ -62,4 +61,6 @@
             color: $color-primary;
         }
     }
+
 }
+

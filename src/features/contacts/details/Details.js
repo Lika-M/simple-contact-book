@@ -73,7 +73,7 @@ const Details = ({ isLoading, handleClassAttribute, onClose, editContact }) => {
                                 <button onClick={() => editContact(person.objectId)} className="btn edit">
                                     <PencilIcon />
                                 </button>
-                                <button className="btn" onClick={onDelete}>
+                                <button className="btn delete" onClick={onDelete}>
                                     <TrashIcon />
                                 </button>
                             </div>

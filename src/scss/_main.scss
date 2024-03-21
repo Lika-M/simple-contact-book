@@ -9,11 +9,15 @@ $font-headings: 'Prompt', sans-serif;
 $color-primary: #802990;
 $color-secondary: #F0E9FF;
 
+$color-primary-orange: orange;
+$color-secondary-orange:rgb(249, 243, 167);
+
 $color-white: #FFF;
 $color-light-grey: #f7f7f7;
+$color-dark-grey:#737373;
 $color-grey: #e4dde8;
 $color-mid-blue: #4d75b0;
-$color-light-blue: #779fda;
+$color-light-blue:#d1def2;
 
 $font-size-heading: 3em;
 $font-size-subtitle: 2.5em;
@@ -22,6 +26,3 @@ $font-size-middle: 20px;
 $font-size-small: 13px;
 $font-size-img: 5em;
 $font-size-footer: 1em;
-
-$scheme-default: $color-secondary, $color-primary;
-

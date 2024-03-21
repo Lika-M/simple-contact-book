@@ -1,54 +1,58 @@
 @import '../../../scss/index.scss';
-.error {
-    width: 100%;
-    text-align: center;
-    color: red;
-    position: absolute;
-    top: 9%;
-    left: 0;
-}
 
-.profile {
-    padding: 15px 30px;
-
-    div {
+.form {
+    .error {
         width: 100%;
-        margin: 12px auto;
-        display: flex;
-        justify-content:space-between;
+        text-align: center;
+        color: red;
+        position: absolute;
+        top: 9%;
+        left: 0;
+    }
 
-        &:last-child {
-            margin: 12px auto 0 auto
+    .profile {
+        padding: 15px 30px;
+
+        div {
+            width: 100%;
+            margin: 12px auto;
+            display: flex;
+            justify-content: space-between;
+
+            &:last-child {
+                margin: 12px auto 0 auto
+            }
+        }
+
+        label {
+            flex-basis: 32%;
+            color: $color-primary;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="url"],
+        input[type="tel"],
+        input[type="email"] {
+            max-width: 180px;
+            flex-basis: 68%;
+            @include styled-input(4px, $color-primary, 14px);
+        }
+
+        .btn[disabled] {
+            opacity: 0.5;
+        }
+
+        .btn[disabled] input {
+            cursor: auto;
+        }
+
+        .btn input[type="submit"] {
+            @include button-styles($color-secondary, $color-primary);
+            margin: 20px auto 1px auto;
+            display: block;
+            border: none;
         }
     }
-
-    label {
-        flex-basis: 32%;
-        font-family: $font-poppins;
-        color: $color-primary;
-        display: block;
-    }
-
-    input[type="text"],
-    input[type="url"],
-    input[type="tel"],
-    input[type="email"]  {
-        //TODO add colors
-        max-width: 180px;
-        flex-basis: 68%;
-        @include styled-input(4px, $color-primary, 14px);
-    }
-
-    .btn[disabled] {
-        opacity: 0.5;
-    }
-
-    .btn[disabled] input {
-        cursor: auto;
-    }
 }
 
-.btn input[type="submit"] {
-    @include button-styles($scheme-default...);
-    border: none;
-}
