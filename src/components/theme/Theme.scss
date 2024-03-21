@@ -1,0 +1,23 @@
+@import '../../scss/index.scss';
+
+.container .theme {
+  width: fit-content;
+  position: absolute;
+  bottom: 0px;
+  right: 20px;
+  padding: 8px;
+
+  .visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+  }
+
+  input {
+    cursor: pointer;
+  }
+}

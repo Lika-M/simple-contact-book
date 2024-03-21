@@ -20,9 +20,9 @@ function App() {
             <Route path='/' element={<Navigate to={'/contacts'} />} />
             <Route path='/contacts/*' element={<Catalog />} />
           </Routes>
+          <Footer />
         </ThemeProvider>
       </ErrorBoundary>
-      <Footer />
     </div>
   );
 }

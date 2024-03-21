@@ -1,5 +1,8 @@
 @import '../../scss/index.scss';
 
-footer {
-  @include footer-styles($color-dark-grey);
+.container .footer {
+
+  footer {
+    @include footer-styles($color-dark-grey);
+  }
 }
