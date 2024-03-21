@@ -1,5 +1,5 @@
 import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useContext, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import { selectAllContacts, getContactsStatus, getContactsError } from './catalogSlice.js';
@@ -9,6 +9,9 @@ import Form from '../form/Form.js';
 import Preloader from '../../../components/preloader/Preloader.js';
 import PageNotFound from '../../../components/pageNotFound/PageNotFound.js';
 import Search from '../search/Search.js';
+
+import { ThemeContext } from '../../../contexts/ThemeContext.js';
+
 import './Catalog.scss';
 
 const Catalog = () => {
@@ -21,6 +24,12 @@ const Catalog = () => {
     const contacts = useSelector(selectAllContacts);
     const status = useSelector(getContactsStatus);
     const error = useSelector(getContactsError);
+
+    const { theme, saveTheme } = useContext(ThemeContext);
+
+    useEffect(() => {
+        saveTheme(theme);
+    }, [theme, saveTheme])
 
     let content;
     let isLoading = false;
@@ -63,8 +72,6 @@ const Catalog = () => {
         navigate(`/contacts/edit/${id}`)
     }
 
-    console.log(classAttribute)
-
     const handleFocus = () => {
         setHidden(false);
     };
@@ -92,7 +99,7 @@ const Catalog = () => {
         <>
             {isLoading && content}
             {!isLoading &&
-                <section className="book orange">
+                <section className={`book ${theme}`}>
                     <article className={contactId ? `book-list ${classAttribute}` : "book-list"}>
                         <div className="book-content">
                             <h2>Contact list</h2>

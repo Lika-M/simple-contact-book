@@ -47,7 +47,7 @@
             cursor: auto;
         }
 
-        .btn input[type="submit"] {
+        input[type="submit"] {
             @include button-styles($color-secondary, $color-primary);
             margin: 20px auto 1px auto;
             display: block;

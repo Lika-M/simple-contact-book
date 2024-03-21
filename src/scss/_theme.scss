@@ -97,8 +97,6 @@
         input[type="submit"] {
             @include button-styles($color-secondary-orange, $color-primary-orange);
             margin: 20px auto 1px auto;
-            display: block;
-            border: none;
         }
     }
 
