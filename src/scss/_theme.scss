@@ -1,0 +1,134 @@
+.book.orange {
+
+    .book-list {
+        .book-content h2 {
+            @include heading($color-primary-orange);
+        }
+
+        &-wrapper {
+            background-color: $color-secondary-orange;
+        }
+    }
+
+    .book-details {
+        .btn.add {
+            @include button-styles($color-secondary-orange, $color-primary-orange);
+        }
+
+        h2 {
+            @include heading($color-primary-orange);
+        }
+
+        .content-wrapper {
+            background-color: $color-secondary-orange;
+        }
+
+        .name h3 {
+            color: $color-primary-orange;
+        }
+
+        p {
+            color: $color-primary-orange;
+        }
+
+        .btn.edit,
+        .btn.delete {
+            background-color: $color-secondary-orange;
+            color: $color-primary-orange;
+
+            &:hover {
+                background-color: $color-primary-orange;
+                color: $color-secondary-orange;
+            }
+        }
+    }
+
+    .pagination-btn {
+        @include button-pagination($color-light-blue, $color-primary-orange);
+    }
+
+    .contact {
+        h3 {
+            color: $color-primary-orange;
+        }
+
+        &.selected {
+            box-shadow: inset 0 0 0 2px $color-primary-orange;
+        }
+
+        &:hover {
+            @include card-border($color: $color-primary-orange);
+        }
+    }
+
+    .search {
+
+        div .search-icon,
+        .close-btn {
+            svg {
+                color: $color-primary-orange;
+            }
+        }
+
+        input {
+            @include styled-input(8px, $color-primary-orange, 14px, 95%);
+        }
+    }
+
+    .result ul li {
+        color: $color-primary-orange;
+    }
+
+    .form {
+        label {
+            color: $color-primary-orange;
+        }
+
+        .profile {
+
+            input[type="text"],
+            input[type="url"],
+            input[type="tel"],
+            input[type="email"] {
+                @include styled-input(4px, $color-primary-orange, 14px);
+            }
+        }
+
+        input[type="submit"] {
+            @include button-styles($color-secondary-orange, $color-primary-orange);
+            margin: 20px auto 1px auto;
+            display: block;
+            border: none;
+        }
+    }
+
+    .modal {
+        &-txt {
+            color: $color-primary-orange;
+        }
+    
+        &-accept.btn {
+            color: $color-primary-orange;
+    
+            &:hover {
+                background-color: $color-secondary-orange;
+                color: $color-primary-orange
+            }
+        }
+    
+        &-deny.btn {
+            background-color: $color-primary-orange;
+    
+            &:hover {
+                &:hover {
+                    background-color: $color-secondary-orange;
+                    color: $color-primary-orange;
+                }
+            }
+        }
+    
+        &-overlay {
+            @include overlay($color-primary-orange);
+        }
+    }
+}

@@ -1,0 +1,259 @@
+@mixin flex-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin button-styles ($bgr-color: $color-secondary, $color: $color-primary) {
+    background-color: $bgr-color;
+    color: $color;
+    font-size: 16px;
+    margin: 0 auto;
+    font-weight: 800;
+    box-shadow: 0px 1px 4px darkgray;
+    margin-top: 12px;
+    padding: 8px 30px;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $color;
+        color: $bgr-color;
+    }
+}
+
+@mixin button-svg-x($color: $color-grey) {
+    color: $color;
+    width: 35px;
+    font-weight: bold;
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    cursor: pointer;
+}
+
+@mixin button-pagination ($bgr-color: $color-light-grey, $color: $color-primary) {
+    width: 60px;
+    height: 25px;
+    background-color: $bgr-color;
+    font-weight: bold;
+    border-radius: 4px;
+    vertical-align: middle;
+    box-shadow: 0px 1px 2px darkgrey;
+    cursor: pointer;
+
+    svg {
+        color: $color;
+        width: 45%;
+    }
+
+    &:hover {
+        background-color: $color;
+
+        svg {
+            color: $color-white;
+        }
+    }
+}
+
+@mixin card-styles ($bgr-color: $color-white) {
+    @include flex-layout();
+    background-color: $bgr-color;
+    justify-content: flex-start;
+    border-radius: 6px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: inset 0px 1px 2px grey;
+}
+
+@mixin card-border($color: $color-primary, $px: 2px, $border-color: $color-grey) {
+    box-shadow: inset 0 0 0 $px $color;
+    border-radius: 6px;
+}
+
+@mixin card-footer($bgr-color: $color-white, $color: $color-grey, $border-color: $color-grey) {
+    height: 44px;
+    color: $color;
+    @include footer-borders($border-color);
+}
+
+@mixin header-borders ($border-color: $color-grey, $px: 2px) {
+    border: $px solid $border-color;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+@mixin footer-borders ($border-color: $color-grey, $px: 2px) {
+    border: $px solid $border-color;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+@mixin side-borders ($border-color: $color-grey, $px: 2px) {
+    border-right: $px solid $border-color;
+    border-left: $px solid $border-color;
+}
+
+@mixin footer-styles($color: $color-primary) {
+    padding: .8em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: $font-size-small;
+    font-family: $font-urbanist;
+    font-weight: 400;
+    background-color: #ECF0F1;
+    color: $color;
+    @include flex-layout();
+    @include footer-borders();
+}
+
+@mixin heading ($color: $color-primary) {
+    color: $color;
+    letter-spacing: .1rem;
+    font-family: $font-headings;
+    text-align: center;
+    margin: 0;
+    padding: 0.25em 1em 0.25em 1em;
+    @include header-borders();
+}
+
+@mixin styled-input ($hight: 3px, $color: $color-primary,
+    $fn-sz: $font-size-small, $width: 50%) {
+    color: $color-dark-grey;
+    width: $width;
+    font-family: $font-poppins;
+    font-size: $fn-sz;
+    padding: $hight;
+    border-color: #EEE;
+    border-width: 1px;
+    border: none;
+    box-shadow: inset 0px 1px 3px $color;
+}
+
+@mixin overlay ($color) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient($color-light-grey, $color);
+    opacity: .8;
+    z-index: 0;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+@keyframes appears {
+
+    0% {
+        transform: scale(0.1) rotateY(40deg) rotateX(40deg) translate(-200px);
+        opacity: 0;
+    }
+
+    50% {
+        transform: rotateY(-20deg) rotateX(-30deg);
+    }
+
+    70% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    90% {
+        transform: rotate(3deg);
+    }
+
+    100% {
+        transform: scale(1) translate(0);
+        opacity: 1;
+    }
+}
+
+@keyframes disappears {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    30% {
+        transform: scale(1.1) rotateY(-60deg) rotateX(-30deg);
+    }
+
+    70% {
+        transform: translate(-30px, -40px) scale(1.1);
+    }
+
+    90% {
+        transform: rotate(3deg) translate(50px, 10px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.4) rotateY(40deg) rotateX(40deg) translate(200px, 200px);
+        opacity: 0;
+    }
+}
+
+@keyframes list-disappears {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+        top: 30%;
+    }
+
+    30% {
+        transform: scale(1.1) rotateY(-60deg) rotateX(-30deg);
+    }
+
+    50% {
+        transform: rotate(3deg) scale(1.1) translate(-10px, 50px);
+        opacity: 0;
+    }
+
+    70% {
+        transform: translate(-100px, -10px) scale(0.7);
+    }
+
+    100% {
+        transform: scale(0.4) translate(-300px, 200px);
+        opacity: 0;
+        top: 80%;
+    }
+}
+
+
+@keyframes unfold {
+    0% {
+        background-color: $color-light-grey;
+        transform: scale(0.1);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.1);
+    }
+
+    90% {
+        transform: scale(1);
+    }
+
+    100% {
+        background-color: $color-light-grey;
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes load {
+
+    0% {
+        opacity: 0;
+
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
