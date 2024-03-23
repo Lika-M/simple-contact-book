@@ -95,7 +95,7 @@
 }
 
 @mixin footer-styles($color: $color-primary) {
-    padding: .8em;
+    padding: 1.2em;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -106,7 +106,6 @@
     background-color: #ECF0F1;
     color: $color;
     @include flex-layout();
-    @include footer-borders();
 }
 
 @mixin heading ($color: $color-primary) {
@@ -143,6 +142,17 @@
     z-index: 0;
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
+}
+
+@mixin theme-radio-button($color) {
+    outline-color: $color;
+    background-color: $color;
+
+    &:checked {
+        width: 12px;
+        height: 12px;
+        outline-offset: 5px;
+    }
 }
 
 @keyframes appears {

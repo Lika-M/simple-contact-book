@@ -3,8 +3,8 @@
         min-height: 100vh;
         max-width: 500px;
     }
-    
-    .book{
+
+    .book {
         flex-direction: column;
 
         .book {
@@ -86,7 +86,13 @@
             }
         }
     }
-   
+
+    .container .footer .theme {
+        input[type=radio] {
+            margin-inline: 10px;
+        }
+    }
+
 }
 
 @media (max-width: 500px) {
@@ -95,56 +101,60 @@
         margin: 0 auto;
         border-radius: unset;
     }
+
     .book {
+        margin: 0;
+        display: block;
 
-        .book {
-            margin: 0;
-            display: block;
+        .content-wrapper .person {
 
-            .content-wrapper .person {
-
-                .image {
-                    &:hover {
-                        transform: scale(1.4) translateX(5px);
-                    }
-
-                    &:hover~.name {
-                        transform: scale(0.7) translateX(-20px);
-                    }
+            .image {
+                &:hover {
+                    transform: scale(1.4) translateX(5px);
                 }
 
-                .name {
-                    padding-left: 5%;
-
-                    h3 {
-                        font-size: 18px;
-                        margin: 0 0 5px 0;
-                    }
-
-                    svg {
-                        width: 10px;
-                    }
-
-                    p {
-                        font-size: 11px;
-                    }
-
-                    &:hover {
-                        transform: scale(1.2);
-                        padding: 25px 15px;
-                        top: -5px;
-                        right: -10px;
-                    }
+                &:hover~.name {
+                    transform: scale(0.7) translateX(-20px);
                 }
             }
 
-            .profile {
-                padding: 15px 20px;
+            .name {
+                padding-left: 5%;
+
+                h3 {
+                    font-size: 18px;
+                    margin: 0 0 5px 0;
+                }
+
+                svg {
+                    width: 10px;
+                }
+
+                p {
+                    font-size: 11px;
+                }
+
+                &:hover {
+                    transform: scale(1.2);
+                    padding: 25px 15px;
+                    top: -5px;
+                    right: -10px;
+                }
             }
         }
 
-        footer {
-            border-radius: 0;
+        .profile {
+            padding: 15px 20px;
+        }
+    }
+
+    footer {
+        border-radius: 0;
+    }
+
+    .container .footer .theme {
+        input[type=radio] {
+            margin-inline: 8px;
         }
     }
 }

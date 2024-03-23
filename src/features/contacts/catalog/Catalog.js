@@ -1,5 +1,5 @@
 import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
-import { useState, useMemo, useContext, useEffect } from 'react';
+import { useState, useMemo, useContext } from 'react';
 import { useSelector } from 'react-redux';
 
 import { selectAllContacts, getContactsStatus, getContactsError } from './catalogSlice.js';
@@ -25,11 +25,7 @@ const Catalog = () => {
     const status = useSelector(getContactsStatus);
     const error = useSelector(getContactsError);
 
-    const { theme, saveTheme } = useContext(ThemeContext);
-
-    useEffect(() => {
-        saveTheme(theme);
-    }, [theme, saveTheme])
+    const { theme } = useContext(ThemeContext);
 
     let content;
     let isLoading = false;
@@ -46,7 +42,7 @@ const Catalog = () => {
     const orderedContacts = contacts.slice().sort((a, b) => a.firstName.localeCompare(b.firstName));
 
     function onClickContact(id) {
-        setClassAttribute('loaded');
+        setClassAttribute('');
         setContactId(id);
         navigate(`/contacts/${id}`);
     }

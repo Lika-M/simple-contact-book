@@ -1,8 +1,8 @@
 @import '../../scss/index.scss';
 
 .container .footer {
-
   footer {
+    display: flex;
     @include footer-styles($color-dark-grey);
   }
 }

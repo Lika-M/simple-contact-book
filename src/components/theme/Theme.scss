@@ -1,10 +1,12 @@
 @import '../../scss/index.scss';
 
 .container .theme {
+  display: flex;
+  align-items: center;
   width: fit-content;
   position: absolute;
-  bottom: 0px;
-  right: 20px;
+  bottom: 4px;
+  right: 10px;
   padding: 8px;
 
   .visually-hidden {
@@ -17,7 +19,25 @@
     white-space: nowrap;
   }
 
-  input {
+  input[type="radio"] {
     cursor: pointer;
+    margin-inline: 12px;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    outline: 2px solid;
+    border-radius: 50%;
+
+    &.default {
+      @include theme-radio-button($color-primary);
+    }
+
+    &.orange {
+      @include theme-radio-button($color-primary-orange);
+    }
+
+    &.green {
+      @include theme-radio-button($color-primary-green);
+    }
   }
 }
