@@ -1,10 +1,10 @@
  ## This project is currently in development.
  
-A simple SPA app using React-Redux for data storage and processing, including asynchronous logic and data fetching. The project has been migrated to SCSS for styling and made responsive for different devices, implementing CRUD operations, search, and pagination.
+A simple SPA application using React and Redux Toolkits for data storage and processing, including Redux thunk for asynchronous logic and data fetching. The project implements CRUD operations, search, and pagination. Later, it was migrated to SCSS for styling and made responsive for different devices. In addition, the ability to change the theme with saving to the local storage using the Context API was added.
 
  ### Demo Project Online
 
- ####  [**View  Live**](https://simple-contact-book-123456.web.app/contacts)  the latest changes in the project.
+ #### No need to register, you can [**Try Live**](https://simple-contact-book-123456.web.app/contacts) the app.
 
  ## Technical Description
 
