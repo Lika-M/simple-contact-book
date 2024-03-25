@@ -152,9 +152,26 @@
         border-radius: 0;
     }
 
-    .container .footer .theme {
-        input[type=radio] {
-            margin-inline: 8px;
+    .container .footer {
+        padding: 0;
+
+        .theme {
+            position: unset;
+
+            input[type=radio] {
+                width: 25px;
+                height: 25px;
+
+                &:checked {
+                    width: 22px;
+                    height: 22px;
+                    outline-offset: 3px;
+                }
+            }
+        }
+
+        footer {
+            display: none;
         }
     }
 }
